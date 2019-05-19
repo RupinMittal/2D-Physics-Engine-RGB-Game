@@ -4,4 +4,6 @@ comment0.text=\r\n\ Runs\ the\ game\r\n\r\n\ @author\ Brandon\ Wang\r\n\ @versio
 comment1.params=
 comment1.target=Game()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Game\r\n
-numComments=2
+comment2.params=
+comment2.target=void\ play()
+numComments=3
