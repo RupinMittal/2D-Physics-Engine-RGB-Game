@@ -24,12 +24,16 @@
                          JUMP_ACC = 5,
                          MAX_VEL = 5;
      double XVel, YVel;
-     boolean up, left, right;
+     boolean up, left, right, runAnim;
+     int runTimer = 0;
      @Override 
      public void start(Stage stage) throws FileNotFoundException
      {
          ImageView iv1 = new ImageView(new Image("file:background_Test.jpg", 1000, 0, true, false));
-         ImageView iv2 = new ImageView(new Image("file:character_test.png", 50, 0, true, false));
+         Image still = new Image("file:anim3.jpg", 50, 0, true, false);
+         Image run1 = new Image("file:anim1.png", 50, 0, true, false);
+         Image run2 = new Image("file:anim2.png", 50, 0, true, false);
+         ImageView iv2 = new ImageView(still);
 
          Group root = new Group();
          Scene scene = new Scene(root);
@@ -106,6 +110,25 @@
                 //increment position
                 iv2.setX(iv2.getX() + XVel);
                 iv2.setY(iv2.getY() + YVel);
+                
+                //switching sprites every 15 frames
+                if(runTimer == 15)
+                {
+                    runTimer = 0;
+                    if(runAnim)
+                        iv2.setImage(run1);
+                    else
+                        iv2.setImage(run2);
+                    runAnim = !runAnim;
+                }
+                runTimer ++;
+                    
+                //character sprite processing
+                if(XVel == 0)
+                {
+                    
+                }
+                    
             }
         };
         timer.start();
