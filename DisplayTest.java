@@ -19,7 +19,10 @@
  */
  public class DisplayTest extends Application 
  {
-     static final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, MAX_VEL = 5;
+     static final double Y_ACC = 7, 
+                         X_ACC = 7, 
+                         FRICT_ACC = 5, 
+                         MAX_VEL = 5;
      double XVel, YVel;
      boolean up, down, left, right;
      @Override 
