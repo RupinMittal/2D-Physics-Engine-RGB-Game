@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Player here.
+ * Write a description of class Enemies here.
  *
  * @author Jonathan Lee
  * @version (a version number or a date)
  */
-public class Player extends Character
+public class Enemy extends Character
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Player
+     * Constructor for objects of class Enemies
      */
-    public Player()
+    public Enemies()
     {
         // initialise instance variables
         x = 0;
