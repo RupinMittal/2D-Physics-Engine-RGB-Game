@@ -84,22 +84,24 @@
                 if(right)
                     futureXVel += X_ACC / 30;
                 
-                //Stopping player if velocity passes 0 and capping velocity
+                //Stopping player if velocity passes 0 (friction)
                 if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(XVel)
                     && !left && !right)
                     XVel = 0;
                 else
-                    if(Math.abs(XVel) <= MAX_VEL && Math.abs(futureXVel) > MAX_VEL)
+                    if(Math.abs(XVel) <= MAX_VEL && Math.abs(futureXVel) > MAX_VEL) //velocity cap
                         XVel = Math.signum(XVel) * MAX_VEL;
                     else
-                        XVel = futureXVel;
+                        XVel = futureXVel; //normal acceleration
+                
+                //collision with floor
                 if(iv2.getY() + futureYVel > 300)
                 {
                     YVel = 0;
                     iv2.setY(300);
                 }
                 else
-                    YVel = futureYVel;
+                    YVel = futureYVel; //normal acceleration
                 
                 //increment position
                 iv2.setX(iv2.getX() + XVel);
