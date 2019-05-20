@@ -1,12 +1,10 @@
  import java.io.FileInputStream;
  import java.io.FileNotFoundException;
  import javafx.application.Application;
- import javafx.geometry.Rectangle2D;
  import javafx.scene.Group;
  import javafx.scene.Scene; 
  import javafx.scene.image.Image;
  import javafx.scene.image.ImageView;
- import javafx.scene.layout.HBox;
  import javafx.stage.Stage; 
  import javafx.scene.input.KeyEvent;
  import javafx.animation.AnimationTimer;
@@ -21,10 +19,12 @@
  {
      static final double Y_ACC = 7, 
                          X_ACC = 7, 
-                         FRICT_ACC = 5, 
+                         FRICT_ACC = 5,
+                         GRAV_ACC = 5,
+                         JUMP_ACC = 5,
                          MAX_VEL = 5;
      double XVel, YVel;
-     boolean up, down, left, right;
+     boolean up, left, right;
      @Override 
      public void start(Stage stage) throws FileNotFoundException
      {
@@ -47,7 +47,6 @@
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:    up = true; break;
-                    case DOWN:  down = true; break;
                     case LEFT:  left = true; break;
                     case RIGHT: right = true; break;
                 }
@@ -59,7 +58,6 @@
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:    up = false; break;
-                    case DOWN:  down = false; break;
                     case LEFT:  left = false; break;
                     case RIGHT: right = false; break;
                 }
@@ -76,13 +74,11 @@
                 
                 //Every frame, do friction and gravity(to be implemented)
                 futureXVel -= Math.signum(XVel) * FRICT_ACC/30;
-                futureYVel -= Math.signum(YVel) * FRICT_ACC/30;
+                futureYVel += GRAV_ACC/30;
                 
                 //keypresses
-                if(up)
-                    futureYVel -= Y_ACC / 30;
-                if(down)
-                    futureYVel += Y_ACC / 30;
+                if(up && iv2.getY() == 300)
+                    futureYVel -= JUMP_ACC;
                 if(left)
                     futureXVel -= X_ACC / 30;
                 if(right)
@@ -97,16 +93,13 @@
                         XVel = Math.signum(XVel) * MAX_VEL;
                     else
                         XVel = futureXVel;
-                if((int)Math.signum(futureYVel) == -1 * (int)Math.signum(YVel)
-                    && !up && !down)
+                if(iv2.getY() + futureYVel > 300)
+                {
                     YVel = 0;
+                    iv2.setY(300);
+                }
                 else
-                    if(Math.abs(YVel) <= MAX_VEL && Math.abs(futureYVel) > MAX_VEL)
-                        YVel = Math.signum(YVel) * MAX_VEL;
-                    else
-                        YVel = futureYVel;
-                    
-                
+                    YVel = futureYVel;
                 
                 //increment position
                 iv2.setX(iv2.getX() + XVel);
