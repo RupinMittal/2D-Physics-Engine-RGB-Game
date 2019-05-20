@@ -17,7 +17,7 @@
  */
  public class DisplayTest extends Application 
  {
-     static final double Y_ACC = 7, 
+     static final double Y_ACC = 7,         //the constants
                          X_ACC = 7, 
                          FRICT_ACC = 5,
                          GRAV_ACC = 5,

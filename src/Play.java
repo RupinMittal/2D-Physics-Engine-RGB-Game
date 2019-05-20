@@ -1,9 +1,8 @@
-
 /**
- * The overarching class to run the game
- *
- * @author Brandon Wang
- * @version May 19 2019
+ * Play - The driver class to run the game
+ * This class will start the running of the game
+ * @author Team RGB
+ * @version May 20 2019
  */
 public class Play
 {
