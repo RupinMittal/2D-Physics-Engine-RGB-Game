@@ -19,7 +19,7 @@
  */
  public class DisplayTest extends Application 
  {
-     static final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, MAX_VEL = 50;
+     static final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, MAX_VEL = 5;
      double XVel, YVel;
      boolean up, down, left, right;
      @Override 
@@ -85,17 +85,25 @@
                 if(right)
                     futureXVel += X_ACC / 30;
                 
-                //Stopping player if velocity passes 0
+                //Stopping player if velocity passes 0 and capping velocity
                 if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(XVel)
                     && !left && !right)
                     XVel = 0;
                 else
-                    XVel = futureXVel;
+                    if(Math.abs(XVel) <= MAX_VEL && Math.abs(futureXVel) > MAX_VEL)
+                        XVel = Math.signum(XVel) * MAX_VEL;
+                    else
+                        XVel = futureXVel;
                 if((int)Math.signum(futureYVel) == -1 * (int)Math.signum(YVel)
                     && !up && !down)
                     YVel = 0;
                 else
-                    YVel = futureYVel;
+                    if(Math.abs(YVel) <= MAX_VEL && Math.abs(futureYVel) > MAX_VEL)
+                        YVel = Math.signum(YVel) * MAX_VEL;
+                    else
+                        YVel = futureYVel;
+                    
+                
                 
                 //increment position
                 iv2.setX(iv2.getX() + XVel);
