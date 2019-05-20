@@ -19,7 +19,8 @@
  */
  public class DisplayTest extends Application 
  {
-     double vertspeed, horispeed = 0;
+     double vertacc, horiacc, vertspeed, horispeed;
+     boolean slowX, slowY;
      @Override 
      public void start(Stage stage) throws FileNotFoundException
      {
@@ -41,10 +42,10 @@
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    vertspeed = -2; break;
-                    case DOWN:  vertspeed = 2; break;
-                    case LEFT:  horispeed = -2; break;
-                    case RIGHT: horispeed = 2; break;
+                    case UP:    vertacc = -2; slowY = false; break;
+                    case DOWN:  vertacc = 2; slowY = false; break;
+                    case LEFT:  horiacc = -2; slowX = false; break;
+                    case RIGHT: horiacc = 2; slowX = false; break;
                 }
             }
         });
@@ -53,10 +54,10 @@
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    vertspeed = 0; break;
-                    case DOWN:  vertspeed = 0; break;
-                    case LEFT:  horispeed = 0; break;
-                    case RIGHT: horispeed = 0; break;
+                    case UP:    slowY = true; break;
+                    case DOWN:  slowY = true; break;
+                    case LEFT:  slowX = true; break;
+                    case RIGHT: slowX = true; break;
                 }
             }
         });
@@ -67,6 +68,14 @@
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                if(slowY)
+                    vertspeed = Math.signum(vertspeed) * (Math.abs(vertspeed)-5.0/30);
+                else
+                    vertspeed += vertacc / 30;
+                if(slowX)
+                    horispeed = Math.signum(horispeed) * (Math.abs(horispeed)-5.0/30);
+                else
+                    horispeed += horiacc / 30;
                 iv2.setX(iv2.getX() + horispeed);
                 iv2.setY(iv2.getY() + vertspeed);
             }
