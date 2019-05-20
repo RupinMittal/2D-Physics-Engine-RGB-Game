@@ -19,8 +19,9 @@
  */
  public class DisplayTest extends Application 
  {
-     double vertacc, horiacc, vertspeed, horispeed;
-     boolean slowX, slowY;
+     static final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, MAX_VEL = 50;
+     double XVel, YVel;
+     boolean up, down, left, right;
      @Override 
      public void start(Stage stage) throws FileNotFoundException
      {
@@ -42,10 +43,10 @@
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    vertacc = -2; slowY = false; break;
-                    case DOWN:  vertacc = 2; slowY = false; break;
-                    case LEFT:  horiacc = -2; slowX = false; break;
-                    case RIGHT: horiacc = 2; slowX = false; break;
+                    case UP:    up = true; break;
+                    case DOWN:  down = true; break;
+                    case LEFT:  left = true; break;
+                    case RIGHT: right = true; break;
                 }
             }
         });
@@ -54,10 +55,10 @@
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    slowY = true; break;
-                    case DOWN:  slowY = true; break;
-                    case LEFT:  slowX = true; break;
-                    case RIGHT: slowX = true; break;
+                    case UP:    up = false; break;
+                    case DOWN:  down = false; break;
+                    case LEFT:  left = false; break;
+                    case RIGHT: right = false; break;
                 }
             }
         });
@@ -68,16 +69,37 @@
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(slowY)
-                    vertspeed = Math.signum(vertspeed) * (Math.abs(vertspeed)-5.0/30);
+                double futureXVel = XVel, futureYVel = YVel;
+                
+                //Every frame, do friction and gravity(to be implemented)
+                futureXVel -= Math.signum(XVel) * FRICT_ACC/30;
+                futureYVel -= Math.signum(YVel) * FRICT_ACC/30;
+                
+                //keypresses
+                if(up)
+                    futureYVel -= Y_ACC / 30;
+                if(down)
+                    futureYVel += Y_ACC / 30;
+                if(left)
+                    futureXVel -= X_ACC / 30;
+                if(right)
+                    futureXVel += X_ACC / 30;
+                
+                //Stopping player if velocity passes 0
+                if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(XVel)
+                    && !left && !right)
+                    XVel = 0;
                 else
-                    vertspeed += vertacc / 30;
-                if(slowX)
-                    horispeed = Math.signum(horispeed) * (Math.abs(horispeed)-5.0/30);
+                    XVel = futureXVel;
+                if((int)Math.signum(futureYVel) == -1 * (int)Math.signum(YVel)
+                    && !up && !down)
+                    YVel = 0;
                 else
-                    horispeed += horiacc / 30;
-                iv2.setX(iv2.getX() + horispeed);
-                iv2.setY(iv2.getY() + vertspeed);
+                    YVel = futureYVel;
+                
+                //increment position
+                iv2.setX(iv2.getX() + XVel);
+                iv2.setY(iv2.getY() + YVel);
             }
         };
         timer.start();
