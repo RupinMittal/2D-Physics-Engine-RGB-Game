@@ -5,7 +5,7 @@
  * @author Jonathan Lee
  * @version (a version number or a date)
  */
-public class Enemy extends Character
+public class Enemy extends Display
 {
     // instance variables - replace the example below with your own
     private int x;
