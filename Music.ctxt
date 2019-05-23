@@ -1,12 +1,10 @@
 #BlueJ class context
 comment0.target=Music
-comment0.text=\r\n\ The\ Music\ class\ \r\n\ @author\ Jonathan\ Lee\r\n
+comment0.text=\r\n\ The\ Music\ class\ will\ contain\ methods\ that\ have\ will\ allow\ the\ user\ to\ loop\ a\ music\ file\ and\ \r\n\ then\ play\ the\ music\r\n\ @author\ Jonathan\ Lee\r\n
 comment1.params=file
 comment1.target=Music(java.lang.String)
 comment2.params=
 comment2.target=void\ loop()
 comment3.params=
 comment3.target=void\ run()
-comment4.params=file
-comment4.target=void\ play(java.lang.String)
-numComments=5
+numComments=4

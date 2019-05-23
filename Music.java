@@ -18,11 +18,17 @@ public class Music
     
     public void loop()
     {
-
+          Media media = new Media(fileName);
+          MediaPlayer player = new MediaPlayer(media);
+          
+          player.setOnEndOfMedia(new Runnable() 
+          {
+               public void run() 
+               {
+                   player.seek(Duration.ZERO);
+               }
+          });
+          player.play();
     }
     
-    public void play(String file)
-    {
-        
-    }
 }
