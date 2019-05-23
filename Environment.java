@@ -4,13 +4,23 @@
  * @version May 23, 2019
  */
 
-import javafx.application.Application;
 import javafx.scene.image.Image;
 
-public abstract class Environment extends Application
+public class Environment
 {
     private Image map;                      //the Image that is the map of the environment, made on tiled
     private int[][] collisionsArray;        //the array that represents the tiles in the map
+
+    //constructor
+
+    /**
+     * Constructor for Environment class
+     * @param fileName String that is png file name that comes from .json file
+     */
+    public Environment(String fileName)
+    {
+        createCollisionsArray(fileName);        //call to create the collisionsArray
+    }
 
     /**
      * Method to get the map Image
@@ -33,7 +43,7 @@ public abstract class Environment extends Application
     }
 
     /**
-     * Method to get the
+     * Method to get the int type of the tile that is being collided with
      * @param col int column number
      * @param row int row number
      * @return int the tile type being collided with
@@ -41,5 +51,14 @@ public abstract class Environment extends Application
     public int getType(int col, int row)
     {
         return collisionsArray[row][col];           //returnn the int type of the tile that is at [r][c]
+    }
+
+    /**
+     * Method to create the collisions array from the text file that comes from the .json file
+     * @param fileName String the string of the png fileName
+     */
+    private void createCollisionsArray(String fileName)
+    {
+
     }
 }
