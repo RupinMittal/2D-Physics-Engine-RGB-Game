@@ -5,11 +5,13 @@
  */
 
 import javafx.scene.image.Image;
+import chn.util.;
 
 public class Environment
 {
     private Image map;                      //the Image that is the map of the environment, made on tiled
     private int[][] collisionsArray;        //the array that represents the tiles in the map
+    private final int TILE_SIDE = 21;       //the height and width of each tile
 
     //constructor
 
@@ -59,6 +61,11 @@ public class Environment
      */
     private void createCollisionsArray(String fileName)
     {
+        FileInput reader  = new FileInput(fileName);    //create FileInput object to read data from the file
+
+        collisionsArray = new int[reader.readInt()][reader.readInt()];
+
+
 
     }
 }
