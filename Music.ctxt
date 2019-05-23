@@ -2,9 +2,9 @@
 comment0.target=Music
 comment0.text=\r\n\ The\ Music\ class\ will\ contain\ methods\ that\ have\ will\ allow\ the\ user\ to\ loop\ a\ music\ file\ and\ \r\n\ then\ play\ the\ music\r\n\ @author\ Jonathan\ Lee\r\n
 comment1.params=file
-comment1.target=Music(java.lang.String)
+comment1.target=void\ loop(java.lang.String)
 comment2.params=
-comment2.target=void\ loop()
-comment3.params=
-comment3.target=void\ run()
+comment2.target=void\ run()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
 numComments=4

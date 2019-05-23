@@ -9,16 +9,9 @@ import javafx.util.Duration;
  */
 public class Music 
 {
-    String fileName;    
-    
-    public Music(String file)
+    public static void loop(String file)
     {
-        fileName = file;
-    }
-    
-    public void loop()
-    {
-          Media media = new Media(fileName);
+          Media media = new Media(file);
           MediaPlayer player = new MediaPlayer(media);
           
           player.setOnEndOfMedia(new Runnable() 
@@ -31,4 +24,8 @@ public class Music
           player.play();
     }
     
+    public static void main(String[] args)
+    {
+       Music.loop("ollie.mp3");
+    }
 }
