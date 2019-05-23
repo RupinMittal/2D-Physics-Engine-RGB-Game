@@ -5,7 +5,7 @@
  */
 
 import javafx.scene.image.Image;
-import chn.util.;
+import chn.util.*;
 
 public class Environment
 {
@@ -22,6 +22,7 @@ public class Environment
     public Environment(String fileName)
     {
         createCollisionsArray(fileName);        //call to create the collisionsArray
+        map = new Image(fileName);              //create the map image
     }
 
     /**
@@ -41,7 +42,7 @@ public class Environment
      */
     public boolean isCollision(int col, int row)
     {
-        return collisionsArray[row][col] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
+        return collisionsArray[row % TILE_SIDE][col % TILE_SIDE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
     }
 
     /**
@@ -52,7 +53,7 @@ public class Environment
      */
     public int getType(int col, int row)
     {
-        return collisionsArray[row][col];           //returnn the int type of the tile that is at [r][c]
+        return collisionsArray[row % TILE_SIDE][col % TILE_SIDE];           //returnn the int type of the tile that is at [r][c]
     }
 
     /**
@@ -63,9 +64,10 @@ public class Environment
     {
         FileInput reader  = new FileInput(fileName);    //create FileInput object to read data from the file
 
-        collisionsArray = new int[reader.readInt()][reader.readInt()];
+        collisionsArray = new int[reader.readInt()][reader.readInt()];      //create the array using sizes provided by file
 
-
-
+        for(int r = 0; r < collisionsArray.length; r++)                     //add the elements as corresponding positions in map to
+            for(int c = 0; c < collisionsArray[0].length; c++)              //positions in the collisions array
+                collisionsArray[r][c] = reader.readInt();
     }
 }
