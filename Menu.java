@@ -1,24 +1,41 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
- * Abstract class Menu - write a description of the class here
+ * Abstract class Menu - This class contains the common functions of both 
+ * PauseMenu and MainMenu
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Daniel Herrick
+ * @version Menu Abstract Class - RGB
  */
 public abstract class Menu
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    protected Button options;
+    protected Button credits;
+    protected Button back;
+    protected Button endGame;
+    
+    public abstract void createButtons();
+    public abstract void displayButtons();
+    public abstract void runMenu();
+    public abstract void back();
+    
+    public void options()
     {
-        // put your code here
-        return x + y;
+    }
+    
+    public void credits()
+    {
+    }
+    
+    public void efffecrs()
+    {
     }
 }

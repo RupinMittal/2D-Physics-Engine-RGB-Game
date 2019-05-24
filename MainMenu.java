@@ -1,33 +1,12 @@
 
 /**
- * Write a description of class MainMenu here.
+ * This is the main menu of the game. It will allow the user to choose to 
+ * play, go to options, quit the game, and look at the credits
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Daniel Herrick
+ * @version MainMenu Class - RGB
  */
 public class MainMenu extends Menu
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class MainMenu
-     */
-    public MainMenu()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
 }

@@ -1,33 +1,12 @@
 
 /**
- * Write a description of class PauseMenu here.
+ * This is the pause menu of the game. It will allow the user to resume the
+ * game, quit the game, go to credits, and go to options
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Daniel Herrick
+ * @version PauseMenu Class - RGB
  */
 public class PauseMenu extends Menu
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class PauseMenu
-     */
-    public PauseMenu()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
 }
