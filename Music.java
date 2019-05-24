@@ -6,15 +6,30 @@ import java.io.File;
 /**
  * The Music class will contain methods that have will allow the user to loop a music file and 
  * then play the music
+ * 
  * @author Jonathan Lee
+ * @version 23 May 2019
  */
 public class Music 
 {
-    public static void loop(String file)
+    //Instance variable for a media resource
+    Media media;
+    //Instance variable for controlling the media resource
+    MediaPlayer player;
+    
+    public Music (String file)
     {
-          Media media = new Media(new File(file).toURI().toString());
-          MediaPlayer player = new MediaPlayer(media);
-          
+        //Instantiation of instance variables
+        media = new Media(new File(file).toURI().toString());
+        player = new MediaPlayer(media);
+    }
+    
+    /**
+     * The method will take a file and continuously play it back in a loop
+     * @param file The string for the music file
+     */
+    public void loop()
+    {            
           player.setOnEndOfMedia(new Runnable() 
           {
                public void run() 

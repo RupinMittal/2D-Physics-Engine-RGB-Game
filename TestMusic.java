@@ -6,10 +6,10 @@ import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
 /**
- * Write a description of class TestMusic here.
+ * Test class for the method in the Music Class
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jonathan Lee
+ * @version 23 May 2019
  */
 public class TestMusic extends Application
 {
@@ -22,7 +22,8 @@ public class TestMusic extends Application
     
     public void start(Stage stage)
     {
-        Music.loop("ollie.mp3");
+        Music music = new Music("ollie.mp3");
+        music.loop();
         
         VBox root = new VBox();
         root.getChildren().addAll();
