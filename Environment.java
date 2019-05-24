@@ -14,7 +14,6 @@ public class Environment
     private final int TILE_SIDE = 21;       //the height and width of each tile
 
     //constructor
-
     /**
      * Constructor for Environment class
      * @param fileName String that is png file name that comes from .json file
@@ -42,7 +41,7 @@ public class Environment
      */
     public boolean isCollision(int col, int row)
     {
-        return collisionsArray[row % TILE_SIDE][col % TILE_SIDE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
+        return collisionsArray[row / TILE_SIDE][col / TILE_SIDE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
     }
 
     /**
@@ -53,7 +52,7 @@ public class Environment
      */
     public int getType(int col, int row)
     {
-        return collisionsArray[row % TILE_SIDE][col % TILE_SIDE];           //returnn the int type of the tile that is at [r][c]
+        return collisionsArray[row / TILE_SIDE][col / TILE_SIDE];           //returnn the int type of the tile that is at [r][c]
     }
 
     /**
