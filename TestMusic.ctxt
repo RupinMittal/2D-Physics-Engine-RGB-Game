@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=TestMusic
+comment0.text=\r\n\ Test\ class\ for\ the\ method\ in\ the\ Music\ Class\r\n\r\n\ @author\ Jonathan\ Lee\r\n\ @version\ 23\ May\ 2019\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=stage
+comment2.target=void\ start(javafx.stage.Stage)
+numComments=3

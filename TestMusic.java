@@ -25,7 +25,7 @@ public class TestMusic extends Application
         //Creates a Music object
         Music music = new Music("ollie.mp3");
         //Looping the music at 1/5 of its loudness
-        music.loop(0.2);
+        music.loop();
         
         VBox root = new VBox();
         root.getChildren().addAll();

@@ -30,8 +30,10 @@ public class Music
      */
     public void loop()
     {            
-          player.setOnEndOfMedia //Sets the player's ending of the music
-          (new Runnable() //This is the interface Runnable and used to help create a thread
+          //Sets the player's ending of the music  
+          //This is the interface Runnable and used to help create a thread
+          
+          player.setOnEndOfMedia(new Runnable() //This is the interface Runnable and used to help create a thread
           {
                public void run() //Impementing the run method from Runnable 
                {
@@ -49,8 +51,7 @@ public class Music
     {            
           player.setVolume(volume); //MediaPlayer sets the volume of how loud the music will be played
         
-          player.setOnEndOfMedia //Sets the player's ending of the music
-          (new Runnable() //This is the interface Runnable and used to help create a thread
+          player.setOnEndOfMedia(new Runnable() //This is the interface Runnable and used to help create a thread
           {
                public void run() //Impementing the run method from Runnable 
                {
