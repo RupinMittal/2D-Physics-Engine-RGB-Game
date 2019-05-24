@@ -35,5 +35,4 @@ public class TestMusic extends Application
             
         stage.show();
     }
-    
 }

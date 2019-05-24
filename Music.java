@@ -10,7 +10,7 @@ import java.io.File;
  * @author Jonathan Lee
  * @version 23 May 2019
  */
-public class Music 
+public class Music
 {
     //Instance variable for a media resource
     Media media;
@@ -30,14 +30,15 @@ public class Music
      */
     public void loop()
     {            
-          player.setOnEndOfMedia(new Runnable() 
+          player.setOnEndOfMedia //Sets the player's ending of the music
+          (new Runnable() //This is the interface Runnable and used to help create a thread
           {
-               public void run() 
+               public void run() //Impementing the run method from Runnable 
                {
-                   player.seek(Duration.ZERO);
+                   player.seek(Duration.ZERO); //Separately executes this command in a different thread, tells the MediaPlayer to never end
                }
           });
-          player.play();
+          player.play(); //Starts playing the media resource, loops the music since the MediaPlayer has been told that it will not end
     }
     
     /**
@@ -46,15 +47,16 @@ public class Music
      */
     public void loop(double volume)
     {            
-          player.setVolume(volume);
+          player.setVolume(volume); //MediaPlayer sets the volume of how loud the music will be played
         
-          player.setOnEndOfMedia(new Runnable() 
+          player.setOnEndOfMedia //Sets the player's ending of the music
+          (new Runnable() //This is the interface Runnable and used to help create a thread
           {
-               public void run() 
+               public void run() //Impementing the run method from Runnable 
                {
-                   player.seek(Duration.ZERO);
+                   player.seek(Duration.ZERO); //Separately executes this command in a different thread, tells the MediaPlayer to never end
                }
           });
-          player.play();
+          player.play(); //Starts playing the media resource, loops the music since the MediaPlayer has been told that it will not end
     }
 }
