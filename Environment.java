@@ -10,19 +10,20 @@ import javafx.scene.image.ImageView;
 
 public class Environment
 {
-    private ImageView map;                  //the ImageView that is the map of the environment, made on tiled
-    private int[][] collisionsArray;        //the array that represents the tiles in the map
-    private final int TILE_SIDE = 21;       //the height and width of each tile
+    private ImageView map;                      //the ImageView that is the map of the environment, made on tiled
+    private int[][] collisionsArray;            //the array that represents the tiles in the map
+    private final int TILE_SIDE_SIZE = 21;      //the height and width of each tile
 
     //constructor
     /**
      * Constructor for Environment class
-     * @param fileName String that is png file name that comes from .json file
+     * @param collisionsDataFile String that is txt file name that comes from .json file with tile data
+     * @param mapFile String that is png file for map
      */
-    public Environment(String fileName)
+    public Environment(String collisionsDataFile, String mapFile)
     {
-        createCollisionsArray(fileName);        //call to create the collisionsArray
-        map = new ImageView(new Image(fileName, 0, 0, true, true));     //create the map imageview
+        createCollisionsArray(collisionsDataFile);        //call to create the collisionsArray
+        map = new ImageView(new Image(mapFile, 0, 0, true, true));     //create the map imageview
     }
 
     /**
@@ -42,7 +43,7 @@ public class Environment
      */
     public boolean isCollision(int col, int row)
     {
-        return collisionsArray[row / TILE_SIDE][col / TILE_SIDE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
+        return collisionsArray[row / TILE_SIDE_SIZE][col / TILE_SIDE_SIZE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
     }
 
     /**
@@ -53,16 +54,16 @@ public class Environment
      */
     public int getType(int col, int row)
     {
-        return collisionsArray[row / TILE_SIDE][col / TILE_SIDE];           //returnn the int type of the tile that is at [r][c]
+        return collisionsArray[row / TILE_SIDE_SIZE][col / TILE_SIDE_SIZE];           //returnn the int type of the tile that is at [r][c]
     }
 
     /**
      * Method to create the collisions array from the text file that comes from the .json file
-     * @param fileName String the string of the png fileName
+     * @param collisionsDataFile String the string of the png fileName
      */
-    private void createCollisionsArray(String fileName)
+    private void createCollisionsArray(String collisionsDataFile)
     {
-        FileInput reader  = new FileInput(fileName);    //create FileInput object to read data from the file
+        FileInput reader  = new FileInput(collisionsDataFile);    //create FileInput object to read data from the file
 
         collisionsArray = new int[reader.readInt()][reader.readInt()];      //create the array using sizes provided by file
 

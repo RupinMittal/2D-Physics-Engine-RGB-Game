@@ -16,13 +16,14 @@ public class IntroEnvironment extends Environment
     //constructor
     /**
      * Constructor for IntroEnvironment class
+     * @param mapCollisionsDatafile String that is txt file name that comes from .json file with tile data
      * @param mapImage String that is png file name that comes from .json file for the map
      * @param foregroundImage String that is png file name that comes from .json file for the foreground
      * @param backgroundImage String that is png file name that comes from .json file for the background
      */
-    public IntroEnvironment(String mapImage, String foregroundImage, String backgroundImage)
+    public IntroEnvironment(String mapCollisionsDatafile, String mapImage, String foregroundImage, String backgroundImage)
     {
-        super(mapImage);                                                //call to create the collisionsArray
+        super(mapCollisionsDatafile, mapImage);                                                //call to create the collisionsArray
         foreground = new ImageView(new Image(foregroundImage, 0, 0, true, true));     //create the foreground imageview
         background = new ImageView(new Image(backgroundImage, 0, 0, true, true));     //create the foreground imageview
     }
