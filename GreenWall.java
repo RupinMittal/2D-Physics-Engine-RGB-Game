@@ -7,27 +7,31 @@
  */
 public class GreenWall
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class GreenWall
-     */
-    public GreenWall()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
+     * An interaction with the Wall when the player comes from the left
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param player the Player the wall interacts with
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    public void interactLeft(Player player);
+    
+    /**
+     * An interaction with the Wall when the player comes from the right
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactRight(Player player);
+    
+    /**
+     * An interaction with the Wall when the player comes from the top
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactFloor(Player player);
+    
+    /**
+     * An interaction with the Wall when the player comes from the bottom
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactCeiling(Player player);
 }

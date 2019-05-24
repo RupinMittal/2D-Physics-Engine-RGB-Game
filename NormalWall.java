@@ -7,27 +7,47 @@
  */
 public class NormalWall
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class NormalWall
-     */
-    public NormalWall()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
+     * An interaction with the Wall when the player comes from the left
+     * Sets the x velocity of the player to 0
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param player the Player the wall interacts with
      */
-    public int sampleMethod(int y)
+    public void interactLeft(Player player)
     {
-        // put your code here
-        return x + y;
+        player.setXVelocity(0);
+    }
+    
+    /**
+     * An interaction with the Wall when the player comes from the right
+     * Sets the x velocity of the player to 0
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactRight(Player player)
+    {
+        player.setXVelocity(0);
+    }
+    
+    /**
+     * An interaction with the Wall when the player comes from the top
+     * Sets the y velocity of the player to 0
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactFloor(Player player)
+    {
+        player.setYVelocity(0);
+    }
+    
+    /**
+     * An interaction with the Wall when the player comes from the bottom
+     * Sets the y velocity of the player to 0
+     *
+     * @param player the Player the wall interacts with
+     */
+    public void interactCeiling(Player player)
+    {
+        player.setYVelocity(0);
     }
 }
