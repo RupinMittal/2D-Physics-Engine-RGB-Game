@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class GreenWall here.
+ * Green Wall - Player sticks to it
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Brandon Wang
+ * @version May 24 2019
  */
 public class GreenWall
 {

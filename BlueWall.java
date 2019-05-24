@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class BlueWall here.
+ * Blue Wall - bounces player away
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Brandon Wang
+ * @version May 24 2019
  */
 public class BlueWall
 {
