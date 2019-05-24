@@ -9,29 +9,21 @@ public interface Wall
 {
     /**
      * An interaction with the Wall when the player comes from the left
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactLeft(Player player);
+    public void interactLeft();
     
     /**
      * An interaction with the Wall when the player comes from the right
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactRight(Player player);
+    public void interactRight();
     
     /**
      * An interaction with the Wall when the player comes from the top
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactFloor(Player player);
+    public void interactFloor();
     
     /**
      * An interaction with the Wall when the player comes from the bottom
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactCeiling(Player player);
+    public void interactCeiling();
 }

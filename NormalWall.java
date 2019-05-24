@@ -7,47 +7,53 @@
  */
 public class NormalWall implements Wall
 {
+    private Player interactPlayer; //the Player the wall interacts with
+    private int tileSize; //the tile size in pixels
+    
+    /**
+     * Constructor for the NormalWall class
+     * 
+     * @param player the Player the wall interacts with
+     * @param tile the size of the game tiles
+     */
+    public NormalWall(Player player, int tile)
+    {
+        
+    }
+    
     /**
      * An interaction with the Wall when the player comes from the left
      * Sets the x velocity of the player to 0
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactLeft(Player player)
+    public void interactLeft()
     {
-        player.setXVelocity(0);
+        interactPlayer.setXVelocity(0);
     }
     
     /**
      * An interaction with the Wall when the player comes from the right
      * Sets the x velocity of the player to 0
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactRight(Player player)
+    public void interactRight()
     {
-        player.setXVelocity(0);
+        interactPlayer.setXVelocity(0);
     }
     
     /**
      * An interaction with the Wall when the player comes from the top
      * Sets the y velocity of the player to 0
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactFloor(Player player)
+    public void interactFloor()
     {
-        player.setYVelocity(0);
+        interactPlayer.setYVelocity(0);
     }
     
     /**
      * An interaction with the Wall when the player comes from the bottom
      * Sets the y velocity of the player to 0
-     *
-     * @param player the Player the wall interacts with
      */
-    public void interactCeiling(Player player)
+    public void interactCeiling()
     {
-        player.setYVelocity(0);
+        interactPlayer.setYVelocity(0);
     }
 }
