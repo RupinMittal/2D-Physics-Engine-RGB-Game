@@ -5,7 +5,7 @@
  * @author Brandon Wang
  * @version May 24 2019
  */
-public class BlueWall
+public class BlueWall implements Wall
 {
     /**
      * An interaction with the Wall when the player comes from the left

@@ -5,7 +5,7 @@
  * @author Brandon Wang
  * @version May 24 2019
  */
-public class RedWall
+public class RedWall implements Wall
 {
     /**
      * An interaction with the Wall when the player comes from the left

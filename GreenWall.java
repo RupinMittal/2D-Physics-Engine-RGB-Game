@@ -5,7 +5,7 @@
  * @author Brandon Wang
  * @version May 24 2019
  */
-public class GreenWall
+public class GreenWall implements Wall
 {
     /**
      * An interaction with the Wall when the player comes from the left
