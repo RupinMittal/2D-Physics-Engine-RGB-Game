@@ -18,15 +18,18 @@ public class NormalWall implements Wall
      */
     public NormalWall(Player player, int tile)
     {
-        
+        interactPlayer = player;
+        tileSize = tile;
     }
     
     /**
      * An interaction with the Wall when the player comes from the left
      * Sets the x velocity of the player to 0
      */
-    public void interactLeft()
+    public void interactLeft(double futureX, double futureY)
     {
+        
+        interactPlayer.setXPos();
         interactPlayer.setXVelocity(0);
     }
     
@@ -34,7 +37,7 @@ public class NormalWall implements Wall
      * An interaction with the Wall when the player comes from the right
      * Sets the x velocity of the player to 0
      */
-    public void interactRight()
+    public void interactRight(double futureX, double futureY)
     {
         interactPlayer.setXVelocity(0);
     }
@@ -43,7 +46,7 @@ public class NormalWall implements Wall
      * An interaction with the Wall when the player comes from the top
      * Sets the y velocity of the player to 0
      */
-    public void interactFloor()
+    public void interactFloor(double futureX, double futureY)
     {
         interactPlayer.setYVelocity(0);
     }
@@ -52,7 +55,7 @@ public class NormalWall implements Wall
      * An interaction with the Wall when the player comes from the bottom
      * Sets the y velocity of the player to 0
      */
-    public void interactCeiling()
+    public void interactCeiling(double futureX, double futureY)
     {
         interactPlayer.setYVelocity(0);
     }

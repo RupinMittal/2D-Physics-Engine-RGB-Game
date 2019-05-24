@@ -10,20 +10,20 @@ public interface Wall
     /**
      * An interaction with the Wall when the player comes from the left
      */
-    public void interactLeft();
+    public void interactLeft(double futureX, double futureY);
     
     /**
      * An interaction with the Wall when the player comes from the right
      */
-    public void interactRight();
+    public void interactRight(double futureX, double futureY);
     
     /**
      * An interaction with the Wall when the player comes from the top
      */
-    public void interactFloor();
+    public void interactFloor(double futureX, double futureY);
     
     /**
      * An interaction with the Wall when the player comes from the bottom
      */
-    public void interactCeiling();
+    public void interactCeiling(double futureX, double futureY);
 }
