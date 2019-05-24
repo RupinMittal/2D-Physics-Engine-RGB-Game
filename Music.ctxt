@@ -5,6 +5,4 @@ comment1.params=file
 comment1.target=void\ loop(java.lang.String)
 comment2.params=
 comment2.target=void\ run()
-comment3.params=args
-comment3.target=void\ main(java.lang.String[])
-numComments=4
+numComments=3
