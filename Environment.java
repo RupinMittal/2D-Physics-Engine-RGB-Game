@@ -1,15 +1,16 @@
 /**
- * Environment (Abstract) - represents properties of the environments
+ * Environment - represents properties of the environments
  * @author Rupin Mittal
  * @version May 23, 2019
  */
 
 import javafx.scene.image.Image;
 import chn.util.*;
+import javafx.scene.image.ImageView;
 
 public class Environment
 {
-    private Image map;                      //the Image that is the map of the environment, made on tiled
+    private ImageView map;                  //the ImageView that is the map of the environment, made on tiled
     private int[][] collisionsArray;        //the array that represents the tiles in the map
     private final int TILE_SIDE = 21;       //the height and width of each tile
 
@@ -21,14 +22,14 @@ public class Environment
     public Environment(String fileName)
     {
         createCollisionsArray(fileName);        //call to create the collisionsArray
-        map = new Image(fileName);              //create the map image
+        map = new ImageView(new Image(fileName, 0, 0, true, true));     //create the map imageview
     }
 
     /**
-     * Method to get the map Image
-     * @return Image map
+     * Method to get the map ImageView
+     * @return ImageView map
      */
-    public Image getMapImage()
+    public ImageView getMapImageView()
     {
         return map; //return the map Image
     }
