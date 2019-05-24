@@ -23,7 +23,7 @@ public class TestMusic extends Application
     public void start(Stage stage)
     {
         //Creates a Music object
-        Music music = new Music("ollie.mp3");
+        Music music = new Music("SoundTrack01.mp3");
         //Looping the music at 1/5 of its loudness
         music.loop();
         
