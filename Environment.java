@@ -31,7 +31,7 @@ public class Environment
      */
     public ImageView getMapImageView()
     {
-        return map; //return the map Image
+        return map; //return the map ImageView
     }
 
     /**
