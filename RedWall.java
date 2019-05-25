@@ -7,6 +7,18 @@
  */
 public class RedWall implements Wall
 {
+    private Player interactPlayer; //the Player the wall interacts with
+    
+    /**
+     * Constructor for the NormalWall class
+     * 
+     * @param player the Player the wall interacts with
+     */
+    public RedWall(Player player)
+    {
+        interactPlayer = player;
+    }
+    
     /**
      * An interaction with the Wall when the player comes from the left
      *

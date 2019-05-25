@@ -7,6 +7,21 @@
  */
 public class GreenWall implements Wall
 {
+    private Player interactPlayer; //the Player the wall interacts with
+    private int tileSize; //the tile size in pixels
+    
+    /**
+     * Constructor for the NormalWall class
+     * 
+     * @param player the Player the wall interacts with
+     * @param tile the size of the game tiles
+     */
+    public GreenWall(Player player, int tile)
+    {
+        interactPlayer = player;
+        tileSize = tile;
+    }
+    
     /**
      * An interaction with the Wall when the player comes from the left
      *
