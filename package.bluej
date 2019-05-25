@@ -1,10 +1,13 @@
 #BlueJ package file
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
-objectbench.height=101
-objectbench.width=461
+dependency1.from=TestMusic
+dependency1.to=Music
+dependency1.type=UsesDependency
+editor.fx.0.height=696
+editor.fx.0.width=1294
+editor.fx.0.x=-7
+editor.fx.0.y=-7
+objectbench.height=92
+objectbench.width=749
 package.divider.horizontal=0.6
 package.divider.vertical=0.8007380073800738
 package.editor.height=427
@@ -18,6 +21,7 @@ package.numTargets=3
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
+project.invoke.thread=FX
 readme.height=58
 readme.name=@README
 readme.width=47
