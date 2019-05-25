@@ -12,6 +12,7 @@ public abstract class Movable
     private double xVel;    //the horizontal velocity
     private double yVel;    //the vertical velocity
 
+    //methods
     /**
      * Abstract method to move object
      * Will be implemented uniquely in subclasses
@@ -26,7 +27,73 @@ public abstract class Movable
 
     /**
      * Method to set the horizontal position of object
-     * @param x double horizontal position in pixels
+     * @param xP double horizontal position in pixels
      */
-    public void setXpos
+    public void setXPos(double xP)
+    {
+        xPos = xP;   //set the horizontal position
+    }
+
+    /**
+     * Method to set the vertical position of object
+     * @param yP double vertical position in pixels
+     */
+    public void setyPos(double yP)
+    {
+        yPos = yP;   //set the vertical position
+    }
+
+    /**
+     * Method to set the horizontal velocity of object
+     * @param xV double horizontal velocity
+     */
+    public void setXVel(double xV)
+    {
+        xVel = xV;   //set the horizontal velocity
+    }
+
+    /**
+     * Method to set the vertical velocity of object
+     * @param yV double vertical velocity
+     */
+    public void setYVel(double yV)
+    {
+        yVel = yV;   //set the vertical velocity
+    }
+
+    /**
+     * Method to get the horizontal position of object
+     * @return xPos double horizontal position in pixels
+     */
+    public double getXPos()
+    {
+        return xPos;   //get the horizontal position
+    }
+
+    /**
+     * Method to get the vertical position of object
+     * @return yPos double vertical position in pixels
+     */
+    public double getYPos()
+    {
+        return yPos;   //get the horizontal position
+    }
+
+    /**
+     * Method to get the horizontal velocity of object
+     * @return xVel double horizontal velocity
+     */
+    public double getXVel()
+    {
+        return xVel;   //get the horizontal velocity
+    }
+
+    /**
+     * Method to get the vertical velocity of object
+     * @return yVel double vertical velocity
+     */
+    public double getYVel()
+    {
+        return yVel;   //get the vertical velocity
+    }
 }
