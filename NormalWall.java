@@ -75,6 +75,7 @@ public class NormalWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
+        //stop player's horizontal movement
         interactPlayer.setYVelocity(0);
     }
     
@@ -93,6 +94,7 @@ public class NormalWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY);
         
+        //stop player's horizontal movement
         interactPlayer.setYVelocity(0);
     }
 }
