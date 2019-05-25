@@ -11,7 +11,7 @@ public class GreenWall implements Wall
     private int tileSize; //the tile size in pixels
     
     /**
-     * Constructor for the NormalWall class
+     * Constructor for the GreenWall class
      * 
      * @param player the Player the wall interacts with
      * @param tile the size of the game tiles
@@ -24,7 +24,7 @@ public class GreenWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the left
-     * Sets the x velocity of the player to 0
+     * Sets the x velocity of the player to 0 and updates green status
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -46,7 +46,7 @@ public class GreenWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the right
-     * Sets the x velocity of the player to 0
+     * Sets the x velocity of the player to 0 and updates green status
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -68,7 +68,7 @@ public class GreenWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the top
-     * Sets the y velocity of the player to 0
+     * Sets the y velocity of the player to 0 and updates green status
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -81,7 +81,7 @@ public class GreenWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
-        //stop player's horizontal movement
+        //stop player's vertical movement
         interactPlayer.setYVelocity(0);
         
         //toggle player's green status
@@ -90,7 +90,7 @@ public class GreenWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the bottom
-     * Sets the y velocity of the player to 0
+     * Sets the y velocity of the player to 0 and updates green status
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -103,7 +103,7 @@ public class GreenWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY);
         
-        //stop player's horizontal movement
+        //stop player's vertical movement
         interactPlayer.setYVelocity(0);
         
         //toggle player's green status

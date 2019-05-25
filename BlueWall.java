@@ -13,7 +13,7 @@ public class BlueWall implements Wall
     private static final int VERT_BOUNCE = 10;
     
     /**
-     * Constructor for the NormalWall class
+     * Constructor for the BlueWall class
      * 
      * @param player the Player the wall interacts with
      * @param tile the size of the game tiles
@@ -26,6 +26,7 @@ public class BlueWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the left
+     * Sets the x velocity of the player to horizontal bounce constant
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -44,6 +45,7 @@ public class BlueWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the right
+     * Sets the x velocity of the player to horizontal bounce constant
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -62,6 +64,7 @@ public class BlueWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the top
+     * Sets the y velocity of the player to vertical bounce constant
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -74,12 +77,13 @@ public class BlueWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
-        //set player's horizontal movement
+        //set player's vertical movement
         interactPlayer.setYVelocity(VERT_BOUNCE);
     }
     
     /**
      * An interaction with the Wall when the player comes from the bottom
+     * Sets the y velocity of the player to vertical bounce constant
      * 
      * @param futureX the theoretical x position of the player on the next frame
      * @param futureY the theoretical y position of the player on the next frame
@@ -92,7 +96,7 @@ public class BlueWall implements Wall
         //set player to touching wall
         interactPlayer.setXPos(wallY);
         
-        //set player's horizontal movement
+        //set player's vertical movement
         interactPlayer.setYVelocity(-1 * VERT_BOUNCE);
     }
 }
