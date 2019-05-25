@@ -21,29 +21,69 @@ public class RedWall implements Wall
     
     /**
      * An interaction with the Wall when the player comes from the left
-     *
-     * @param player the Player the wall interacts with
+     * Sets the x velocity of the player to 0
+     * 
+     * @param futureX the theoretical x position of the player on the next frame
+     * @param futureY the theoretical y position of the player on the next frame
      */
-    public void interactLeft(Player player);
+    public void interactLeft(double futureX, double futureY)
+    {
+        //stop player's movement
+        interactPlayer.setXVelocity(0);
+        interactPlayer.setYVelocity(0);
+        
+        //kill player
+        interactPlayer.setAlive(false);
+    }
     
     /**
      * An interaction with the Wall when the player comes from the right
-     *
-     * @param player the Player the wall interacts with
+     * Sets the x velocity of the player to 0
+     * 
+     * @param futureX the theoretical x position of the player on the next frame
+     * @param futureY the theoretical y position of the player on the next frame
      */
-    public void interactRight(Player player);
+    public void interactRight(double futureX, double futureY)
+    {
+        //stop player's movement
+        interactPlayer.setXVelocity(0);
+        interactPlayer.setYVelocity(0);
+        
+        //kill player
+        interactPlayer.setAlive(false);
+    }
     
     /**
      * An interaction with the Wall when the player comes from the top
-     *
-     * @param player the Player the wall interacts with
+     * Sets the y velocity of the player to 0
+     * 
+     * @param futureX the theoretical x position of the player on the next frame
+     * @param futureY the theoretical y position of the player on the next frame
      */
-    public void interactFloor(Player player);
+    public void interactFloor(double futureX, double futureY)
+    {
+        //stop player's movement
+        interactPlayer.setXVelocity(0);
+        interactPlayer.setYVelocity(0);
+        
+        //kill player
+        interactPlayer.setAlive(false);
+    }
     
     /**
      * An interaction with the Wall when the player comes from the bottom
-     *
-     * @param player the Player the wall interacts with
+     * Sets the y velocity of the player to 0
+     * 
+     * @param futureX the theoretical x position of the player on the next frame
+     * @param futureY the theoretical y position of the player on the next frame
      */
-    public void interactCeiling(Player player);
+    public void interactCeiling(double futureX, double futureY)
+    {
+        //stop player's movement
+        interactPlayer.setXVelocity(0);
+        interactPlayer.setYVelocity(0);
+        
+        //kill player
+        interactPlayer.setAlive(false);
+    }
 }
