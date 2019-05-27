@@ -30,6 +30,14 @@ public class Player extends Movable
     private boolean isOnGreenVertical;      //true if character is on green wall, else false
 
     //constructor
+
+    /**
+     * Constructor for Player objects
+     * @param pStill Image of still player
+     * @param pRun1  First Image of running PLayer
+     * @param pRun2  Second Image of running Player
+     * @param pJump  Image of jumping Player
+     */
     public Player(Image pStill, Image pRun1, Image pRun2, Image pJump)
     {
         picStill = pStill;              //initialize variables in intitial state
@@ -41,4 +49,59 @@ public class Player extends Movable
         isOnGreenHorizontal = false;
         isOnGreenVertical = false;
     }
+
+    //methods
+    /**
+     * Method to get the alive/dead status of player
+     * @return boolean true is alive, false if dead
+     */
+    public boolean isAlive()
+    {
+        return isAlive;     //return alive status
+    }
+
+    /**
+     * Method to kill the Player
+     */
+    public void kill()
+    {
+        isAlive = false;    //kill the player
+    }
+
+    /**
+     * Method to get the onGreenHorizontal status of Player
+     * @return boolean true if player is on green ceiling or floor, false if not
+     */
+    public boolean isOnGreenHorizontal()
+    {
+        return isOnGreenHorizontal; //return onGreenHorizontal status
+    }
+
+    /**
+     * Method to set the onGreenHorizontal status of Player
+     * @param onGHorizontal boolean true if player is on green ceiling or floor, false if not
+     */
+    public void setGreenHorizontalStatus(boolean onGHorizontal)
+    {
+        isOnGreenHorizontal = onGHorizontal;    //set new status status of isOnGreenHorizontal
+    }
+
+    /**
+     * Method to get the onGreenVertical status of Player
+     * @return boolean true if player is on green wall, false if not
+     */
+    public boolean isOnGreenHVertical()
+    {
+        return isOnGreenVertical; //return onGreenVertical status
+    }
+
+    /**
+     * Method to set the onGreenVertical status of Player
+     * @param onGVertical boolean true if player is on green wall, false if not
+     */
+    public void setVerticalStatus(boolean onGVertical)
+    {
+        isOnGreenVertical = onGVertical;    //set new status status of isOnGreenVertical
+    }
+
 }
