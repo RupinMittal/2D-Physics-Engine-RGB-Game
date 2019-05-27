@@ -1,27 +1,21 @@
-import javafx.scene.image.Image;
-
 /**
  * Movable (abstract) - represents properties of movable objects (players and enemies)
  * @author Rupin Mittal
  * @version May 24, 2019
  */
 
+import javafx.scene.image.Image;
+
 public abstract class Movable
 {
     //variables
-    private double xPos;        //the horizontal position in pixels
-    private double yPos;        //the vertical position in pixels
-    private double xVel;        //the horizontal velocity
-    private double yVel;        //the vertical velocity
+    protected double xPos;        //the horizontal position in pixels
+    protected double yPos;        //the vertical position in pixels
+    protected double xVel;        //the horizontal velocity
+    protected double yVel;        //the vertical velocity
     protected Image picStill;   //the image of the still movable object
 
     //methods
-    /**
-     * Abstract method to move object
-     * Will be implemented uniquely in subclasses
-     */
-    public abstract void move();    //method to move the object, implemented in subclasses
-
     /**
      * Abstract method to update animation of moving object
      * Will be implemented uniquely in subclasses
