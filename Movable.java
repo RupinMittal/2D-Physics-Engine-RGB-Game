@@ -9,11 +9,11 @@ import javafx.scene.image.Image;
 public abstract class Movable
 {
     //variables
-    private double xPos;    //the horizontal position in pixels
-    private double yPos;    //the vertical position in pixels
-    private double xVel;    //the horizontal velocity
-    private double yVel;    //the vertical velocity
-    private Image picStill; //the image of the still movable object
+    private double xPos;        //the horizontal position in pixels
+    private double yPos;        //the vertical position in pixels
+    private double xVel;        //the horizontal velocity
+    private double yVel;        //the vertical velocity
+    protected Image picStill;   //the image of the still movable object
 
     //methods
     /**

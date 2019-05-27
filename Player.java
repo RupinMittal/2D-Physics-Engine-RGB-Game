@@ -11,11 +11,11 @@ public class Player extends Movable
     //variables
     //variable constants needed for movement
     private final double X_ACCEL = 7,       //horizontal acceleration constant
-            Y_ACCEL = 7,       //vertical acceleration constant
-            FRICT_ACCEL = 5,   //frictional force acceleration constant
-            GRAV_ACCEL = 5,    //gravitation force acceleration constant
-            JUMP_ACCEL = 5,    //acceleration of jumping constant
-            MAX_VEL = 5;       //maximum possible velocity in all directions
+                         Y_ACCEL = 7,       //vertical acceleration constant
+                         FRICT_ACCEL = 5,   //frictional force acceleration constant
+                         GRAV_ACCEL = 5,    //gravitation force acceleration constant
+                         JUMP_ACCEL = 5,    //acceleration of jumping constant
+                         MAX_VEL = 5;       //maximum possible velocity in all directions
 
     //image variables
     private Image picRunning1;      //the first image of character running
@@ -29,5 +29,16 @@ public class Player extends Movable
     private boolean isOnGreenHorizontal;    //true if character is on green floor or ceiling, else false
     private boolean isOnGreenVertical;      //true if character is on green wall, else false
 
-
+    //constructor
+    public Player(Image pStill, Image pRun1, Image pRun2, Image pJump)
+    {
+        picStill = pStill;              //initialize variables in intitial state
+        picRunning1 = pRun1;
+        picRunning2 = pRun2;
+        picJump = pJump;
+        animationState = 0;
+        isAlive = true;
+        isOnGreenHorizontal = false;
+        isOnGreenVertical = false;
+    }
 }
