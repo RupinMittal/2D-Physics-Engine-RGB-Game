@@ -108,25 +108,32 @@ public class Player extends Movable
      */
     public void updateAnimation()
     {
-        if((xVel == 0) && !(yVel > 0))                      //if character is still or falling
+        if((xVel == 0) && (yVel == 0))                        //if character is completely still
+        {
             characterImageView.setImage(picStill);
+            runTimer = 0;
+        }
         else
-            if((xVel == 0) && (yVel > 0))                   //if character is jumping
+        {
+            if ((yVel != 0))                                  //if character is moving vertically
                 characterImageView.setImage(picJump);
             else
-                if(xVel > 0)                                //if player is moving right
-                    characterImageView.setScaleX(1);        //character faces right
-                else                                        //if character moves left
-                    characterImageView.setScaleX(-1);       //character faces left
+                if (xVel > 0)                                 //if player is moving right
+                    characterImageView.setScaleX(1);          //character faces right
+                else                                          //if character moves left
+                    characterImageView.setScaleX(-1);         //character faces left
 
-        if(runTimer == 15)                                  //if it is time to alternate sprites
-        {
-            runTimer = 0;                                   //reset timer
-            if(useRunPic1)                                  //if picRunning1 is to be used
-                characterImageView.setImage(picRunning1);
-            else                                            //if picRunning2 is to be used
-                characterImageView.setImage(picRunning2);
-            useRunPic1 = !useRunPic1;                       //alternate usage
+            if(runTimer == 0)                                //if it is time to alternate sprites
+            {
+                if(useRunPic1)                                //if picRunning1 is to be used
+                    characterImageView.setImage(picRunning1);
+                else                                          //if picRunning2 is to be used
+                    characterImageView.setImage(picRunning2);
+                useRunPic1 = !useRunPic1;                     //alternate usage
+            }
+            runTimer++;
+            if(runTimer == 15)
+                runTimer = 0;                                 //reset timer
         }
     }
 }
