@@ -25,10 +25,11 @@ public abstract class Menu extends Application
     
     private void options()
     {
+        
     }
     
     private void credits()
     {
+        
     }
-    
 }
