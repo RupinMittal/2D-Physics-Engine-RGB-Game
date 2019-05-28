@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,10 +21,7 @@ public abstract class Menu extends Application
     private Button back;
     private Button endGame;
     
-    public abstract void createButtons();
-    public abstract void displayButtons();
     public abstract void runMenu();
-    public abstract void back();
     
     private void options()
     {
@@ -34,9 +30,5 @@ public abstract class Menu extends Application
     private void credits()
     {
     }
-    
-    
-
-    
     
 }

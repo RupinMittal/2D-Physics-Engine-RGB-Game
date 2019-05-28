@@ -1,33 +1,43 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
- * Write a description of class PauseMenu here.
+ * PauseMenu is a type of Menu and it occurs when the escape key is pressed�
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jonathan Lee
+ * @version 28 May 2019
  */
-public class PauseMenu
+public class PauseMenu extends Menu
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class PauseMenu
-     */
+    private Button resume;
+    private Button endGame;
+    private Button restartSector;
+    private Button restartGame;
+    
     public PauseMenu()
     {
-        // initialise instance variables
-        x = 0;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    private void restartSector()
     {
-        // put your code here
-        return x + y;
+    }
+    
+    private void restartGame()
+    {
+    }
+    
+    private void resume()
+    {
+    }
+    
+    public void runMenu()
+    {
     }
 }
