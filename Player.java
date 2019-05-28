@@ -106,6 +106,7 @@ public class Player extends Movable
     /**
      * Method to update the animation of a player, like running, still, or jump
      */
+    @Override
     public void updateAnimation()
     {
         if((xVel == 0) && (yVel == 0))                        //if character is completely still
