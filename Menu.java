@@ -16,10 +16,8 @@ import javafx.stage.Stage;
  */
 public abstract class Menu extends Application
 {
-    private Button options;
-    private Button credits;
-    private Button back;
-    private Button endGame;
+    private Button quit;
+    private Button volume;
     
     public abstract void runMenu();
     

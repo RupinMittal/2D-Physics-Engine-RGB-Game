@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
 
 /**
  * MainMenu is a type of Menu and it begins the game by having the user choose a
@@ -19,20 +20,37 @@ public class MainMenu extends Menu
 {
     private Button play;
     private Button options;
-    private Button endGame;
-    
-    private Player play()
-    {
-    }
+    private Button credits;
     
     private Player characterSelect()
     {
     }
     
-    public static void 
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     
     @Override
     public void start(Stage stage) throws Exception {
+        Scene scene = new Scene(root, 300, 250);
+        
+        stage.setTitle("RGB GANG");
+        
+        play = new Button();
+        play.setText("Play");
+        
+        options = new Button();
+        options.setText("Option");
+        
+        credits = new Button();
+        credits.setText("Credits");
+        
+            
+    }
+    
+    private void playClicked(ActionEvent event)
+    {
         
     }
 }

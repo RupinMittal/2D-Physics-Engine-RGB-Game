@@ -21,10 +21,6 @@ public class PauseMenu extends Menu
     private Button restartSector;
     private Button restartGame;
     
-    public PauseMenu()
-    {
-    }
-    
     private void restartSector()
     {
     }
