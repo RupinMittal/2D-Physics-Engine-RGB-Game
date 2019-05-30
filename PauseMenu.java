@@ -9,13 +9,15 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
- * PauseMenu is a type of Menu and it occurs when the escape key is pressed�
+ * PauseMenu is a type of Menu and allows the user to resume the game, turn 
+ * volume on or off, and restart the sector the user is on
  *
- * @author Jonathan Lee
- * @version 28 May 2019
+ * @author Daniel Herrick 
+ * @version MainMenu JavaFx class - RGB
  */
-public class PauseMenu extends Menu
+public class PauseMenu extends Menu implements EventHandler<ActionEvent>
 {
+<<<<<<< HEAD
     private Button resume;
     private Button endGame;
     private Button restartSector;
@@ -34,6 +36,26 @@ public class PauseMenu extends Menu
     }
     
     public void runMenu()
+=======
+    /**
+     * This the constructor for PauseMenu that will construct all the buttons
+     * and run the pause menu via runMenu() 
+     */
+    public PauseMenu()
     {
+        
+    }
+    
+    /** 
+     * This method will be called when the user clicks the resume button. It 
+     * will take them back to the current part of the game they are on
+     * 
+     * @param rClick - an event representing the user clicking the 
+     * the resume button
+     */
+    private void resume(ActionEvent rClick)
+>>>>>>> 8772e48ed1df189fc1ad55f98660c2d7606085ac
+    {
+        
     }
 }
