@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-
-/**
- * This is the main menu of the game. It will allow the user to choose to 
- * play, go to options, quit the game, and look at the credits
- *
- * @author Daniel Herrick
- * @version MainMenu Class - RGB
- */
-public class MainMenu extends Menu
-{
-    
-=======
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,31 +9,61 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
- * MainMenu is a type of Menu and it begins the game by having the user choose a
- * character and then proceeding with the rest of the game
+ * MainMenu is a type of Menu and allows the user to start the game, look at the
+ * credits, and turn volume on or off
  *
- * @author Jonathan Lee
- * @version 28 May 2019
+ * @author Daniel Herrick 
+ * @version MainMenu JavaFx class - RGB
  */
-public class MainMenu extends Menu
+public class MainMenu extends Menu implements EventHandler<ActionEvent>
 {
+    private Label menu;
     private Button play;
-    private Button options;
-    private Button endGame;
-    
-    private Player play()
+    private Button volume;
+    private Button credits;
+    private Button quit;
+   
+    /**
+     * This the constructor for MainMenu that will construct all the buttons
+     * and run the main menu via runMenu() 
+     */
+    public MainMenu()
     {
-    }
-    
-    private Player characterSelect()
-    {
-    }
-    
-    public static void 
-    
-    @Override
-    public void start(Stage stage) throws Exception {
         
     }
->>>>>>> 81d7a4a272e5f04015aeabe07d3d9b9f3a6bb560
+    
+    /**
+     * This method will be called in the MainMenu constructor once the user
+     * reaches the main menu section of the game. This method will display
+     * the title, buttons, and contain all the event handlers for the main
+     * menu (call subsequent methods where neede
+     */
+    public void runMenu()
+    {
+        
+    }
+    
+    /**
+     * This method will be called when the user clicks the play button. It
+     * will switch screens to a character select screen.
+     * 
+     * @param pClick - an event representing the user clicking the play button
+     */
+    private void play(ActionEvent pClick)
+    {
+        
+    }
+    
+    /**
+     * This method will be called when the user clicks the credits button. It
+     * will switch screens to a credits screen that displays all necessary 
+     * credits of the game 
+     * 
+     * @param cClick - an event representing the user clicking the credits 
+     * button 
+     */
+    private void credits(ActionEvent cClick)
+    {
+        
+    }
 }

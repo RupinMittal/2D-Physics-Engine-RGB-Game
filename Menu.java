@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author Daniel Herrick
  * @version Menu Abstract Class - RGB
  */
-public abstract class Menu
+public abstract class Menu implements EventHandler<ActionEvent>
 {
     /**
      * This method will be called individually in both MainMenu and PauseMenu 
@@ -30,9 +30,9 @@ public abstract class Menu
      * @param vClick - an event representing the user clicking on the 
      * volume button 
      */
-    public void Volume(ActionEvent vClick)
+    public void volume(ActionEvent vClick)
     {
-        
+        // using if-else block 
     }
     
     /**
@@ -42,8 +42,8 @@ public abstract class Menu
      * @param qClick - an event representing the user clicking on the 
      * quit button 
      */
-    public void Quit(ActionEvent qClick)
+    public void quit(ActionEvent qClick)
     {
-        
+        // Quit the game
     }
 }
