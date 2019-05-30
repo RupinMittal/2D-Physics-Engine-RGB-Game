@@ -13,19 +13,16 @@ import javafx.scene.layout.StackPane;
  * MainMenu is a type of Menu and allows the user to start the game, look at the
  * credits, and turn volume on or off
  *
- * @author Daniel Herrick 
+ * @author Daniel Herrick & Jonathan Lee
  * @version MainMenu JavaFx class - RGB
  */
 public class MainMenu extends Menu implements EventHandler<ActionEvent>
 {
     private Label menu;
     private Button play;
-<<<<<<< HEAD
     private Button options;
     private Button credits;
     
-    private Player characterSelect()
-=======
     private Button volume;
     private Button credits;
     private Button quit;
@@ -35,12 +32,10 @@ public class MainMenu extends Menu implements EventHandler<ActionEvent>
      * and run the main menu via runMenu() 
      */
     public MainMenu()
->>>>>>> 8772e48ed1df189fc1ad55f98660c2d7606085ac
     {
         
     }
     
-<<<<<<< HEAD
     public static void main(String[] args) {
         launch(args);
     }
@@ -65,7 +60,9 @@ public class MainMenu extends Menu implements EventHandler<ActionEvent>
     }
     
     private void playClicked(ActionEvent event)
-=======
+    {
+    }
+    
     /**
      * This method will be called in the MainMenu constructor once the user
      * reaches the main menu section of the game. This method will display
@@ -97,7 +94,6 @@ public class MainMenu extends Menu implements EventHandler<ActionEvent>
      * button 
      */
     private void credits(ActionEvent cClick)
->>>>>>> 8772e48ed1df189fc1ad55f98660c2d7606085ac
     {
         
     }
