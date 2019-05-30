@@ -17,25 +17,33 @@ import javafx.stage.Stage;
  */
 public abstract class Menu
 {
-    protected Button options;
-    protected Button credits;
-    protected Button back;
-    protected Button endGame;
-    
-    public abstract void createButtons();
-    public abstract void displayButtons();
+    /**
+     * This method will be called individually in both MainMenu and PauseMenu 
+     * to load the buttons to the screen and hold all the user interactions
+     */
     public abstract void runMenu();
-    public abstract void back();
     
-    public void options()
+    /**
+     * This method will be called in options when the user clicks the volume 
+     * button to turn the music on or off in the game
+     * 
+     * @param vClick - an event representing the user clicking on the 
+     * volume button 
+     */
+    public void Volume(ActionEvent vClick)
     {
+        
     }
     
-    public void credits()
+    /**
+     * This method can be called in both menus to quit the game if the user
+     * clicks the quit button to exit the game
+     * 
+     * @param qClick - an event representing the user clicking on the 
+     * quit button 
+     */
+    public void Quit(ActionEvent qClick)
     {
-    }
-    
-    public void efffecrs()
-    {
+        
     }
 }
