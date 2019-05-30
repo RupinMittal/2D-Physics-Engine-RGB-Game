@@ -6,7 +6,11 @@
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Game extends Application
@@ -37,8 +41,10 @@ public class Game extends Application
     private final int TILE_SIZE = 21;    //the tile size
 
     //variables for the actual display of the game
-    ImageView environment;      //the environment being displayed
-    ImageView character;        //the character being used
+    ImageView environment;           //the environment being displayed
+    ImageView character;             //the character being used
+    Group root;                      //the Group
+    Scene scene = new Scene(root);   //the scene
 
     //methods to run class
     public static void main(String[] args)
@@ -50,6 +56,41 @@ public class Game extends Application
     public void start(Stage primaryStage)
     {
         initializeVariables();      //initialize all the variables
+        //initialize the display
+        root.getChildren().add(environment);
+        root.getChildren().add(character);
+        character.setX(300);
+        character.setY(200);
+        primaryStage.setTitle("RGB");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        //run controls
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {            //on keys pressed
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:    up = true; break;
+                    case LEFT:  left = true; break;
+                    case RIGHT: right = true; break;
+                    case DOWN:  down = true; break;
+                    case ESCAPE:  escape = true; break;
+                }
+            }
+        });
+
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {           //on keys released
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:    up = false; break;
+                    case LEFT:  left = false; break;
+                    case RIGHT: right = false; break;
+                    case DOWN:  down = false; break;
+                    case ESCAPE:  escape = false; break;
+                }
+            }
+        });
 
 
     }
@@ -69,9 +110,12 @@ public class Game extends Application
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
-
         environment = introEnvironment.getMapImageView();   //get environment imageview
         character = player.getImageView();                  //get player imageview
+        root = new Group();                                 //the Group\
+        scene = new Scene(root);                            //the scene
+
+
 
     }
 
