@@ -5,9 +5,8 @@ import javafx.scene.Scene;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.layout.StackPane;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -16,7 +15,7 @@ import javafx.scene.layout.StackPane;
  * @author Daniel Herrick & Jonathan Lee
  * @version MainMenu JavaFx class - RGB
  */
-public class MainMenu extends Menu implements EventHandler<ActionEvent>
+public class MainMenu extends Application implements EventHandler<ActionEvent>, Menu
 {
     private Label menu;
     private Button play;
@@ -24,7 +23,6 @@ public class MainMenu extends Menu implements EventHandler<ActionEvent>
     private Button credits;
     
     private Button volume;
-    private Button credits;
     private Button quit;
    
     /**
@@ -40,38 +38,40 @@ public class MainMenu extends Menu implements EventHandler<ActionEvent>
         launch(args);
     }
     
-    
-    @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(root, 300, 250);
-        
-        stage.setTitle("RGB GANG");
+        VBox vBox = new VBox(10);
+        vBox.setPadding(new Insets(10,10,10,10));
         
         play = new Button();
         play.setText("Play");
         
-        options = new Button();
-        options.setText("Option");
-        
         credits = new Button();
         credits.setText("Credits");
         
-            
-    }
-    
-    private void playClicked(ActionEvent event)
-    {
-    }
-    
-    /**
-     * This method will be called in the MainMenu constructor once the user
-     * reaches the main menu section of the game. This method will display
-     * the title, buttons, and contain all the event handlers for the main
-     * menu (call subsequent methods where neede
-     */
-    public void runMenu()
-    {
+        play.setOnAction(this);
+        credits.setOnAction(this);
         
+        vBox.getChildren().addAll(play, credits);
+        
+        Scene scene = new Scene(vBox, 300, 250);
+        
+        stage.setTitle("RGB GANG");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @Override
+    public void handle(ActionEvent event)
+    {
+        if(event.getSource() == play)
+        {
+            play(event);
+        }
+        else
+            if(event.getSource() == credits)
+            {
+                credits(event);
+            }
     }
     
     /**
