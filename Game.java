@@ -32,14 +32,22 @@ public class Game extends Application
     private double futureY;                     //future vertical position
 
     //constants
-    private final double Y_ACC = 7,         //the constants for movement
-                         X_ACC = 7,
-                         FRICT_ACC = 5,
-                         GRAV_ACC = 5,
-                         JUMP_ACC = 5,
-                         MAX_VEL = 5;
+    private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
     private final int TILE_SIZE = 21;    //the tile size
 
+    //methods to run class
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage)
+    {
+        initializeVariables();      //initialize all the variables
+    }
+
+    //methods
     /*
      * Method to initialize the variables in the Game class
      */
@@ -63,14 +71,7 @@ public class Game extends Application
 
 
 
-    public static void main(String[] args)
-    {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage)
-    {
 
-    }
+
 }
