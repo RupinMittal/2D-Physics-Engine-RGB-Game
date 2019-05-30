@@ -34,16 +34,4 @@ public abstract class Menu implements EventHandler<ActionEvent>
     {
         // using if-else block 
     }
-    
-    /**
-     * This method can be called in both menus to quit the game if the user
-     * clicks the quit button to exit the game
-     * 
-     * @param qClick - an event representing the user clicking on the 
-     * quit button 
-     */
-    public void quit(ActionEvent qClick)
-    {
-        // Quit the game
-    }
 }
