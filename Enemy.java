@@ -34,4 +34,14 @@ public class Enemy extends Movable
     {
         enemyImageView.setRotate(enemyImageView.getRotate() + 10);  //increment the rotation
     }
+
+    /**
+     * Method to return the ImageView of the enemy
+     * @return ImageView of the enemy
+     */
+    @Override
+    public ImageView getImageView()
+    {
+        return enemyImageView;
+    }
 }

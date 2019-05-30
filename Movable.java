@@ -5,6 +5,7 @@
  */
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Movable
 {
@@ -111,4 +112,10 @@ public abstract class Movable
     {
         return picStill.getWidth();    //return the width
     }
+
+    /**
+     * Method to get the ImageView being used
+     * @return ImageView the imagview of the movable
+     */
+    public abstract ImageView getImageView();
 }

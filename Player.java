@@ -137,4 +137,14 @@ public class Player extends Movable
                 runTimer = 0;                                 //reset timer
         }
     }
+
+    /**
+     * Method to return the ImageView of the character
+     * @return ImageView of the player
+     */
+    @Override
+    public ImageView getImageView()
+    {
+        return characterImageView;
+    }
 }

@@ -6,6 +6,7 @@
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Game extends Application
@@ -35,6 +36,10 @@ public class Game extends Application
     private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
     private final int TILE_SIZE = 21;    //the tile size
 
+    //variables for the actual display of the game
+    ImageView environment;      //the environment being displayed
+    ImageView character;        //the character being used
+
     //methods to run class
     public static void main(String[] args)
     {
@@ -45,6 +50,8 @@ public class Game extends Application
     public void start(Stage primaryStage)
     {
         initializeVariables();      //initialize all the variables
+
+
     }
 
     //methods
@@ -62,6 +69,10 @@ public class Game extends Application
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
+
+        environment = introEnvironment.getMapImageView();   //get environment imageview
+        character = player.getImageView();                  //get player imageview
+
     }
 
 
