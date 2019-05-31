@@ -56,13 +56,13 @@ public class MainMenu extends Application implements Menu
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
         main.getChildren().addAll(playButton, creditsButton);
-        mainScene = new Scene(main, 200, 200);
+        mainScene = new Scene(main, 600, 600);
         
         //Layout for Credit Scene
         VBox creditLayout = new VBox(20);
         creditLayout.getChildren().add(backToMenuButton);
-        creditScene = new Scene(creditLayout, 200, 200);
-        
+        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+        creditScene = new Scene(creditLayout, 600, 600);
         
         window.setTitle("RGB GANG");
         window.setScene(mainScene);
