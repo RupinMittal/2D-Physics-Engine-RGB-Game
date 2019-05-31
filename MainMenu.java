@@ -15,15 +15,18 @@ import javafx.stage.Stage;
  * @author Daniel Herrick & Jonathan Lee
  * @version MainMenu JavaFx class - RGB
  */
-public class MainMenu extends Application implements EventHandler<ActionEvent>, Menu
+public class MainMenu extends Application implements Menu
 {
-    private Label menu;
-    private Button play;
-    private Button options;
-    private Button credits;
+    private Button playButton;
+    private Button backToMenuButton;
+    private Button creditsButton;
     
-    private Button volume;
-    private Button quit;
+    
+    private Button volumeButton;
+    private Button quitButton;
+    
+    private Stage window;
+    private Scene mainScene, creditScene, playScene;
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
@@ -39,39 +42,31 @@ public class MainMenu extends Application implements EventHandler<ActionEvent>, 
     }
     
     public void start(Stage stage) throws Exception {
-        VBox vBox = new VBox(10);
-        vBox.setPadding(new Insets(10,10,10,10));
+        window = stage;
+        Label label = new Label("RGB");
         
-        play = new Button();
-        play.setText("Play");
+        playButton = new Button("Play");
+        creditsButton = new Button("Credits");
+        backToMenuButton = new Button("Back To Menu");
         
-        credits = new Button();
-        credits.setText("Credits");
+        //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
+        playButton.setOnAction(e -> window.setScene(playScene));
+        creditsButton.setOnAction(e -> window.setScene(creditScene));
         
-        play.setOnAction(this);
-        credits.setOnAction(this);
+        //Layout for the Main scene - children are laid out in a veritcal column
+        VBox main = new VBox(20);
+        main.getChildren().addAll(playButton, creditsButton);
+        mainScene = new Scene(main, 200, 200);
         
-        vBox.getChildren().addAll(play, credits);
+        //Layout for Credit Scene
+        VBox creditLayout = new VBox(20);
+        creditLayout.getChildren().add(backToMenuButton);
+        creditScene = new Scene(creditLayout, 200, 200);
         
-        Scene scene = new Scene(vBox, 300, 250);
         
-        stage.setTitle("RGB GANG");
-        stage.setScene(scene);
+        window.setTitle("RGB GANG");
+        window.setScene(mainScene);
         stage.show();
-    }
-    
-    @Override
-    public void handle(ActionEvent event)
-    {
-        if(event.getSource() == play)
-        {
-            play(event);
-        }
-        else
-            if(event.getSource() == credits)
-            {
-                credits(event);
-            }
     }
     
     /**

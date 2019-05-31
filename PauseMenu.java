@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author Daniel Herrick & Jonathan Lee
  * @version MainMenu JavaFx class - RGB
  */
-public class PauseMenu extends Application implements EventHandler<ActionEvent>, Menu
+public class PauseMenu extends Application implements Menu
 {
     private Button resume;
     private Button endGame;
@@ -36,6 +36,9 @@ public class PauseMenu extends Application implements EventHandler<ActionEvent>,
     
     public void runMenu()
     {
+    }
+    
+    public void start(Stage stage) throws Exception {
     }
     
     /**
