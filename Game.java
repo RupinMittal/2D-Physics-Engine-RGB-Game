@@ -31,8 +31,8 @@ public class Game extends Application
     private boolean up, down, right, left;      //the variables for the players movement
     private boolean escape;                     //for escaping the game
     private double cameraOffset;                //the variable to offset the screen for scrolling
-    private double futureXVelocity;             //the future horizontal velocity
-    private double futureYVelocity;             //the future vertical velocity
+    private double futureXVel;                  //the future horizontal velocity
+    private double futureYVel;                  //the future vertical velocity
     private double futureX;                     //future horizontal position
     private double futureY;                     //future vertical position
 
@@ -41,10 +41,10 @@ public class Game extends Application
     private final int TILE_SIZE = 21;    //the tile size
 
     //variables for the actual display of the game
-    ImageView environment;           //the environment being displayed
-    ImageView character;             //the character being used
-    Group root;                      //the Group
-    Scene scene = new Scene(root);   //the scene
+    private ImageView environment;           //the environment being displayed
+    private ImageView character;             //the character being used
+    private Group root;                      //the Group
+    private Scene scene;                     //the scene
 
     //methods to run class
     public static void main(String[] args)
@@ -92,6 +92,35 @@ public class Game extends Application
             }
         });
 
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        //AnimationTimer to run game
+        AnimationTimer timer = new AnimationTimer()
+        {
+            @Override
+            public void handle(long now)
+            {
+                //initialize instance variables
+                futureXVel = player.getXVel();              //get the future horizontal velocity
+                futureYVel = player.getYVel();              //get the future vertical velocity
+                futureX = player.getXPos();                 //get the future x position
+                futureY = player.getYPos();                 //get the future y position
+
+                //make changes to the velocity with the constants
+                futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
+                futureYVel += GRAV_ACC/30;                                      //apply gravity
+                if(futureXVel > MAX_VEL)                //if the velocity is more than the max
+                    futureXVel = MAX_VEL;               //then limit the velocity
+                if(futureXVel < 0)                      //if friction causes player to stop
+                    futureXVel = 0;                     //stop the player
+
+
+
+
+            }
+        };
+        timer.start();
 
     }
 
@@ -114,19 +143,5 @@ public class Game extends Application
         character = player.getImageView();                  //get player imageview
         root = new Group();                                 //the Group\
         scene = new Scene(root);                            //the scene
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
 }
