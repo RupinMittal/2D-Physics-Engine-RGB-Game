@@ -10,6 +10,7 @@ import javafx.scene.text.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Group;
+import javafx.scene.layout.Background;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -50,8 +51,7 @@ public class MainMenu extends Application implements Menu
         //Code to add background image
         Image image = new Image("file:MarioBackground.png");
         ImageView mv = new ImageView(image);
-        
-        Group root = new Group();
+        mv.setPreserveRatio(true);
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
@@ -71,12 +71,16 @@ public class MainMenu extends Application implements Menu
         //Centers the layout in the middle of the scene
         main.setAlignment(Pos.CENTER);
         //Declaration and instantiation of a label
-        Label label = new Label("RGB");
+        Label label = new Label("RGB"); 
+        
+        
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, creditsButton);
         //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 600, 600);
-        
+
+        //User can not resize the form
+        window.setResizable(false);
         window.setTitle("RGB GANG");
         window.setScene(mainScene);
         stage.show();
@@ -113,7 +117,7 @@ public class MainMenu extends Application implements Menu
         creditText.setFont(Font.font("Baskerville", 20));
         String creditString = "WELCOME to RGB \n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
-                              + "Graphics by Maria and Music by Cole Clarkson (IG: @cudi_cole)\n"
+                              + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"
                               + "Press the arrow keys to move up, left, or right \n" 
                               + "Anything that is red will automatically kill you \n" 
                               + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
