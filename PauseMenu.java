@@ -51,12 +51,15 @@ public class PauseMenu extends Application implements Menu
         //This class will handle the button event when user hits Resume, Restart, or Quit (changes the scenes to respective location)
         resume.setOnAction(e -> window.setScene(resumeScene));
         restart.setOnAction(e -> window.setScene(restartScene));
-        quit.setOnAction(e -> window.setScene(quitScene));
+        quit.setOnAction(e -> window.setScene(MainMenu.mainScene));
         
         //Layout for the Pause scene - children are laid out in a veritcal column
         VBox pause = new VBox(20);
         pause.getChildren().addAll(resume, restart, quit);
         pauseScene = new Scene(pause, 600, 600);
+        
+        //Layout for Resume Scene
+            // Will deliberate this part of the code after figuring out how to set up the actual game
         
         
         

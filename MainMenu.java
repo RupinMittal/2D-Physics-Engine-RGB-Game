@@ -26,7 +26,8 @@ public class MainMenu extends Application implements Menu
     private Button quitButton;
     
     private Stage window;
-    private Scene mainScene, creditScene, playScene;
+    //Is this a good idea to do public static?
+    public static Scene mainScene, creditScene, playScene; 
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
