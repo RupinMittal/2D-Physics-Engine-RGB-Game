@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.text.*;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -68,7 +69,18 @@ public class MainMenu extends Application implements Menu
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
         creditLayout.getChildren().add(backToMenuButton);
+        //Declaration and Instantiation of the Credit Texts
+        Text creditText = new Text();
+        //Setting the value of the creditText to the string creditString
+        String creditString = "WELCOME to RGB" 
+                              + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang /n"
+                              + "Press the arrow keys to move up, left, or right respectively /n" 
+                              +"Anything that is red will automatically kill you /n " 
+                              + "Blue walls allow you to double jump while green wall causes you to stick to walls /n"
+                              + "Complete all three level to beat the game, good luck Adventurer! /n"
+                              + "Thank you Mr. Lantsberger for everything you've taught us this year, it has been our pleasure being your students";
         
+                              
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         creditScene = new Scene(creditLayout, 600, 600);
