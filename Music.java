@@ -28,8 +28,11 @@ public class Music
      * The method will take a file and continuously play it back in a loop
      * The volume of the music for this method is at its max volume
      */
-    public void loop()
+    public static void loop(String file)
     {            
+          Media media = new Media(new File(file).toURI().toString());
+          MediaPlayer player = new MediaPlayer(media);
+        
           //Sets the player's ending of the music  
           //This is the interface Runnable and used to help create a thread
           
@@ -47,8 +50,11 @@ public class Music
      * The method will take a file and continuously play it back in a loop
      * @param volume The loudness of the music that is desired (on a scale from 0.0 to 1.0)
      */
-    public void loop(double volume)
+    public static void loop(String file, double volume)
     {            
+          Media media = new Media(new File(file).toURI().toString());
+          MediaPlayer player = new MediaPlayer(media);
+        
           player.setVolume(volume); //MediaPlayer sets the volume of how loud the music will be played
         
           player.setOnEndOfMedia(new Runnable() //This is the interface Runnable and used to help create a thread
