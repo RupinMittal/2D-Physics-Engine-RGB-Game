@@ -71,12 +71,12 @@ public class MainMenu extends Application implements Menu
         
         //Declaration and Instantiation of the Credit Texts
         Text creditText = new Text();
-        String creditString = "WELCOME to RGB" 
-                              + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang /n"
-                              + "Press the arrow keys to move up, left, or right respectively /n" 
-                              +"Anything that is red will automatically kill you /n " 
-                              + "Blue walls allow you to double jump while green wall causes you to stick to walls /n"
-                              + "Complete all three level to beat the game, good luck Adventurer! /n"
+        String creditString = "WELCOME to RGB \n" 
+                              + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
+                              + "Press the arrow keys to move up, left, or right respectively \n" 
+                              +"Anything that is red will automatically kill you \n " 
+                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
+                              + "Complete all three level to beat the game, good luck Adventurer! \n"
                               + "Thank you Mr. Lantsberger for everything you've taught us this year, it has been our pleasure being your students";
 
         //Setting the value of the creditText to the string creditString
