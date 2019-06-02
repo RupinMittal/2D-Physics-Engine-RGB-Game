@@ -49,7 +49,7 @@ public class MainMenu extends Application implements Menu
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
-        volumeButton = new Button("Volume");
+        volumeButton = new Button("Click Here for Good Music");
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(100);
