@@ -32,6 +32,7 @@ public class MainMenu extends Application implements Menu
     private Stage window;
     //Is this a good idea to do public static?
     private Scene mainScene, creditScene, playScene; 
+    Music music = new Music("ollie.mp3");
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
@@ -49,6 +50,7 @@ public class MainMenu extends Application implements Menu
     public void start(Stage stage) throws Exception {
         window = stage;
         
+        
         //Code to add background image
         Image image = new Image("file:MarioBackground.png");
         ImageView mv = new ImageView(image);
@@ -64,11 +66,12 @@ public class MainMenu extends Application implements Menu
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(100);
+        volumeButton.setMaxWidth(100);
         creditsButton.setMaxWidth(100);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
-        volumeButton.setOnAction(this::volume);
+        // volumeButton.setOnAction(this::volume);
         creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
@@ -80,9 +83,9 @@ public class MainMenu extends Application implements Menu
         
         
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(label, playButton, creditsButton);
+        main.getChildren().addAll(label, playButton, volumeButton, creditsButton);
         //Instantiation of the scene in MainMenu
-        mainScene = new Scene(main, 600, 600);
+        mainScene = new Scene(main, 900, 600);
 
         //User can not resize the form
         window.setResizable(false);
@@ -102,36 +105,34 @@ public class MainMenu extends Application implements Menu
         
     }
     
-    /**
-     * This method will be called when the user clicks the volume button. It
-     * will toggle the button so that volume is "off" and "on".
-     * 
-     * @param soundClick - an event representing the user clicking the sound
-     * button
-     */
-    public void volume(ActionEvent soundClick)
-    {
-        // Get access to loop() method in Music class
-        Music music = new Music("ollie.mp3");
+    // /**
+     // * This method will be called when the user clicks the volume button. It
+     // * will toggle the button so that volume is "off" and "on".
+     // * 
+     // * @param soundClick - an event representing the user clicking the sound
+     // * button
+     // */
+    // public void volume(ActionEvent soundClick)
+    // {
+        // // Get access to loop() method in Music class
         
-        // Test to see if the on button is being clicked
-        if(soundClick.getSource() == sound1)
-        {
-            // Change volume of music
-            music.loop(0);
-            // switch buttons
-            volumeButton = sound2;
-        }  
+        // double volume = 1.0;
         
-        // Test to see if the off button is being clicked
-        if(soundClick.getSource() == sound2)
-        {
-            // Change volume of music
-            music.loop(100);
-            // switch buttons
-            volumeButton = sound1;
-        }     
-    }
+        // // Test to see if the on button is being clicked
+        // if(soundClick.getSource() == volumeButton)
+        // {
+            // if(volume == 1.0)
+            // {
+                // volume = 0.0;
+                // music.loop(volume);
+            // }
+            // else
+            // {
+                // volume = 1.0;
+                // music.loop(volume);
+            // }
+        // }  
+    // }
     
     /**
      * This method will be called when the user clicks the credits button. It

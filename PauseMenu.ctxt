@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PauseMenu
-comment0.text=\r\n\ PauseMenu\ is\ a\ type\ of\ Menu\ and\ allows\ the\ user\ to\ resume\ the\ game,\ turn\ \r\n\ volume\ on\ or\ off,\ and\ restart\ the\ sector\ the\ user\ is\ on\r\n\r\n\ @author\ Daniel\ Herrick\ &\ Jonathan\ Lee\r\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\r\n
+comment0.text=\n\ PauseMenu\ is\ a\ type\ of\ Menu\ and\ allows\ the\ user\ to\ resume\ the\ game,\ turn\ \n\ volume\ on\ or\ off,\ and\ restart\ the\ sector\ the\ user\ is\ on\n\n\ @author\ Daniel\ Herrick\ &\ Jonathan\ Lee\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\n
 comment1.params=
 comment1.target=void\ restartSector()
 comment2.params=
@@ -13,8 +13,8 @@ comment5.params=stage
 comment5.target=void\ start(javafx.stage.Stage)
 comment6.params=
 comment6.target=PauseMenu()
-comment6.text=\r\n\ This\ the\ constructor\ for\ PauseMenu\ that\ will\ construct\ all\ the\ buttons\r\n\ and\ run\ the\ pause\ menu\ via\ runMenu()\ \r\n
+comment6.text=\n\ This\ the\ constructor\ for\ PauseMenu\ that\ will\ construct\ all\ the\ buttons\n\ and\ run\ the\ pause\ menu\ via\ runMenu()\ \n
 comment7.params=rClick
 comment7.target=void\ resume(javafx.event.ActionEvent)
-comment7.text=\ \r\n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ resume\ button.\ It\ \r\n\ will\ take\ them\ back\ to\ the\ current\ part\ of\ the\ game\ they\ are\ on\r\n\ \r\n\ @param\ rClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ \r\n\ the\ resume\ button\r\n
+comment7.text=\ \n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ resume\ button.\ It\ \n\ will\ take\ them\ back\ to\ the\ current\ part\ of\ the\ game\ they\ are\ on\n\ \n\ @param\ rClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ \n\ the\ resume\ button\n
 numComments=8
