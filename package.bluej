@@ -2,10 +2,10 @@
 dependency1.from=TestMusic
 dependency1.to=Music
 dependency1.type=UsesDependency
-editor.fx.0.height=736
-editor.fx.0.width=814
-editor.fx.0.x=232
-editor.fx.0.y=-17
+editor.fx.0.height=696
+editor.fx.0.width=1294
+editor.fx.0.x=-7
+editor.fx.0.y=-7
 objectbench.height=92
 objectbench.width=749
 package.divider.horizontal=0.6
