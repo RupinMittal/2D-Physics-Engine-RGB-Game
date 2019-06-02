@@ -1,8 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -46,6 +45,7 @@ public class MainMenu extends Application implements Menu
         window = stage;
         Label label = new Label("RGB");
         
+        //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
@@ -56,12 +56,19 @@ public class MainMenu extends Application implements Menu
         
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
+        //Centers the layout in the middle of the scene
+        main.setAlignment(Pos.CENTER);
+        //Adds the button onto the VBox
         main.getChildren().addAll(playButton, creditsButton);
+        
+        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 600, 600);
         
         //Layout for Credit Scene
         VBox creditLayout = new VBox(20);
+        
         creditLayout.getChildren().add(backToMenuButton);
+        //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         creditScene = new Scene(creditLayout, 600, 600);
         
