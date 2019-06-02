@@ -51,8 +51,8 @@ public class MainMenu extends Application implements Menu
         backToMenuButton = new Button("Back To Menu");
         
         //Sets the length of the button to a set size
-        playButton.setMaxWidth(80);
-        creditsButton.setMaxWidth(80);
+        playButton.setMaxWidth(100);
+        creditsButton.setMaxWidth(100);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
@@ -78,10 +78,11 @@ public class MainMenu extends Application implements Menu
         Text creditText = new Text();
         String creditString = "WELCOME to RGB \n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
-                              + "Press the arrow keys to move up, left, or right respectively \n" 
-                              +"Anything that is red will automatically kill you \n " 
+                              + "Graphics by Maria and Music by Cole Clarkson (IG: @cudi_cole)\n"
+                              + "Press the arrow keys to move up, left, or right \n" 
+                              + "Anything that is red will automatically kill you \n" 
                               + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
-                              + "Complete all three level to beat the game, good luck Adventurer! \n"
+                              + "Complete all three sectors to beat the game, good luck Adventurer! \n"
                               + "Thank you Mr. Lantsberger for everything you've taught us, it has been our pleasure being your students";
 
         //Setting the value of the creditText to the string creditString
