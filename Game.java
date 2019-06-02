@@ -7,6 +7,7 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,7 @@ public class Game extends Application
     private GreenWall gWall;                    //the green wall
     private AnimationTimer animationTimer;      //the animation timer to run everything
     private Wall colliderWall;                  //the wall that the user is colliding into in collisions
+    private Rectangle2D viewport;               //the rectangle to have offset in the game
 
     //variables for movement
     private boolean up, down, right, left;      //the variables for the players movement
@@ -105,48 +107,50 @@ public class Game extends Application
             @Override
             public void handle(long now)
             {
-                //initialize instance variables
-                futureXVel = player.getXVel();              //get the future horizontal velocity
-                futureYVel = player.getYVel();              //get the future vertical velocity
-                futureX = player.getXPos();                 //get the future x position
-                futureY = player.getYPos();                 //get the future y position
-
-                //make changes to the velocity with the constants
-                futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
-                futureYVel += GRAV_ACC/30;                                      //apply gravity
-                if(futureXVel > MAX_VEL)                //if the velocity is more than the max
-                    futureXVel = MAX_VEL;               //then limit the velocity
-                if(futureXVel < 0)                      //if friction causes player to stop
-                    futureXVel = 0;                     //stop the player
-
-                //update the player's future position
-                futureX += futureXVel;
-                futureY += futureYVel;
-
-                //check collisions
-                if(currentEnvironment.isCollision((int)futureX, (int)futureY))  //if there is a collision
+                if(player.isAlive())
                 {
-                    //get the direction of players movement
-                    hDirection = getHorizontalDirection(player.getXPos(), futureX); //get the horizontal direction of movement
-                    vDirection = getVerticalDirection(player.getYPos(), futureY);   //get the vertical direction of movement
+                    //initialize instance variables
+                    futureXVel = player.getXVel();              //get the future horizontal velocity
+                    futureYVel = player.getYVel();              //get the future vertical velocity
+                    futureX = player.getXPos();                 //get the future x position
+                    futureY = player.getYPos();                 //get the future y position
 
-                    //get the type of the block that user is colliding with
-                    colliderWall = getColliderWall(futureX, futureY);
+                    //make changes to the velocity with the constants
+                    futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
+                    futureYVel += GRAV_ACC/30;                                      //apply gravity
+                    if(futureXVel > MAX_VEL)                //if the velocity is more than the max
+                        futureXVel = MAX_VEL;               //then limit the velocity
+                    if(futureXVel < 0)                      //if friction causes player to stop
+                        futureXVel = 0;                     //stop the player
 
-                    //interact with the walls
-                    if(hDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 4))       //if it is a horizontal interaction
+                    //update the player's future position
+                    futureX += futureXVel;
+                    futureY += futureYVel;
+
+                    //check collisions
+                    if(currentEnvironment.isCollision((int)futureX, (int)futureY))  //if there is a collision
                     {
-                        switch (hDirection)
+                        //get the direction of players movement
+                        hDirection = getHorizontalDirection(player.getXPos(), futureX); //get the horizontal direction of movement
+                        vDirection = getVerticalDirection(player.getYPos(), futureY);   //get the vertical direction of movement
+
+                        //get the type of the block that user is colliding with
+                        colliderWall = getColliderWall(futureX, futureY);
+
+                        //interact with the walls
+                        if(hDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 4))       //if it is a horizontal interaction
                         {
-                            case 1:                                         //if player is moving and colliding right
-                                colliderWall.interactRight(futureX);        //interact
-                                break;
-                            case 2:                                         //if player is moving and colliding left
-                                colliderWall.interactLeft(futureX);         //interact
-                                break;
+                            switch (hDirection)
+                            {
+                                case 1:                                         //if player is moving and colliding right
+                                    colliderWall.interactRight(futureX);        //interact
+                                    break;
+                                case 2:                                         //if player is moving and colliding left
+                                    colliderWall.interactLeft(futureX);         //interact
+                                    break;
+                            }
                         }
-                    }
-                    else
+                        else
                         if(vDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 5))   //if it is a vertical interaction
                         {
                             switch (vDirection)
@@ -159,20 +163,43 @@ public class Game extends Application
                                     break;
                             }
                         }
+                    }
+                    else
+                    {
+                        //if there are no collisions, increment the player position normally
+                        player.setXPos(futureX);
+                        player.setYPos(futureY);
+                    }
 
+                    if(player.isAlive())                        //moving only happens if player is now alive
+                    {
+                        character.setX(player.getXPos());       //move player
+                        character.setY(player.getYPos());
 
+                        //update the animation that is being run
+                        player.updateAnimation();
 
+                        //check out of bounds movement
+                        if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
+                            player.kill();                                  //kill the player
+                        //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
+                        //move to next sector
 
+                        //check if interacting with enemies
+                        //if player and enemy's position is the same, kill the player
 
+                        //do offset
+                        if(character.getX() > cameraOffset)     //if character is out of offsetrange
+                            environment.setViewport(new Rectangle2D(character.getX() - character.getFitWidth(), 0, 200, 200));  //scroll screen
+                    }
+                    //else
+                        //show game over screen
                 }
-
-
-
-
+                //else
+                    //show game over screen
             }
         };
         timer.start();
-
     }
 
     //methods
@@ -190,10 +217,13 @@ public class Game extends Application
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
-        environment = introEnvironment.getMapImageView();   //get environment imageview
-        character = player.getImageView();                  //get player imageview
-        root = new Group();                                 //the Group\
-        scene = new Scene(root);                            //the scene
+        environment = introEnvironment.getMapImageView();                           //get environment imageview
+        character = player.getImageView();                                          //get player imageview
+        root = new Group();                                                         //the Group
+        scene = new Scene(root);                                                    //the scene
+        viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
+        environment.setViewport(viewport);                                          //set imageview to have the rectangle
+        cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
     }
 
     /*

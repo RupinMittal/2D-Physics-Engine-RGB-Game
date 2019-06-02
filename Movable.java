@@ -36,7 +36,7 @@ public abstract class Movable
      * Method to set the vertical position of object
      * @param yP double vertical position in pixels
      */
-    public void setyPos(double yP)
+    public void setYPos(double yP)
     {
         yPos = yP;   //set the vertical position
     }
