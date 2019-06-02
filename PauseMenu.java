@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 /**
@@ -53,7 +53,10 @@ public class PauseMenu extends Application implements Menu
         restart.setOnAction(e -> window.setScene(restartScene));
         quit.setOnAction(e -> window.setScene(quitScene));
         
-        
+        //Layout for the Pause scene - children are laid out in a veritcal column
+        VBox pause = new VBox(20);
+        pause.getChildren().addAll(resume, restart, quit);
+        pauseScene = new Scene(pause, 600, 600);
         
         
         
