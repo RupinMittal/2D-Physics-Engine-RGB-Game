@@ -27,7 +27,7 @@ public class MainMenu extends Application implements Menu
     
     private Stage window;
     //Is this a good idea to do public static?
-    public static Scene mainScene, creditScene, playScene; 
+    private Scene mainScene, creditScene, playScene; 
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
@@ -44,12 +44,15 @@ public class MainMenu extends Application implements Menu
     
     public void start(Stage stage) throws Exception {
         window = stage;
-        Label label = new Label("RGB");
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
+        
+        //Sets the length of the button to a set size
+        playButton.setMaxWidth(80);
+        creditsButton.setMaxWidth(80);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
@@ -59,8 +62,10 @@ public class MainMenu extends Application implements Menu
         VBox main = new VBox(20);
         //Centers the layout in the middle of the scene
         main.setAlignment(Pos.CENTER);
-        //Adds the button onto the VBox
-        main.getChildren().addAll(playButton, creditsButton);
+        //Declaration and instantiation of a label
+        Label label = new Label("RGB");
+        //Adds the buttons and label onto the layout of the scene
+        main.getChildren().addAll(label, playButton, creditsButton);
         //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 600, 600);
         

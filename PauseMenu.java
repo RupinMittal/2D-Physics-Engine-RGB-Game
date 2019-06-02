@@ -45,14 +45,11 @@ public class PauseMenu extends Application implements Menu
         
         resume = new Button("Resume");
         restart = new Button("Restart Level");
-        quit = new Button("Quit To Menu");
         
         //This class will handle the button event when user hits Resume, Restart, or Quit (changes the scenes to respective location)
         resume.setOnAction(e -> window.setScene(resumeScene));
         //NEED TO ADD A RESUME SCENE INSTANTIATION - after adding an actual map
         restart.setOnAction(e -> window.setScene(restartScene));
-        //NEED TO ADD A RESTART SCENE INSTANTIATION - after adding an actual map
-        quit.setOnAction(e -> window.setScene(MainMenu.mainScene)); //DO we still need a button that allows user to return to the main menu?
         
         //Layout for the Pause scene - children are laid out in a veritcal column
         VBox pause = new VBox(20);
