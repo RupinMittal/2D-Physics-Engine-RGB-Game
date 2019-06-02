@@ -56,7 +56,7 @@ public class PauseMenu extends Application implements Menu
         //Centers the layout of the Credit scene in the middle
         pause.setAlignment(Pos.CENTER);
         
-        pause.getChildren().addAll(resume, restart, quit);
+        pause.getChildren().addAll(resume, restart);
         pauseScene = new Scene(pause, 600, 600);
         
         //Layout for Resume Scene
