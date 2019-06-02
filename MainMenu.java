@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.Group;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -44,6 +46,12 @@ public class MainMenu extends Application implements Menu
     
     public void start(Stage stage) throws Exception {
         window = stage;
+        
+        //Code to add background image
+        Image image = new Image("file:MarioBackground.png");
+        ImageView mv = new ImageView(image);
+        
+        Group root = new Group();
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
