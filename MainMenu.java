@@ -26,7 +26,8 @@ public class MainMenu extends Application implements Menu
     private Button creditsButton;
     
     private Button volumeButton;
-    private Button quitButton;
+    private Button sound1;
+    private Button sound2;
     
     private Stage window;
     //Is this a good idea to do public static?
@@ -57,6 +58,9 @@ public class MainMenu extends Application implements Menu
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
+        volumeButton = new Button("Volume");
+        sound1 = new Button("Volume on");
+        sound2 = new Button("Volume off");
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(100);
@@ -64,6 +68,7 @@ public class MainMenu extends Application implements Menu
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
+        volumeButton.setOnAction(this::volume);
         creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
@@ -95,6 +100,37 @@ public class MainMenu extends Application implements Menu
     private void play(ActionEvent pClick)
     {
         
+    }
+    
+    /**
+     * This method will be called when the user clicks the volume button. It
+     * will toggle the button so that volume is "off" and "on".
+     * 
+     * @param soundClick - an event representing the user clicking the sound
+     * button
+     */
+    public void volume(ActionEvent soundClick)
+    {
+        // Get access to loop() method in Music class
+        Music music = new Music("ollie.mp3");
+        
+        // Test to see if the on button is being clicked
+        if(soundClick.getSource() == sound1)
+        {
+            // Change volume of music
+            music.loop(0);
+            // switch buttons
+            volumeButton = sound2;
+        }  
+        
+        // Test to see if the off button is being clicked
+        if(soundClick.getSource() == sound2)
+        {
+            // Change volume of music
+            music.loop(100);
+            // switch buttons
+            volumeButton = sound1;
+        }     
     }
     
     /**
