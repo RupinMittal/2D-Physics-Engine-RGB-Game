@@ -61,8 +61,9 @@ public class PauseMenu extends Application implements Menu
         //Layout for Resume Scene
             // Will deliberate this part of the code after figuring out how to set up the actual game
         
-        
-        
+        window.setTitle("RGB GANG");
+        window.setScene(pauseScene);
+        stage.show();
     }
     
     /**
