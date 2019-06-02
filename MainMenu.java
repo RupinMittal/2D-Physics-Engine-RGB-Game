@@ -60,7 +60,6 @@ public class MainMenu extends Application implements Menu
         main.setAlignment(Pos.CENTER);
         //Adds the button onto the VBox
         main.getChildren().addAll(playButton, creditsButton);
-        
         //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 600, 600);
         
@@ -69,9 +68,11 @@ public class MainMenu extends Application implements Menu
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
         creditLayout.getChildren().add(backToMenuButton);
+        
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         creditScene = new Scene(creditLayout, 600, 600);
+        
         
         window.setTitle("RGB GANG");
         window.setScene(mainScene);
