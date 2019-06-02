@@ -27,9 +27,7 @@ public class MainMenu extends Application implements Menu
     private Button volumeButton;
     
     private Stage window;
-    //Is this a good idea to do public static?
     private Scene mainScene, creditScene, playScene; 
-    //Music music = new Music("ollie.mp3");
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
@@ -60,7 +58,7 @@ public class MainMenu extends Application implements Menu
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
-        //volumeButton.setOnAction(this::volume);
+        volumeButton.setOnAction(this::volume);
         creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
@@ -94,15 +92,15 @@ public class MainMenu extends Application implements Menu
         
     }
     
-    // /**
-     // * This method will be called when the user clicks the volume button. It
-     // * will toggle the button so that volume is "off" and "on".
-     // * 
-     // * @param soundClick - an event representing the user clicking the sound
-     // * button
-     // */
-    // public void volume(ActionEvent soundClick)
-    // {
+    /**
+     * This method will be called when the user clicks the volume button. It
+     * will toggle the button so that volume is "off" and "on".
+     * 
+     * @param soundClick - an event representing the user clicking the sound
+     * button
+     */
+    public void volume(ActionEvent soundClick)
+    {
         // // Get access to loop() method in Music class
         
         // double volume = 1.0;
@@ -113,15 +111,17 @@ public class MainMenu extends Application implements Menu
             // if(volume == 1.0)
             // {
                 // volume = 0.0;
-                // music.loop(volume);
+                // Music.loop("ollie.mp3", volume);
             // }
             // else
             // {
                 // volume = 1.0;
-                // music.loop(volume);
+                // Music.loop("ollie.mp3", volume);
             // }
         // }  
-    // }
+        
+        Music.loop("ollie.mp3");
+    }
     
     /**
      * This method will be called when the user clicks the credits button. It
