@@ -45,8 +45,8 @@ public class PauseMenu extends Application implements Menu
         Label label = new Label("RGB");
         
         resume = new Button("Resume");
-        restart = new Button("Restart");
-        quit = new Button("Quit");
+        restart = new Button("Restart Level");
+        quit = new Button("Quit To Menu");
         
         //This class will handle the button event when user hits Resume, Restart, or Quit (changes the scenes to respective location)
         resume.setOnAction(e -> window.setScene(resumeScene));
