@@ -18,9 +18,11 @@ import javafx.stage.Stage;
 public class PauseMenu extends Application implements Menu
 {
     private Button resume;
-    private Button endGame;
-    private Button restartSector;
-    private Button restartGame;
+    private Button restart;
+    private Button quit;
+    
+    private Stage window;
+    private Scene pauseScene, resumeScene, restartScene, quitScene;
     
     private void restartSector()
     {
@@ -39,6 +41,15 @@ public class PauseMenu extends Application implements Menu
     }
     
     public void start(Stage stage) throws Exception {
+        window = stage;
+        Label label = new Label("RGB");
+        
+        resume = new Button("Resume");
+        restart = new Button("Restart");
+        quit = new Button("Quit");
+        
+        
+        
     }
     
     /**
