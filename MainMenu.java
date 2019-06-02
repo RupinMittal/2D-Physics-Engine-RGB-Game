@@ -64,7 +64,7 @@ public class MainMenu extends Application implements Menu
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
-        creditsButton.setOnAction(e -> window.setScene(creditScene));
+        creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
@@ -76,34 +76,6 @@ public class MainMenu extends Application implements Menu
         main.getChildren().addAll(label, playButton, creditsButton);
         //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 600, 600);
-        
-        //Layout for Credit Scene
-        VBox creditLayout = new VBox(20);
-        //Centers the layout of the Credit scene in the middle
-        creditLayout.setAlignment(Pos.CENTER);
-        
-        //Declaration and Instantiation of the Credit Texts
-        Text creditText = new Text();
-        String creditString = "WELCOME to RGB \n" 
-                              + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
-                              + "Graphics by Maria and Music by Cole Clarkson (IG: @cudi_cole)\n"
-                              + "Press the arrow keys to move up, left, or right \n" 
-                              + "Anything that is red will automatically kill you \n" 
-                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
-                              + "Complete all three sectors to beat the game, good luck Adventurer! \n"
-                              + "Thank you Mr. Lantsberger for everything you've taught us, it has been our pleasure being your students";
-
-        //Setting the value of the creditText to the string creditString
-        creditText.setText(creditString);
-        //Centering the text into middle of the scene
-        creditText.setTextAlignment(TextAlignment.CENTER);
-        //Adding nodes to the layout
-        creditLayout.getChildren().add(creditText);
-        creditLayout.getChildren().add(backToMenuButton);
-        
-        //This class will handle the button event when user hits Back To Menu
-        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
-        creditScene = new Scene(creditLayout, 600, 600);
         
         window.setTitle("RGB GANG");
         window.setScene(mainScene);
@@ -131,6 +103,35 @@ public class MainMenu extends Application implements Menu
      */
     private void credits(ActionEvent cClick)
     {
+        //Layout for Credit Scene
+        VBox creditLayout = new VBox(20);
+        //Centers the layout of the Credit scene in the middle
+        creditLayout.setAlignment(Pos.CENTER);
         
+        //Declaration and Instantiation of the Credit Texts
+        Text creditText = new Text();
+        creditText.setFont(Font.font("Baskerville", 20));
+        String creditString = "WELCOME to RGB \n" 
+                              + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
+                              + "Graphics by Maria and Music by Cole Clarkson (IG: @cudi_cole)\n"
+                              + "Press the arrow keys to move up, left, or right \n" 
+                              + "Anything that is red will automatically kill you \n" 
+                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
+                              + "Complete all three sectors to beat the game, good luck Adventurer! \n"
+                              + "Thank you Mr. Lantsberger for everything you've taught us. \n" 
+                              + "It has been our pleasure being your students!";
+
+        //Setting the value of the creditText to the string creditString
+        creditText.setText(creditString);
+        //Centering the text into middle of the scene
+        creditText.setTextAlignment(TextAlignment.CENTER);
+        //Adding nodes to the layout
+        creditLayout.getChildren().add(creditText);
+        creditLayout.getChildren().add(backToMenuButton);
+        
+        //This class will handle the button event when user hits Back To Menu
+        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+        creditScene = new Scene(creditLayout, 900, 600);
+        window.setScene(creditScene);
     }
 }
