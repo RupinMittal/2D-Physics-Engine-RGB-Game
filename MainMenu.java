@@ -13,7 +13,7 @@ import javafx.scene.text.*;
  * MainMenu is a type of Menu and allows the user to start the game, look at the
  * credits, and turn volume on or off
  *
- * @author Daniel Herrick & Jonathan Lee
+ * @author Jonathan Lee & Daniel Herrick
  * @version MainMenu JavaFx class - RGB
  */
 public class MainMenu extends Application implements Menu
@@ -21,7 +21,6 @@ public class MainMenu extends Application implements Menu
     private Button playButton;
     private Button backToMenuButton;
     private Button creditsButton;
-    
     
     private Button volumeButton;
     private Button quitButton;

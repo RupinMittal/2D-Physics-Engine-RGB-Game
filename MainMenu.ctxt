@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainMenu
-comment0.text=\r\n\ MainMenu\ is\ a\ type\ of\ Menu\ and\ allows\ the\ user\ to\ start\ the\ game,\ look\ at\ the\r\n\ credits,\ and\ turn\ volume\ on\ or\ off\r\n\r\n\ @author\ Daniel\ Herrick\ &\ Jonathan\ Lee\r\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\r\n
+comment0.text=\r\n\ MainMenu\ is\ a\ type\ of\ Menu\ and\ allows\ the\ user\ to\ start\ the\ game,\ look\ at\ the\r\n\ credits,\ and\ turn\ volume\ on\ or\ off\r\n\r\n\ @author\ Jonathan\ Lee\ &\ Daniel\ Herrick\r\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\r\n
 comment1.params=
 comment1.target=MainMenu()
 comment1.text=\r\n\ This\ the\ constructor\ for\ MainMenu\ that\ will\ construct\ all\ the\ buttons\r\n\ and\ run\ the\ main\ menu\ via\ runMenu()\ \r\n

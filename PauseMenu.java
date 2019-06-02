@@ -1,12 +1,11 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.geometry.Pos;
 
 /**
  * PauseMenu is a type of Menu and allows the user to resume the game, turn 
@@ -57,6 +56,9 @@ public class PauseMenu extends Application implements Menu
         
         //Layout for the Pause scene - children are laid out in a veritcal column
         VBox pause = new VBox(20);
+        //Centers the layout of the Credit scene in the middle
+        pause.setAlignment(Pos.CENTER);
+        
         pause.getChildren().addAll(resume, restart, quit);
         pauseScene = new Scene(pause, 600, 600);
         
