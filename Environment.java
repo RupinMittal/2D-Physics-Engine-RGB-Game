@@ -41,9 +41,9 @@ public class Environment
      * @param row int row number
      * @return boolean true if collision, false if not
      */
-    public boolean isCollision(int col, int row)
+    public boolean isCollision(double col, double row)
     {
-        return collisionsArray[row / TILE_SIDE_SIZE][col / TILE_SIDE_SIZE] == 0;      //return true if [r][c] is 0 (air), false if [r][c] is not 0 (not air)
+        return collisionsArray[(int)(row / TILE_SIDE_SIZE)][(int)(col / TILE_SIDE_SIZE)] != 0;      //return false if [r][c] is 0 (air), true if [r][c] is not 0 (not air)
     }
 
     /**
@@ -52,9 +52,9 @@ public class Environment
      * @param row int row number
      * @return int the tile type being collided with
      */
-    public int getType(int col, int row)
+    public int getType(double col, double row)
     {
-        return collisionsArray[row / TILE_SIDE_SIZE][col / TILE_SIDE_SIZE];           //returnn the int type of the tile that is at [r][c]
+        return collisionsArray[(int)(row / TILE_SIDE_SIZE)][(int)(col / TILE_SIDE_SIZE)];           //returnn the int type of the tile that is at [r][c]
     }
 
     /**

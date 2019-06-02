@@ -18,6 +18,7 @@ public class Game extends Application
     //object variables
     //MainMenu mainMenu;                        //the mainmenu object
     //PauseMenu pauseMenu;                      //the pause menu
+    private Environment currentEnvironment;     //the current environment being used
     private Environment gameEnvironment;        //the game environment
     private IntroEnvironment introEnvironment;  //the intro environment
     private Player player;                      //the player
@@ -115,6 +116,16 @@ public class Game extends Application
                 if(futureXVel < 0)                      //if friction causes player to stop
                     futureXVel = 0;                     //stop the player
 
+                //update the player's position
+                futureX += futureXVel;
+                futureY += futureYVel;
+
+                //check collisions
+                if(currentEnvironment.isCollision((int)futureX, (int)futureY))  //if there is a collision
+                {
+
+                }
+
 
 
 
@@ -143,5 +154,37 @@ public class Game extends Application
         character = player.getImageView();                  //get player imageview
         root = new Group();                                 //the Group\
         scene = new Scene(root);                            //the scene
+    }
+
+    /*
+     * Method to get the direction that the player is moving horizontally
+     * @return: 1 - right, 2- left
+     */
+    private int getHorizontalDirection(double currentXPos, double nextX)
+    {
+        int direction;  //the direction being travelled that will be returned
+
+        if(nextX > currentXPos)     //if player is moving to right
+            direction = 1;          //set direction to right
+        else
+            direction = 2;          ///else, set direction to left
+
+        return direction;
+    }
+
+    /*
+     * Method to get the direction that the player is moving vertically
+     * @return: 1 - up, 2- down
+     */
+    private int getVerticalDirection(double currentYPos, double nextY)
+    {
+        int direction;  //the direction being travelled that will be returned
+
+        if(nextY > currentYPos)     //if player is moving up
+            direction = 1;          //set direction to up
+        else
+            direction = 2;          ///else, set direction to down
+
+        return direction;
     }
 }
