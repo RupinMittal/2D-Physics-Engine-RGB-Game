@@ -29,7 +29,7 @@ public class MainMenu extends Application implements Menu
     private Stage window;
     //Is this a good idea to do public static?
     private Scene mainScene, creditScene, playScene; 
-    Music music = new Music("ollie.mp3");
+    //Music music = new Music("ollie.mp3");
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
