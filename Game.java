@@ -1,6 +1,6 @@
 /**
  * Class to actually run the game
- * @authors Rupin Mittal and Brandon Wang
+ * @author Rupin Mittal
  * @version May 29, 2019
  */
 
@@ -131,7 +131,36 @@ public class Game extends Application
                     vDirection = getVerticalDirection(player.getYPos(), futureY);   //get the vertical direction of movement
 
                     //get the type of the block that user is colliding with
-                    colliderWall = checkWall()
+                    colliderWall = getColliderWall(futureX, futureY);
+
+                    //interact with the walls
+                    if(hDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 4))       //if it is a horizontal interaction
+                    {
+                        switch (hDirection)
+                        {
+                            case 1:                                         //if player is moving and colliding right
+                                colliderWall.interactRight(futureX);        //interact
+                                break;
+                            case 2:                                         //if player is moving and colliding left
+                                colliderWall.interactLeft(futureX);         //interact
+                                break;
+                        }
+                    }
+                    else
+                        if(vDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 5))   //if it is a vertical interaction
+                        {
+                            switch (vDirection)
+                            {
+                                case 1:                                         //if player is moving and colliding up
+                                    colliderWall.interactCeiling(futureY);      //interact
+                                    break;
+                                case 2:                                         //if player is moving and colliding down
+                                    colliderWall.interactFloor(futureY);        //interact
+                                    break;
+                            }
+                        }
+
+
 
 
 
@@ -211,7 +240,7 @@ public class Game extends Application
     private Wall getColliderWall(double nextX, double nextY)
     {
         Wall wall;                                                //the wall object that will be returned
-        int typeNumber = environment.getTypeNumber(nextX, nextY); //get the wall number
+        int typeNumber = currentEnvironment.getTypeNumber(nextX, nextY); //get the wall number
 
         if((typeNumber >= 0) && (typeNumber <= 3))      //if the wall number is 0, 1, 2, 3
             wall = bWall;
@@ -224,5 +253,6 @@ public class Game extends Application
                 else
                     wall = nWall;                                //else normal wall
 
+        return wall;
     }
 }
