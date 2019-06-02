@@ -27,6 +27,7 @@ public class Game extends Application
     private RedWall rWall;                      //the red wall
     private GreenWall gWall;                    //the green wall
     private AnimationTimer animationTimer;      //the animation timer to run everything
+    private Wall colliderWall;                  //the wall that the user is colliding into in collisions
 
     //variables for movement
     private boolean up, down, right, left;      //the variables for the players movement
@@ -36,6 +37,8 @@ public class Game extends Application
     private double futureYVel;                  //the future vertical velocity
     private double futureX;                     //future horizontal position
     private double futureY;                     //future vertical position
+    private int hDirection;                     //the horizontal direction
+    private int vDirection;                     //the vertical direction
 
     //constants
     private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
@@ -116,13 +119,21 @@ public class Game extends Application
                 if(futureXVel < 0)                      //if friction causes player to stop
                     futureXVel = 0;                     //stop the player
 
-                //update the player's position
+                //update the player's future position
                 futureX += futureXVel;
                 futureY += futureYVel;
 
                 //check collisions
                 if(currentEnvironment.isCollision((int)futureX, (int)futureY))  //if there is a collision
                 {
+                    //get the direction of players movement
+                    hDirection = getHorizontalDirection(player.getXPos(), futureX); //get the horizontal direction of movement
+                    vDirection = getVerticalDirection(player.getYPos(), futureY);   //get the vertical direction of movement
+
+                    //get the type of the block that user is colliding with
+                    colliderWall = checkWall()
+
+
 
                 }
 
@@ -158,6 +169,8 @@ public class Game extends Application
 
     /*
      * Method to get the direction that the player is moving horizontally
+     * @param currentXPos double the current position
+     * @oaram nextX double the next position being moved to
      * @return: 1 - right, 2- left
      */
     private int getHorizontalDirection(double currentXPos, double nextX)
@@ -174,6 +187,8 @@ public class Game extends Application
 
     /*
      * Method to get the direction that the player is moving vertically
+     * @param currentYPos double the current position
+     * @oaram nextY double the next position being moved to
      * @return: 1 - up, 2- down
      */
     private int getVerticalDirection(double currentYPos, double nextY)
@@ -186,5 +201,28 @@ public class Game extends Application
             direction = 2;          ///else, set direction to down
 
         return direction;
+    }
+
+    /*
+     * Method to get the object of the type of wall by color
+     * @param nextX the next horizontal position being moved to
+     * @param nextY the next vertical position being moved to
+     */
+    private Wall getColliderWall(double nextX, double nextY)
+    {
+        Wall wall;                                                //the wall object that will be returned
+        int typeNumber = environment.getTypeNumber(nextX, nextY); //get the wall number
+
+        if((typeNumber >= 0) && (typeNumber <= 3))      //if the wall number is 0, 1, 2, 3
+            wall = bWall;
+        else
+            if((typeNumber >= 4) && (typeNumber <= 7))      //if the wall number is 4, 5, 6, 7
+                wall = gWall;
+            else
+                if((typeNumber >= 8) && (typeNumber <= 11))      //if the wall number is 8, 9, 10, 11
+                    wall = rWall;
+                else
+                    wall = nWall;                                //else normal wall
+
     }
 }

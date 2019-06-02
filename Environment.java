@@ -52,9 +52,9 @@ public class Environment
      * @param row int row number
      * @return int the tile type being collided with
      */
-    public int getType(double col, double row)
+    public int getTypeNumber(double col, double row)
     {
-        return collisionsArray[(int)(row / TILE_SIDE_SIZE)][(int)(col / TILE_SIDE_SIZE)];           //returnn the int type of the tile that is at [r][c]
+        return collisionsArray[(int)(row / TILE_SIDE_SIZE)][(int)(col / TILE_SIDE_SIZE)];           //return the int type of the tile that is at [r][c]
     }
 
     /**
