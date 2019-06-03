@@ -139,9 +139,16 @@ public class Game extends Application
                     futureY += futureYVel;
 
                     //check collisions
-                    if(currentEnvironment.isCollision(futureX, futureY))  //if there is a collision
+                    if(currentEnvironment.isCollision(futureX, futureY))  //top left corner of player
                     {
-                        //get the direction of players movement
+                        colliderWall = getColliderWall(futureX, futureY);
+
+                        if(currentEnvironment.isCollision(player.getXPos(), futureY)
+                            && (currentEnvironment.getType(player.getXPos(), futureY) == 1
+                            || currentEnvironment.getType(player.getXPos(), futureY) % 4 == 1) //top left collision with ceiling
+                            colliderWall.interactCeiling();
+                        
+                        /*//get the direction of players movement
                         hDirection = getHorizontalDirection(player.getXPos(), futureX); //get the horizontal direction of movement
                         vDirection = getVerticalDirection(player.getYPos(), futureY);   //get the vertical direction of movement
 
@@ -173,7 +180,7 @@ public class Game extends Application
                                     colliderWall.interactFloor(futureY);        //interact
                                     break;
                             }
-                        }
+                        }*/
                     }
                     else
                     {
