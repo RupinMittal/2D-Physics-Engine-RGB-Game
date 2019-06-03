@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=MainMenu
+comment0.text=\n\ MainMenu\ is\ a\ type\ of\ Menu\ and\ allows\ the\ user\ to\ start\ the\ game,\ look\ at\ the\n\ credits,\ and\ turn\ volume\ on\ or\ off\n\n\ @author\ Jonathan\ Lee\ &\ Daniel\ Herrick\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\n
+comment1.params=
+comment1.target=MainMenu()
+comment1.text=\n\ This\ the\ constructor\ for\ MainMenu\ that\ will\ construct\ all\ the\ buttons\n\ and\ run\ the\ main\ menu\ via\ runMenu()\ \n
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment3.params=stage
+comment3.target=void\ start(javafx.stage.Stage)
+comment4.params=pClick
+comment4.target=void\ play(javafx.event.ActionEvent)
+comment4.text=\n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ play\ button.\ It\n\ will\ switch\ screens\ to\ a\ character\ select\ screen.\n\ \n\ @param\ pClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ play\ button\n
+comment5.params=soundClick
+comment5.target=void\ volume(javafx.event.ActionEvent)
+comment5.text=\n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ volume\ button.\ It\n\ will\ toggle\ the\ button\ so\ that\ volume\ is\ "off"\ and\ "on".\n\ \n\ @param\ soundClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ sound\n\ button\n
+comment6.params=cClick
+comment6.target=void\ credits(javafx.event.ActionEvent)
+comment6.text=\n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ credits\ button.\ It\n\ will\ switch\ screens\ to\ a\ credits\ screen\ that\ displays\ all\ necessary\ \n\ credits\ of\ the\ game\ \n\ \n\ @param\ cClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ credits\ \n\ button\ \n
+numComments=7

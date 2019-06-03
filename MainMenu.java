@@ -26,7 +26,7 @@ public class MainMenu extends Application
     private Button playButton;
     private Button backToMenuButton;
     private Button creditsButton;
-    private Button volumeButton;
+    private Button howToButton;
     
     private Stage window;
     private Scene mainScene, creditScene, playScene; 
@@ -53,7 +53,7 @@ public class MainMenu extends Application
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
-        volumeButton = new Button("How to Play");
+        howToButton = new Button("How to Play");
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(150);
@@ -62,7 +62,7 @@ public class MainMenu extends Application
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
-        volumeButton.setOnAction(this::volume);
+        volumeButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
@@ -75,7 +75,7 @@ public class MainMenu extends Application
         
         
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(label, playButton, volumeButton, creditsButton);
+        main.getChildren().addAll(label, playButton, howToButton, creditsButton);
         //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600);
 
@@ -106,33 +106,15 @@ public class MainMenu extends Application
     }
     
     /**
-     * This method will be called when the user clicks the volume button. It
-     * will toggle the button so that volume is "off" and "on".
+     * This method will be called when the user clicks the how to play button. It
+     * When clicked, it will switch screens and show instructions on how to
+     * play.
      * 
-     * @param soundClick - an event representing the user clicking the sound
-     * button
+     * @param howToClick - an event representing the user clicking the how to
+     * play button
      */
-    public void volume(ActionEvent soundClick)
+    public void howTo(ActionEvent howtoClick)
     {
-        // // Get access to loop() method in Music class
-        
-        // double volume = 1.0;
-        
-        // // Test to see if the on button is being clicked
-        // if(soundClick.getSource() == volumeButton)
-        // {
-            // if(volume == 1.0)
-            // {
-                // volume = 0.0;
-                // Music.loop("ollie.mp3", volume);
-            // }
-            // else
-            // {
-                // volume = 1.0;
-                // Music.loop("ollie.mp3", volume);
-            // }
-        // }  
-        
         //Layout for Credit Scene
         VBox instructionLayout = new VBox(20);
         //Centers the layout of the Credit scene in the middle
@@ -177,7 +159,7 @@ public class MainMenu extends Application
         //Declaration and Instantiation of the Credit Texts
         Text creditText = new Text();
         creditText.setFont(Font.font("Baskerville", 20));
-        String creditString = "WELCOME to RGB \n" 
+        String creditString = "WELCOME to RGB \n\n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
                               + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"
                               + "Complete all three sectors to beat the game, good luck Adventurer! \n"
