@@ -72,10 +72,10 @@ public class BlueWall implements Wall
         int wallY = ((int)futureY / tileSize) * tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallY - interactPlayer.getHeight());
+        interactPlayer.setYPos(wallY - interactPlayer.getHeight());
         
         //set player's vertical movement
-        interactPlayer.setYVel(VERT_BOUNCE);
+        interactPlayer.setYVel(-1 * VERT_BOUNCE);
     }
     
     /**
@@ -90,9 +90,9 @@ public class BlueWall implements Wall
         int wallY = ((int)futureY / tileSize + 1) * tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallY);
+        interactPlayer.setYPos(wallY);
         
         //set player's vertical movement
-        interactPlayer.setYVel(-1 * VERT_BOUNCE);
+        interactPlayer.setYVel(VERT_BOUNCE);
     }
 }
