@@ -18,8 +18,8 @@ import javafx.geometry.Insets;
 import javafx.scene.effect.InnerShadow;
 
 /**
- * MainMenu is a type of Menu and allows the user to start the game, look at the
- * credits, and turn volume on or off
+ * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
+ * credits, and also read what the plot of the game is 
  *
  * @author Jonathan Lee & Daniel Herrick
  * @version MainMenu JavaFx class - RGB
@@ -44,15 +44,23 @@ public class MainMenu extends Application
     //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
     private Scene mainScene, creditScene, playScene, plotScene; 
    
-    /**
-     * This the constructor for MainMenu that will construct all the buttons
-     * and run the main menu via runMenu() 
-     */
-    public MainMenu()
-    {
+    // /**
+     // * This the constructor for MainMenu that will construct all the buttons
+     // * and run the main menu via runMenu() 
+     // */
+    // public MainMenu()
+    // {
         
-    }
+    // }
     
+     //*The main() method is ignored in correctly deployed JavaFX application.
+     /**
+     * Main() serves only as fallback in case the application can not be
+     * launched through deployment artifacts, e.g., in IDEs with limited FX
+     * support]
+     * 
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -65,33 +73,41 @@ public class MainMenu extends Application
         Music.loop("ollie.mp3");
         //Declaration and Instantiaion of color
         Color c = Color.BLACK;
-        InnerShadow innerShadow = new InnerShadow();
-         //setting the type of blur for the shadow 
-         innerShadow.setBlurType(BlurType.GAUSSIAN); 
-         //Setting color for the shadow 
-         innerShadow.setColor(Color.DARKGRAY); 
         
-        //Instantiaion of buttons in MainMenu class
+        //Adding the special effects of shadows on the characters
+        InnerShadow innerShadow = new InnerShadow();
+        //setting the type of blur for the shadow 
+        innerShadow.setBlurType(BlurType.GAUSSIAN); 
+        //Setting color for the shadow 
+        innerShadow.setColor(Color.DARKGRAY); 
+        
+        //Adds an image to the button
         playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
         // Make button backgrounds transparent
         playButton.setStyle("-fx-background-color: transparent;");
         playButton.setEffect(innerShadow);
         
+        //Adds an image to the button
         creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 150, 150, true, false)));
+        // Make button backgrounds transparent
         creditsButton.setStyle("-fx-background-color: transparent;");
         creditsButton.setEffect(innerShadow);
         
         backToMenuButton = new Button("Back To Menu");
         
+        //Adds an image to the button
         howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
+        //Makes the background of the button transparent
         howToButton.setStyle("-fx-background-color: transparent;");
         howToButton.setEffect(innerShadow);
         
+        //Adds an image to the button
         plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
+        // Make button backgrounds transparent
         plotButton.setStyle("-fx-background-color: transparent;");
         plotButton.setEffect(innerShadow);
         
-        //Sets the length of the button to a set size
+        //Sets the width of the button to a set size
         playButton.setMaxWidth(70);
         playButton.setMaxHeight(70);
         howToButton.setMaxWidth(70);
@@ -101,8 +117,8 @@ public class MainMenu extends Application
         plotButton.setMaxWidth(70);
         plotButton.setMaxHeight(70);
         
-        //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
-        playButton.setOnAction(e -> window.setScene(playScene));
+        //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
+        playButton.setOnAction(this::play);
         howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         plotButton.setOnAction(this::plot);
@@ -140,7 +156,7 @@ public class MainMenu extends Application
     
     /**
      * This method will be called when the user clicks the play button. It
-     * will switch screens to a character select screen.
+     * will switch screens to the actual game
      * 
      * @param pClick - an event representing the user clicking the play button
      */
@@ -233,7 +249,7 @@ public class MainMenu extends Application
         //Setting the font to Baskerville
         creditText.setFont(Font.font("Baskerville", 20));
         
-        String creditString = "WELCOME to RGB \n\n" 
+        String creditString = "THANK YOU to those who helped made RGB possible \n\n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
                               + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"                      
                               + "Thank you Mr. Lantsberger for everything you've taught us. \n" 
@@ -259,6 +275,9 @@ public class MainMenu extends Application
     }
     
     /**
+     * This method will be called when the user clicks the plot button. It
+     * will switch screens to a Game Plot scene that displays the plot of the game
+     * 
      * 
      * @param howToClick - an event representing the user clicking the how to
      * play button
