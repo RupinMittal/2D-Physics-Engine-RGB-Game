@@ -91,7 +91,7 @@ public class MainMenu extends Application
         
         //Declaration and instantiation of a label
         Label label = new Label(); 
-        ImageView iv = new ImageView(new Image("Title.PNG"));
+        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Title.PNG")));
         label.setGraphic(iv);
 
         //Adds the buttons and label onto the layout of the scene
