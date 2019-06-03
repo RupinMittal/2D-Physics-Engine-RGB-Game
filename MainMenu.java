@@ -76,8 +76,8 @@ public class MainMenu extends Application
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
        //Instantiation of the scene in MainMenu
-        mainScene = new Scene(main, 900, 600);
-        mainScene.setFill(Color.GREEN);
+        mainScene = new Scene(main, 900, 600, Color.GREEN);
+        mainScene.setFill(Color.BLUE);
 
         //User can not resize the form
         window.setResizable(false);
