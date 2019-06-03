@@ -95,6 +95,7 @@ public class MainMenu extends Application
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
         
+        BackgroundImage myBI = new BackgroundImage(new Image("", ));
         
         
         //This class will handle the button event when user hits Back To Menu
