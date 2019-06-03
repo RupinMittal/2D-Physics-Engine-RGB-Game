@@ -44,7 +44,7 @@ public class Game extends Application
     private int vDirection;                     //the vertical direction
 
     //constants
-    private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
+    private final double Y_ACC = 50, X_ACC = 50, FRICT_ACC = 20, GRAV_ACC = 25, JUMP_ACC = 25, MAX_VEL = 5000; //the constants for movement
     private final int TILE_SIZE = 75;    //the tile size
 
     //variables for the actual display of the game
@@ -126,6 +126,14 @@ public class Game extends Application
                     if(futureXVel < 0)                      //if friction causes player to stop
                         futureXVel = 0;                     //stop the player
 
+                    //keypresses
+                    //if(up && character.getY() == 300)
+                        //futureYVel -= JUMP_ACC;
+                    if(left)
+                        futureXVel -= X_ACC / 30;
+                    if(right)
+                        futureXVel += X_ACC / 30;
+
                     //update the player's future position
                     futureX += futureXVel;
                     futureY += futureYVel;
@@ -183,8 +191,8 @@ public class Game extends Application
                         player.updateAnimation();
 
                         //check out of bounds movement
-                        if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
-                            player.setAliveStatus(false);                                  //kill the player
+                        //if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
+                            //player.setAliveStatus(false);                                  //kill the player
                         //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
                         //move to next sector
 
