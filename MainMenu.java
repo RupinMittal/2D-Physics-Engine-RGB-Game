@@ -65,16 +65,16 @@ public class MainMenu extends Application
         Color c = Color.GAINSBORO;
         
         //Instantiaion of buttons in MainMenu class
-        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 70, 70, true, false)));
+        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 150, 150, true, false)));
         // Make button backgrounds transparent
         playButton.setStyle("-fx-background-color: transparent;");
         
-        creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 100, 100, true, false)));
+        creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 250, 250, true, false)));
         creditsButton.setStyle("-fx-background-color: transparent;");
         
         backToMenuButton = new Button("Back To Menu");
         
-        howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 100, 100, true, false)));
+        howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 150, 150, true, false)));
         howToButton.setStyle("-fx-background-color: transparent;");
         
         plotButton = new Button("Plot of the Game");
@@ -82,8 +82,11 @@ public class MainMenu extends Application
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(70);
+        playButton.setMaxHeight(70);
         howToButton.setMaxWidth(70);
+        howToButton.setMaxHeight(70);
         creditsButton.setMaxWidth(70);
+        creditsButton.setMaxHeight(70);
         plotButton.setMaxWidth(70);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
@@ -99,7 +102,7 @@ public class MainMenu extends Application
         main.setAlignment(Pos.CENTER);
         
         //Declaration and instantiation of a label
-        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 150, 150, true, false))); 
+        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 200, 200, true, false))); 
         title.setStyle("-fx-background-color: transparent;");
         
         //Adds the buttons and label onto the layout of the scene
