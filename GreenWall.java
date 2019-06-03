@@ -76,7 +76,7 @@ public class GreenWall implements Wall
         int wallY = ((int)futureY / tileSize) * tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallY);
+        interactPlayer.setYPos(wallY - interactPlayer.getHeight());
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
@@ -97,7 +97,7 @@ public class GreenWall implements Wall
         int wallY = ((int)futureY / tileSize + 1) * tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallY - interactPlayer.getHeight());
+        interactPlayer.setYPos(wallY);
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
