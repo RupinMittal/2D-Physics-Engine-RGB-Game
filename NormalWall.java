@@ -27,7 +27,6 @@ public class NormalWall implements Wall
      * Sets the x velocity of the player to 0
      * 
      * @param futureX the theoretical x position of the player on the next frame
-     * @param futureY the theoretical y position of the player on the next frame
      */
     public void interactLeft(double futureX)
     {
@@ -38,7 +37,7 @@ public class NormalWall implements Wall
         interactPlayer.setXPos(wallX - interactPlayer.getWidth());
         
         //stop player's horizontal movement
-        interactPlayer.setXVelocity(0);
+        interactPlayer.setXVel(0);
     }
     
     /**
@@ -56,7 +55,7 @@ public class NormalWall implements Wall
         interactPlayer.setXPos(wallX);
         
         //stop player's horizontal movement
-        interactPlayer.setXVelocity(0);
+        interactPlayer.setXVel(0);
     }
     
     /**
@@ -74,7 +73,7 @@ public class NormalWall implements Wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
         //stop player's vertical movement
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setYVel(0);
     }
     
     /**
@@ -92,6 +91,6 @@ public class NormalWall implements Wall
         interactPlayer.setXPos(wallY);
         
         //stop player's vertical movement
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setYVel(0);
     }
 }

@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -44,7 +45,7 @@ public class Game extends Application
 
     //constants
     private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
-    private final int TILE_SIZE = 21;    //the tile size
+    private final int TILE_SIZE = 75;    //the tile size
 
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
@@ -65,8 +66,10 @@ public class Game extends Application
         //initialize the display
         root.getChildren().add(environment);
         root.getChildren().add(character);
-        character.setX(300);
-        character.setY(200);
+        player.setXPos(100);
+        player.setYPos(100);
+        character.setX(player.getXPos());
+        character.setY(player.getYPos());
         primaryStage.setTitle("RGB");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -128,7 +131,7 @@ public class Game extends Application
                     futureY += futureYVel;
 
                     //check collisions
-                    if(currentEnvironment.isCollision((int)futureX, (int)futureY))  //if there is a collision
+                    if(currentEnvironment.isCollision(futureX, futureY))  //if there is a collision
                     {
                         //get the direction of players movement
                         hDirection = getHorizontalDirection(player.getXPos(), futureX); //get the horizontal direction of movement
@@ -151,7 +154,7 @@ public class Game extends Application
                             }
                         }
                         else
-                        if(vDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 5))   //if it is a vertical interaction
+                        if(vDirection == (currentEnvironment.getTypeNumber(futureXVel, futureY) % 4))   //if it is a vertical interaction
                         {
                             switch (vDirection)
                             {
@@ -189,8 +192,8 @@ public class Game extends Application
                         //if player and enemy's position is the same, kill the player
 
                         //do offset
-                        if(character.getX() > cameraOffset)     //if character is out of offsetrange
-                            environment.setViewport(new Rectangle2D(character.getX() - character.getFitWidth(), 0, 200, 200));  //scroll screen
+                        //if(character.getX() > cameraOffset)     //if character is out of offsetrange
+                            //environment.setViewport(new Rectangle2D(character.getX() - character.getFitWidth(), 0, 200, 200));  //scroll screen
                     }
                     //else
                         //show game over screen
@@ -212,20 +215,22 @@ public class Game extends Application
     {
         //initialize main menu
         //initialize pause menu
-        gameEnvironment = new Environment("Sector1CollisionsData.txt", "Sector1Map.png");   //create first game environment
-        introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntoBackground.png");    //create intro environment
+        gameEnvironment = new Environment("test.txt", "Test.png");   //create first game environment
+        //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntoBackground.png");    //create intro environment
+        currentEnvironment = gameEnvironment;
         //player = mainMenu.getPlayer;              //initialize player
+        player = new Player(new Image("player.png", 0, 50, true, true), new Image("player.png", 0, 50, true, true), new Image("player.png", 0, 50, true, true), new Image("player.png", 0, 50, true, true));
         nWall = new NormalWall(player, TILE_SIZE);  //initialize the wall variables
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
-        environment = introEnvironment.getMapImageView();                           //get environment imageview
+        environment = gameEnvironment.getMapImageView();                            //get environment imageview
         character = player.getImageView();                                          //get player imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
         viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
-        environment.setViewport(viewport);                                          //set imageview to have the rectangle
-        cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
+        //environment.setViewport(viewport);                                          //set imageview to have the rectangle
+        //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
     }
 
     /*
@@ -250,16 +255,16 @@ public class Game extends Application
      * Method to get the direction that the player is moving vertically
      * @param currentYPos double the current position
      * @param nextY double the next position being moved to
-     * @return: 1 - up, 2- down
+     * @return: 3 - up, 4- down
      */
     private int getVerticalDirection(double currentYPos, double nextY)
     {
         int direction;  //the direction being travelled that will be returned
 
         if(nextY > currentYPos)     //if player is moving up
-            direction = 1;          //set direction to up
+            direction = 3;          //set direction to up
         else
-            direction = 2;          ///else, set direction to down
+            direction = 4;          ///else, set direction to down
 
         return direction;
     }
@@ -291,10 +296,9 @@ public class Game extends Application
     /*
      * Method to reset the player to the start of sector 1 after they die
      */
-    private void resetToSector1()
+    private void resetToSectorStart()
     {
         player.setAliveStatus(true);  //revive player
-        //change current environment to sector 1
         //reset players position to start of sector 1
         //display everything
     }

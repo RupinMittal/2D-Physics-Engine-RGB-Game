@@ -98,7 +98,7 @@ public class Player extends Movable
      * Method to set the onGreenVertical status of Player
      * @param onGVertical boolean true if player is on green wall, false if not
      */
-    public void setVerticalStatus(boolean onGVertical)
+    public void setGreenVerticalStatus(boolean onGVertical)
     {
         isOnGreenVertical = onGVertical;    //set new status status of isOnGreenVertical
     }

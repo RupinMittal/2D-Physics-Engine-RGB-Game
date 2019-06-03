@@ -39,7 +39,7 @@ public class BlueWall implements Wall
         interactPlayer.setXPos(wallX - interactPlayer.getWidth());
         
         //set player's horizontal movement
-        interactPlayer.setXVelocity(-1 * HORI_BOUNCE);
+        interactPlayer.setXVel(-1 * HORI_BOUNCE);
     }
     
     /**
@@ -57,7 +57,7 @@ public class BlueWall implements Wall
         interactPlayer.setXPos(wallX);
         
         //set player's horizontal movement
-        interactPlayer.setXVelocity(HORI_BOUNCE);
+        interactPlayer.setXVel(HORI_BOUNCE);
     }
     
     /**
@@ -75,7 +75,7 @@ public class BlueWall implements Wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
         //set player's vertical movement
-        interactPlayer.setYVelocity(VERT_BOUNCE);
+        interactPlayer.setYVel(VERT_BOUNCE);
     }
     
     /**
@@ -93,6 +93,6 @@ public class BlueWall implements Wall
         interactPlayer.setXPos(wallY);
         
         //set player's vertical movement
-        interactPlayer.setYVelocity(-1 * VERT_BOUNCE);
+        interactPlayer.setYVel(-1 * VERT_BOUNCE);
     }
 }

@@ -37,10 +37,10 @@ public class GreenWall implements Wall
         interactPlayer.setXPos(wallX - interactPlayer.getWidth());
         
         //stop player's horizontal movement
-        interactPlayer.setXVelocity(0);
+        interactPlayer.setXVel(0);
         
         //toggle player's green status
-        interactPlayer.setOnGreenHorizontal(true);
+        interactPlayer.setGreenHorizontalStatus(true);
     }
     
     /**
@@ -58,10 +58,10 @@ public class GreenWall implements Wall
         interactPlayer.setXPos(wallX);
         
         //stop player's horizontal movement
-        interactPlayer.setXVelocity(0);
+        interactPlayer.setXVel(0);
         
         //toggle player's green status
-        interactPlayer.setOnGreenHorizontal(true);
+        interactPlayer.setGreenHorizontalStatus(true);
     }
     
     /**
@@ -79,10 +79,10 @@ public class GreenWall implements Wall
         interactPlayer.setXPos(wallY - interactPlayer.getHeight());
         
         //stop player's vertical movement
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setYVel(0);
         
         //toggle player's green status
-        interactPlayer.setOnGreenVertical(true);
+        interactPlayer.setGreenVerticalStatus(true);
     }
     
     /**
@@ -100,9 +100,9 @@ public class GreenWall implements Wall
         interactPlayer.setXPos(wallY);
         
         //stop player's vertical movement
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setYVel(0);
         
         //toggle player's green status
-        interactPlayer.setOnGreenVertical(true);
+        interactPlayer.setGreenVerticalStatus(true);
     }
 }
