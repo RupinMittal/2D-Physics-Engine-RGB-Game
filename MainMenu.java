@@ -47,7 +47,7 @@ public class MainMenu extends Application
     public void start(Stage stage) throws Exception {
         window = stage;
         Music.loop("ollie.mp3");
-        Color c = Color.DARKGREY;
+        Color c = Color.GAINSBORO;
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
@@ -76,8 +76,7 @@ public class MainMenu extends Application
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
        //Instantiation of the scene in MainMenu
-        mainScene = new Scene(main, 900, 600, Color.GREEN);
-        mainScene.setFill(Color.BLUE);
+        mainScene = new Scene(main, 900, 600, c);
 
         //User can not resize the form
         window.setResizable(false);
