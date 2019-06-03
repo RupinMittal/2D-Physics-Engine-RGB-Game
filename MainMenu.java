@@ -57,27 +57,27 @@ public class MainMenu extends Application
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(150);
-        volumeButton.setMaxWidth(150);
+        howToButton.setMaxWidth(150);
         creditsButton.setMaxWidth(150);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
-        volumeButton.setOnAction(this::howTo);
+        howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
         //Centers the layout in the middle of the scene
         main.setAlignment(Pos.CENTER);
-        main.setFill(Color.DARKGREY);
         //Declaration and instantiation of a label
         Label label = new Label("RGB"); 
         
         
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
-        //Instantiation of the scene in MainMenu
+       //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600);
+        mainScene.setFill(Color.GREEN);
 
         //User can not resize the form
         window.setResizable(false);
