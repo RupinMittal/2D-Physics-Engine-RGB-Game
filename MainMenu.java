@@ -65,20 +65,26 @@ public class MainMenu extends Application
         Color c = Color.GAINSBORO;
         
         //Instantiaion of buttons in MainMenu class
-        playButton = new Button("Play");
-        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Play.PNG")));
-        playButton.setGraphic(iv);
+        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 70, 70, true, false)));
+        // Make button backgrounds transparent
+        playButton.setStyle("-fx-background-color: transparent;");
         
-        creditsButton = new Button("Credits");
+        creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 100, 100, true, false)));
+        creditsButton.setStyle("-fx-background-color: transparent;");
+        
         backToMenuButton = new Button("Back To Menu");
-        howToButton = new Button("How to Play");
+        
+        howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 100, 100, true, false)));
+        howToButton.setStyle("-fx-background-color: transparent;");
+        
         plotButton = new Button("Plot of the Game");
+        plotButton.setStyle("-fx-background-color: transparent;");
         
         //Sets the length of the button to a set size
-        playButton.setMaxWidth(150);
-        howToButton.setMaxWidth(150);
-        creditsButton.setMaxWidth(150);
-        plotButton.setMaxWidth(150);
+        playButton.setMaxWidth(70);
+        howToButton.setMaxWidth(70);
+        creditsButton.setMaxWidth(70);
+        plotButton.setMaxWidth(70);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
@@ -93,12 +99,11 @@ public class MainMenu extends Application
         main.setAlignment(Pos.CENTER);
         
         //Declaration and instantiation of a label
-        Label label = new Label(); 
-        //ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Title.PNG")));
-        //label.setGraphic(iv);
-
+        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 150, 150, true, false))); 
+        title.setStyle("-fx-background-color: transparent;");
+        
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(label, playButton, plotButton, howToButton, creditsButton);
+        main.getChildren().addAll(title, playButton, plotButton, howToButton, creditsButton);
         
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
