@@ -19,7 +19,7 @@ import javafx.scene.layout.Background;
  * @author Jonathan Lee & Daniel Herrick
  * @version MainMenu JavaFx class - RGB
  */
-public class MainMenu extends Application implements Menu
+public class MainMenu extends Application
 {
     private Button playButton;
     private Button backToMenuButton;
@@ -49,12 +49,12 @@ public class MainMenu extends Application implements Menu
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
-        volumeButton = new Button("Click Here for Good Music");
+        volumeButton = new Button("Click for music");
         
         //Sets the length of the button to a set size
-        playButton.setMaxWidth(100);
-        volumeButton.setMaxWidth(100);
-        creditsButton.setMaxWidth(100);
+        playButton.setMaxWidth(150);
+        volumeButton.setMaxWidth(150);
+        creditsButton.setMaxWidth(150);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
