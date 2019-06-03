@@ -60,11 +60,11 @@ public class Player extends Movable
     }
 
     /**
-     * Method to kill the Player
+     * Method to kill or revive the Player
      */
-    public void kill()
+    public void setAliveStatus(boolean life)
     {
-        isAlive = false;    //kill the player
+        isAlive = life;    //change the player's alive status
     }
 
     /**

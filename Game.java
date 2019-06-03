@@ -181,7 +181,7 @@ public class Game extends Application
 
                         //check out of bounds movement
                         if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
-                            player.kill();                                  //kill the player
+                            player.setAliveStatus(false);                                  //kill the player
                         //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
                         //move to next sector
 
@@ -194,9 +194,11 @@ public class Game extends Application
                     }
                     //else
                         //show game over screen
+                        //reset to sector 1
                 }
                 //else
                     //show game over screen
+                    //reset to sector 1
             }
         };
         timer.start();
@@ -247,7 +249,7 @@ public class Game extends Application
     /*
      * Method to get the direction that the player is moving vertically
      * @param currentYPos double the current position
-     * @oaram nextY double the next position being moved to
+     * @param nextY double the next position being moved to
      * @return: 1 - up, 2- down
      */
     private int getVerticalDirection(double currentYPos, double nextY)
@@ -284,5 +286,16 @@ public class Game extends Application
                     wall = nWall;                                //else normal wall
 
         return wall;
+    }
+
+    /*
+     * Method to reset the player to the start of sector 1 after they die
+     */
+    private void resetToSector1()
+    {
+        player.setAliveStatus(true);  //revive player
+        //change current environment to sector 1
+        //reset players position to start of sector 1
+        //display everything
     }
 }
