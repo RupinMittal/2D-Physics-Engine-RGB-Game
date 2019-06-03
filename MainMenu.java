@@ -25,16 +25,22 @@ import javafx.geometry.Insets;
 public class MainMenu extends Application
 {
     //Declaration of buttons that will be used in the main menu
-    private Button playButton; //Button that starts the game
-    private Button backToMenuButton; //Button that allows the user to go back to the MainMenu
-    private Button creditsButton; //Button that brings the user to a credit page
-    private Button howToButton; //Button that brings the user to a set of instruction
+    //Button that starts the game
+    private Button playButton; 
+    //Button that allows the user to go back to the MainMenu
+    private Button backToMenuButton; 
+    //Button that brings the user to a credit page
+    private Button creditsButton; 
+    //Button that brings the user to a set of instruction
+    private Button howToButton;
+    //Button that brings the user to the plot of the game
+    private Button plotButton; 
     
     //A top-level container that hosts a Scene
     private Stage window;
     
-    //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, and playMenu
-    private Scene mainScene, creditScene, playScene; 
+    //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
+    private Scene mainScene, creditScene, playScene, plotScene; 
    
     /**
      * This the constructor for MainMenu that will construct all the buttons
@@ -63,16 +69,19 @@ public class MainMenu extends Application
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
         howToButton = new Button("How to Play");
+        plotButton = new Button("Plot of the Game");
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(150);
         howToButton.setMaxWidth(150);
         creditsButton.setMaxWidth(150);
+        plotButton.setMaxWidth(150);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
         howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
+        plotButton.setOnAction(this::plot);
         
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
@@ -222,4 +231,54 @@ public class MainMenu extends Application
         //Display the scene to the user so that he/she can interact with it
         window.setScene(creditScene);
     }
+    
+    /**
+     * 
+     * @param howToClick - an event representing the user clicking the how to
+     * play button
+     */
+    public void plot(ActionEvent howtoClick)
+    {
+        //Layout for Plot Scene
+        VBox plotLayout = new VBox(20);
+        
+        //Centers the layout of the Credit scene in the middle
+        plotLayout.setAlignment(Pos.CENTER);
+        
+        //Set the color of the background to Gainsboro
+        plotLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        // Declaration and Instantiation of the Credit Texts
+        Text plotText = new Text();
+       
+        //Setting the font to Baskerville
+        plotText.setFont(Font.font("Baskerville", 20));
+        
+        String plotString = "Year 2050, humanity suffers from a catastrophic nuclear apocalypse. \n" 
+                              + "As one of the last survivor on Earth, you search for a way to go back in"   
+                              + " time to prevent the destruction of humanity. \n" 
+                              + "As you are wandering through a dingy wasteland, you encounter a  \n"
+                              + "Time Machine Laboratory in the mountains. \n"
+                              + "You enter the lab and discover that if you pass a series of tests known as the RGB sectors, \n"
+                              + "you will be able to go back in time to stop the nuclear apocalypse from occurring \n"
+                              + "Go and save our world, if you can little hero!";
+
+        //Setting the value of the plotText to the string plotString
+        plotText.setText(plotString);
+        
+        //Centering the text into middle of the scene
+        plotText.setTextAlignment(TextAlignment.CENTER);
+        
+        //Adding nodes to the layout
+        plotLayout.getChildren().add(plotText);
+        plotLayout.getChildren().add(backToMenuButton);
+        
+        //This class will handle the button event when user hits Back To Menu
+        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+        plotScene = new Scene(plotLayout, 900, 600);
+        
+        //Display the scene to the user so that he/she can interact with it
+        window.setScene(plotScene);
+    }
+
 }
