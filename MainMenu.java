@@ -24,12 +24,16 @@ import javafx.geometry.Insets;
  */
 public class MainMenu extends Application
 {
-    private Button playButton;
-    private Button backToMenuButton;
-    private Button creditsButton;
-    private Button howToButton;
+    //Declaration of buttons that will be used in the main menu
+    private Button playButton; //Button that starts the game
+    private Button backToMenuButton; //Button that allows the user to go back to the MainMenu
+    private Button creditsButton; //Button that brings the user to a credit page
+    private Button howToButton; //Button that brings the user to a set of instruction
     
+    //A top-level container that hosts a Scene
     private Stage window;
+    
+    //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, and playMenu
     private Scene mainScene, creditScene, playScene; 
    
     /**
@@ -46,8 +50,12 @@ public class MainMenu extends Application
     }
     
     public void start(Stage stage) throws Exception {
+        //Instatiation of the Stage window
         window = stage;
+        
+        //Have the music to play automatically as soon as the user opens the menu
         Music.loop("ollie.mp3");
+        //Declaration and Instantiaion of color
         Color c = Color.GAINSBORO;
         
         //Instantiaion of buttons in MainMenu class
@@ -68,22 +76,30 @@ public class MainMenu extends Application
         
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
+        
         //Centers the layout in the middle of the scene
         main.setAlignment(Pos.CENTER);
+        
         //Declaration and instantiation of a label
         Label label = new Label("RGB"); 
         
-        
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
+        
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
-        main.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        //Set the color of the background to Gainsboro
+        main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //User can not resize the form
         window.setResizable(false);
+        
+        //Sets the title of the window
         window.setTitle("RGB GANG");
         window.setScene(mainScene);
+        
+        //Stage will now appear so that the user can interact with it
         window.show();
     }
     
@@ -97,10 +113,10 @@ public class MainMenu extends Application
     {
         //Layout for Credit Scene
         VBox creditLayout = new VBox(20);
+        
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
         creditLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
-        
         
         //This class will handle the button event when user hits Back To Menu
         playScene = new Scene(creditLayout, 900, 600);
@@ -119,21 +135,31 @@ public class MainMenu extends Application
     {
         //Layout for Credit Scene
         VBox instructionLayout = new VBox(20);
+        
         //Centers the layout of the Credit scene in the middle
         instructionLayout.setAlignment(Pos.CENTER);
+        
+        //Set the color of the background to Gainsboro
         instructionLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
         
         // Declaration and Instantiation of the Credit Texts
         Text instructionText = new Text();
+       
+        //Setting the font to Baskerville
         instructionText.setFont(Font.font("Baskerville", 20));
+        
         String instructionString = "Press the arrow keys to move up, left, or right \n" 
                               + "Anything that is red will automatically kill you \n" 
-                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n";
+                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
+                              + "Complete all three sectors to beat the game\n"
+                              + "Good luck Adventurer, may the RGB guide you through the game! \n";
 
         //Setting the value of the creditText to the string creditString
         instructionText.setText(instructionString);
+        
         //Centering the text into middle of the scene
         instructionText.setTextAlignment(TextAlignment.CENTER);
+        
         //Adding nodes to the layout
         instructionLayout.getChildren().add(instructionText);
         instructionLayout.getChildren().add(backToMenuButton);
@@ -141,6 +167,8 @@ public class MainMenu extends Application
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         creditScene = new Scene(instructionLayout, 900, 600);
+        
+        //Display the scene to the user so that he/she can interact with it
         window.setScene(creditScene);
     }
     
@@ -156,23 +184,31 @@ public class MainMenu extends Application
     {
         //Layout for Credit Scene
         VBox creditLayout = new VBox(20);
+        
+        //Set the color of the background to Gainsboro
+        creditLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
         
         //Declaration and Instantiation of the Credit Texts
         Text creditText = new Text();
+        
+        //Setting the font to Baskerville
         creditText.setFont(Font.font("Baskerville", 20));
+        
         String creditString = "WELCOME to RGB \n\n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
-                              + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"
-                              + "Complete all three sectors to beat the game, good luck Adventurer! \n"
+                              + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"                      
                               + "Thank you Mr. Lantsberger for everything you've taught us. \n" 
                               + "It has been our pleasure being your students!";
 
         //Setting the value of the creditText to the string creditString
         creditText.setText(creditString);
+        
         //Centering the text into middle of the scene
         creditText.setTextAlignment(TextAlignment.CENTER);
+        
         //Adding nodes to the layout
         creditLayout.getChildren().add(creditText);
         creditLayout.getChildren().add(backToMenuButton);
@@ -180,6 +216,8 @@ public class MainMenu extends Application
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         creditScene = new Scene(creditLayout, 900, 600);
+        
+        //Display the scene to the user so that he/she can interact with it
         window.setScene(creditScene);
     }
 }
