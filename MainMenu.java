@@ -95,7 +95,7 @@ public class MainMenu extends Application
         label.setGraphic(iv);
 
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(label, playButton, howToButton, creditsButton);
+        main.getChildren().addAll(label, playButton, plotButton, howToButton, creditsButton);
         
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
@@ -255,8 +255,8 @@ public class MainMenu extends Application
         plotText.setFont(Font.font("Baskerville", 20));
         
         String plotString = "Year 2050, humanity suffers from a catastrophic nuclear apocalypse. \n" 
-                              + "As one of the last survivor on Earth, you search for a way to go back in"   
-                              + " time to prevent the destruction of humanity. \n" 
+                              + "As one of the last survivor on Earth, you search for a way \n"   
+                              + "to go back in time to prevent the destruction of humanity. \n" 
                               + "As you are wandering through a dingy wasteland, you encounter a  \n"
                               + "Time Machine Laboratory in the mountains. \n"
                               + "You enter the lab and discover that if you pass a series of tests known as the RGB sectors, \n"
