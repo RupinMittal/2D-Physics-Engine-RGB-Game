@@ -66,6 +66,9 @@ public class MainMenu extends Application
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
+        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Play.PNG")));
+        playButton.setGraphic(iv);
+        
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
         howToButton = new Button("How to Play");
@@ -91,8 +94,8 @@ public class MainMenu extends Application
         
         //Declaration and instantiation of a label
         Label label = new Label(); 
-        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Title.PNG")));
-        label.setGraphic(iv);
+        //ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Title.PNG")));
+        //label.setGraphic(iv);
 
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, plotButton, howToButton, creditsButton);
