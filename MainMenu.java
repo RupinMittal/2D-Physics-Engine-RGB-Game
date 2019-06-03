@@ -126,7 +126,7 @@ public class MainMenu extends Application
         //Centers the layout of the Credit scene in the middle
         instructionLayout.setAlignment(Pos.CENTER);
         
-        //Declaration and Instantiation of the Credit Texts
+        // Declaration and Instantiation of the Credit Texts
         Text instructionText = new Text();
         instructionText.setFont(Font.font("Baskerville", 20));
         String instructionString = "Press the arrow keys to move up, left, or right \n" 
