@@ -44,12 +44,13 @@ public class MainMenu extends Application
     
     public void start(Stage stage) throws Exception {
         window = stage;
+        Music.loop("ollie.mp3");
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
         creditsButton = new Button("Credits");
         backToMenuButton = new Button("Back To Menu");
-        volumeButton = new Button("Click for music");
+        volumeButton = new Button("How to Play");
         
         //Sets the length of the button to a set size
         playButton.setMaxWidth(150);
@@ -120,7 +121,30 @@ public class MainMenu extends Application
             // }
         // }  
         
-        Music.loop("ollie.mp3");
+        //Layout for Credit Scene
+        VBox instructionLayout = new VBox(20);
+        //Centers the layout of the Credit scene in the middle
+        instructionLayout.setAlignment(Pos.CENTER);
+        
+        //Declaration and Instantiation of the Credit Texts
+        Text instructionText = new Text();
+        instructionText.setFont(Font.font("Baskerville", 20));
+        String instructionString = "Press the arrow keys to move up, left, or right \n" 
+                              + "Anything that is red will automatically kill you \n" 
+                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n";
+
+        //Setting the value of the creditText to the string creditString
+        instructionText.setText(instructionString);
+        //Centering the text into middle of the scene
+        instructionText.setTextAlignment(TextAlignment.CENTER);
+        //Adding nodes to the layout
+        instructionLayout.getChildren().add(instructionText);
+        instructionLayout.getChildren().add(backToMenuButton);
+        
+        //This class will handle the button event when user hits Back To Menu
+        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+        creditScene = new Scene(instructionLayout, 900, 600);
+        window.setScene(creditScene);
     }
     
     /**
@@ -144,9 +168,6 @@ public class MainMenu extends Application
         String creditString = "WELCOME to RGB \n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
                               + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"
-                              + "Press the arrow keys to move up, left, or right \n" 
-                              + "Anything that is red will automatically kill you \n" 
-                              + "Blue walls allow you to double jump while green wall causes you to stick to walls \n"
                               + "Complete all three sectors to beat the game, good luck Adventurer! \n"
                               + "Thank you Mr. Lantsberger for everything you've taught us. \n" 
                               + "It has been our pleasure being your students!";
