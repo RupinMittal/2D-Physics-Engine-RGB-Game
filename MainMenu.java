@@ -12,8 +12,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.Group;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
+import javafx.scene.effect.BlurType;
 import javafx.scene.shape.Shape;
 import javafx.geometry.Insets;
+import javafx.scene.effect.InnerShadow;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -62,20 +64,42 @@ public class MainMenu extends Application
         //Have the music to play automatically as soon as the user opens the menu
         Music.loop("ollie.mp3");
         //Declaration and Instantiaion of color
-        Color c = Color.GAINSBORO;
+        Color c = Color.BLACK;
+        InnerShadow innerShadow = new InnerShadow();
+         //setting the type of blur for the shadow 
+         innerShadow.setBlurType(BlurType.GAUSSIAN); 
+         //Setting color for the shadow 
+         innerShadow.setColor(Color.DARKGRAY); 
         
         //Instantiaion of buttons in MainMenu class
-        playButton = new Button("Play");
-        creditsButton = new Button("Credits");
+        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+        // Make button backgrounds transparent
+        playButton.setStyle("-fx-background-color: transparent;");
+        playButton.setEffect(innerShadow);
+        
+        creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 150, 150, true, false)));
+        creditsButton.setStyle("-fx-background-color: transparent;");
+        creditsButton.setEffect(innerShadow);
+        
         backToMenuButton = new Button("Back To Menu");
-        howToButton = new Button("How to Play");
-        plotButton = new Button("Plot of the Game");
+        
+        howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
+        howToButton.setStyle("-fx-background-color: transparent;");
+        howToButton.setEffect(innerShadow);
+        
+        plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
+        plotButton.setStyle("-fx-background-color: transparent;");
+        plotButton.setEffect(innerShadow);
         
         //Sets the length of the button to a set size
-        playButton.setMaxWidth(150);
-        howToButton.setMaxWidth(150);
-        creditsButton.setMaxWidth(150);
-        plotButton.setMaxWidth(150);
+        playButton.setMaxWidth(70);
+        playButton.setMaxHeight(70);
+        howToButton.setMaxWidth(70);
+        howToButton.setMaxHeight(70);
+        creditsButton.setMaxWidth(70);
+        creditsButton.setMaxHeight(70);
+        plotButton.setMaxWidth(70);
+        plotButton.setMaxHeight(70);
         
         //This class will handle the button event when user hits Play or Credits (changes the scene to Play and Credit)
         playButton.setOnAction(e -> window.setScene(playScene));
@@ -90,12 +114,12 @@ public class MainMenu extends Application
         main.setAlignment(Pos.CENTER);
         
         //Declaration and instantiation of a label
-        Label label = new Label(); 
-        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("Title.PNG")));
-        label.setGraphic(iv);
-
+        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 300, 300, true, false))); 
+        title.setStyle("-fx-background-color: transparent;");
+        title.setEffect(innerShadow);
+        
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(label, playButton, plotButton, howToButton, creditsButton);
+        main.getChildren().addAll(title, playButton, plotButton, howToButton, creditsButton);
         
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
@@ -127,7 +151,7 @@ public class MainMenu extends Application
         
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
-        creditLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         
         //This class will handle the button event when user hits Back To Menu
         playScene = new Scene(creditLayout, 900, 600);
@@ -151,7 +175,7 @@ public class MainMenu extends Application
         instructionLayout.setAlignment(Pos.CENTER);
         
         //Set the color of the background to Gainsboro
-        instructionLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        instructionLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         
         // Declaration and Instantiation of the Credit Texts
         Text instructionText = new Text();
@@ -167,6 +191,7 @@ public class MainMenu extends Application
 
         //Setting the value of the creditText to the string creditString
         instructionText.setText(instructionString);
+        instructionText.setFill(Color.WHITE);
         
         //Centering the text into middle of the scene
         instructionText.setTextAlignment(TextAlignment.CENTER);
@@ -197,7 +222,7 @@ public class MainMenu extends Application
         VBox creditLayout = new VBox(20);
         
         //Set the color of the background to Gainsboro
-        creditLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
@@ -216,6 +241,7 @@ public class MainMenu extends Application
 
         //Setting the value of the creditText to the string creditString
         creditText.setText(creditString);
+        creditText.setFill(Color.WHITE);
         
         //Centering the text into middle of the scene
         creditText.setTextAlignment(TextAlignment.CENTER);
@@ -246,7 +272,7 @@ public class MainMenu extends Application
         plotLayout.setAlignment(Pos.CENTER);
         
         //Set the color of the background to Gainsboro
-        plotLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
+        plotLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         
         // Declaration and Instantiation of the Credit Texts
         Text plotText = new Text();
@@ -265,6 +291,7 @@ public class MainMenu extends Application
 
         //Setting the value of the plotText to the string plotString
         plotText.setText(plotString);
+        plotText.setFill(Color.WHITE);
         
         //Centering the text into middle of the scene
         plotText.setTextAlignment(TextAlignment.CENTER);
@@ -280,5 +307,4 @@ public class MainMenu extends Application
         //Display the scene to the user so that he/she can interact with it
         window.setScene(plotScene);
     }
-
 }
