@@ -10,7 +10,9 @@ import javafx.scene.text.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Group;
-import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -45,6 +47,7 @@ public class MainMenu extends Application
     public void start(Stage stage) throws Exception {
         window = stage;
         Music.loop("ollie.mp3");
+        Color c = Color.DARKGREY;
         
         //Instantiaion of buttons in MainMenu class
         playButton = new Button("Play");
@@ -66,6 +69,7 @@ public class MainMenu extends Application
         VBox main = new VBox(20);
         //Centers the layout in the middle of the scene
         main.setAlignment(Pos.CENTER);
+        main.setFill(Color.DARKGREY);
         //Declaration and instantiation of a label
         Label label = new Label("RGB"); 
         
@@ -94,8 +98,6 @@ public class MainMenu extends Application
         VBox creditLayout = new VBox(20);
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
-        
-        BackgroundImage myBI = new BackgroundImage(new Image("", ));
         
         
         //This class will handle the button event when user hits Back To Menu
