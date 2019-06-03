@@ -81,8 +81,10 @@ public class MainMenu extends Application
         main.setAlignment(Pos.CENTER);
         
         //Declaration and instantiation of a label
-        Label label = new Label("RGB"); 
-        
+        Label label = new Label(); 
+        ImageView iv = new ImageView(new Image("Title.PNG"));
+        label.setGraphic(iv);
+
         //Adds the buttons and label onto the layout of the scene
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
         
