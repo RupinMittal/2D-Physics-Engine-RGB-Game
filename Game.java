@@ -44,8 +44,8 @@ public class Game extends Application
     private int vDirection;                     //the vertical direction
 
     //constants
-    private final double Y_ACC = 50, X_ACC = 50, FRICT_ACC = 20, GRAV_ACC = 25, JUMP_ACC = 25, MAX_VEL = 5000; //the constants for movement
-    private final int TILE_SIZE = 75;    //the tile size
+    private final double Y_ACC = 10, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 50; //the constants for movement
+    private final int TILE_SIZE = 32;    //the tile size
 
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
@@ -127,8 +127,8 @@ public class Game extends Application
                         futureXVel = 0;                     //stop the player
 
                     //keypresses
-                    //if(up && character.getY() == 300)
-                        //futureYVel -= JUMP_ACC;
+                    if(up && player.getYVel() == 0)
+                        futureYVel -= JUMP_ACC;
                     if(left)
                         futureXVel -= X_ACC / 30;
                     if(right)
@@ -166,10 +166,10 @@ public class Game extends Application
                         {
                             switch (vDirection)
                             {
-                                case 1:                                         //if player is moving and colliding up
+                                case 3:                                         //if player is moving and colliding up
                                     colliderWall.interactCeiling(futureY);      //interact
                                     break;
-                                case 2:                                         //if player is moving and colliding down
+                                case 4:                                         //if player is moving and colliding down
                                     colliderWall.interactFloor(futureY);        //interact
                                     break;
                             }
@@ -180,6 +180,10 @@ public class Game extends Application
                         //if there are no collisions, increment the player position normally
                         player.setXPos(futureX);
                         player.setYPos(futureY);
+
+                        //if there are no collisions, increment the player velocities normally
+                        player.setXVel(futureXVel);
+                        player.setYVel(futureYVel);
                     }
 
                     if(player.isAlive())                        //moving only happens if player is now alive
@@ -287,16 +291,16 @@ public class Game extends Application
         Wall wall;                                                //the wall object that will be returned
         int typeNumber = currentEnvironment.getTypeNumber(nextX, nextY); //get the wall number
 
-        if((typeNumber >= 0) && (typeNumber <= 3))      //if the wall number is 0, 1, 2, 3
-            wall = bWall;
+        if((typeNumber >= 1) && (typeNumber <= 4))      //if the wall number is 1, 2, 3, 4
+            wall = nWall;
         else
-            if((typeNumber >= 4) && (typeNumber <= 7))      //if the wall number is 4, 5, 6, 7
-                wall = gWall;
+            if((typeNumber >= 5) && (typeNumber <= 8))      //if the wall number is 5, 6, 7, 8
+                wall = rWall;
             else
-                if((typeNumber >= 8) && (typeNumber <= 11))      //if the wall number is 8, 9, 10, 11
-                    wall = rWall;
+                if((typeNumber >= 9) && (typeNumber <= 12))      //if the wall number is 9, 10, 11, 12
+                    wall = gWall;
                 else
-                    wall = nWall;                                //else normal wall
+                    wall = bWall;                                //else blue wall
 
         return wall;
     }

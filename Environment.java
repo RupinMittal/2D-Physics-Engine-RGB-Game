@@ -12,7 +12,7 @@ public class Environment
 {
     private ImageView map;                      //the ImageView that is the map of the environment, made on tiled
     private int[][] collisionsArray;            //the array that represents the tiles in the map
-    private final int TILE_SIDE_SIZE = 75;      //the height and width of each tile
+    private final int TILE_SIDE_SIZE = 32;      //the height and width of each tile
 
     //constructor
     /**
@@ -23,7 +23,7 @@ public class Environment
     public Environment(String collisionsDataFile, String mapFile)
     {
         createCollisionsArray(collisionsDataFile);        //call to create the collisionsArray
-        map = new ImageView(new Image(mapFile, 0, 600, true, true));     //create the map imageview
+        map = new ImageView(new Image(mapFile, 0, 512, true, true));     //create the map imageview
     }
 
     /**
