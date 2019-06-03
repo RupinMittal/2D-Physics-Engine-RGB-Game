@@ -10,9 +10,10 @@ import javafx.scene.text.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Group;
-import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
+import javafx.geometry.Insets;
 
 /**
  * MainMenu is a type of Menu and allows the user to start the game, look at the
@@ -77,6 +78,7 @@ public class MainMenu extends Application
         main.getChildren().addAll(label, playButton, howToButton, creditsButton);
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
+        main.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //User can not resize the form
         window.setResizable(false);
@@ -97,6 +99,7 @@ public class MainMenu extends Application
         VBox creditLayout = new VBox(20);
         //Centers the layout of the Credit scene in the middle
         creditLayout.setAlignment(Pos.CENTER);
+        creditLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
         
         
         //This class will handle the button event when user hits Back To Menu
@@ -118,6 +121,7 @@ public class MainMenu extends Application
         VBox instructionLayout = new VBox(20);
         //Centers the layout of the Credit scene in the middle
         instructionLayout.setAlignment(Pos.CENTER);
+        instructionLayout.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
         
         // Declaration and Instantiation of the Credit Texts
         Text instructionText = new Text();
