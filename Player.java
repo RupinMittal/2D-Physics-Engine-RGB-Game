@@ -11,7 +11,6 @@ public class Player extends Movable
 {
     //variables
     //image variables
-    private ImageView characterImageView;    //the imageview for the player and the current image being used
     private Image picRunning1;               //the first image of character running
     private Image picRunning2;               //the second image of character running
     private Image picJump;                   //the image of character jumping
@@ -27,7 +26,6 @@ public class Player extends Movable
     private boolean useRunPic1;                 //used to alternate between the two running pictures for running effect
 
     //constructor
-
     /**
      * Constructor for Player objects
      * @param pStill Image of still player
@@ -37,11 +35,11 @@ public class Player extends Movable
      */
     public Player(Image pStill, Image pRun1, Image pRun2, Image pJump)
     {
-        picStill = pStill;              //initialize variables in initial state
+        defaultImage = pStill;              //initialize variables in initial state
         picRunning1 = pRun1;
         picRunning2 = pRun2;
         picJump = pJump;
-        characterImageView = new ImageView(picStill);
+        movableImageView = new ImageView(defaultImage);
         isAlive = true;
         isOnGreenHorizontal = false;
         isOnGreenVertical = false;
@@ -111,40 +109,30 @@ public class Player extends Movable
     {
         if((xVel == 0) && (yVel == 0))                        //if character is completely still
         {
-            characterImageView.setImage(picStill);
+            movableImageView.setImage(defaultImage);
             runTimer = 0;
         }
         else
         {
             if ((yVel != 0))                                  //if character is moving vertically
-                characterImageView.setImage(picJump);
+                movableImageView.setImage(picJump);
             else
                 if (xVel > 0)                                 //if player is moving right
-                    characterImageView.setScaleX(1);          //character faces right
+                    movableImageView.setScaleX(1);          //character faces right
                 else                                          //if character moves left
-                    characterImageView.setScaleX(-1);         //character faces left
+                    movableImageView.setScaleX(-1);         //character faces left
 
             if(runTimer == 0)                                //if it is time to alternate sprites
             {
                 if(useRunPic1)                                //if picRunning1 is to be used
-                    characterImageView.setImage(picRunning1);
+                    movableImageView.setImage(picRunning1);
                 else                                          //if picRunning2 is to be used
-                    characterImageView.setImage(picRunning2);
+                    movableImageView.setImage(picRunning2);
                 useRunPic1 = !useRunPic1;                     //alternate usage
             }
             runTimer++;
             if(runTimer == 15)
                 runTimer = 0;                                 //reset timer
         }
-    }
-
-    /**
-     * Method to return the ImageView of the character
-     * @return ImageView of the player
-     */
-    @Override
-    public ImageView getImageView()
-    {
-        return characterImageView;
     }
 }

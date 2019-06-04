@@ -20,8 +20,8 @@ public class Enemy extends Movable
      */
     public Enemy(Image pic)
     {
-        picStill = pic;                                //set the image for the enemy
-        enemyImageView = new ImageView(picStill);      //create the imageview
+        defaultImage = pic;                            //set the image for the enemy
+        enemyImageView = new ImageView(defaultImage);  //create the imageview
         enemyImageView.setRotate(0);                   //set initial rotation value
     }
 

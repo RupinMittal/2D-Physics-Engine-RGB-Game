@@ -49,7 +49,6 @@ public class Game extends Application
 
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
-    private ImageView character;             //the character being used
     private Group root;                      //the Group
     private Scene scene;                     //the scene
 
@@ -65,11 +64,9 @@ public class Game extends Application
         initializeVariables();      //initialize all the variables
         //initialize the display
         root.getChildren().add(environment);
-        root.getChildren().add(character);
+        root.getChildren().add(player.getImageView());
         player.setXPos(100);
         player.setYPos(100);
-        character.setX(player.getXPos());
-        character.setY(player.getYPos());
         primaryStage.setTitle("RGB");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -194,13 +191,13 @@ public class Game extends Application
                                 {
                                     colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
                                     
-                                    //bottom left collision with floor
+                                    //bottom right collision with floor
                                     if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
                                         colliderWall.interactFloor(futureY);
                                     
-                                    //bottom left collision with left wall
+                                    //bottom right collision with right wall
                                     if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
@@ -219,9 +216,6 @@ public class Game extends Application
 
                     if(player.isAlive())                        //moving only happens if player is now alive
                     {
-                        character.setX(player.getXPos());       //move player
-                        character.setY(player.getYPos());
-
                         //update the animation that is being run
                         player.updateAnimation();
 
@@ -268,7 +262,6 @@ public class Game extends Application
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
-        character = player.getImageView();                                          //get player imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
         viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game

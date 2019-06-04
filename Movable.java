@@ -10,11 +10,10 @@ import javafx.scene.image.ImageView;
 public abstract class Movable
 {
     //variables
-    protected double xPos;        //the horizontal position in pixels
-    protected double yPos;        //the vertical position in pixels
     protected double xVel;        //the horizontal velocity
     protected double yVel;        //the vertical velocity
-    protected Image picStill;   //the image of the still movable object
+    protected ImageView movableImageView;   //the image of the still movable object
+    protected Image defaultImage;   //the image of the still movable object
 
     //methods
     /**
@@ -29,7 +28,7 @@ public abstract class Movable
      */
     public void setXPos(double xP)
     {
-        xPos = xP;   //set the horizontal position
+        movableImageView.setX(xP);   //set the horizontal position
     }
 
     /**
@@ -38,7 +37,7 @@ public abstract class Movable
      */
     public void setYPos(double yP)
     {
-        yPos = yP;   //set the vertical position
+        movableImageView.setY(yP);   //set the vertical position
     }
 
     /**
@@ -65,7 +64,7 @@ public abstract class Movable
      */
     public double getXPos()
     {
-        return xPos;   //get the horizontal position
+        return movableImageView.getX();   //get the horizontal position
     }
 
     /**
@@ -74,7 +73,7 @@ public abstract class Movable
      */
     public double getYPos()
     {
-        return yPos;   //get the horizontal position
+        return movableImageView.getY();   //get the horizontal position
     }
 
     /**
@@ -101,7 +100,7 @@ public abstract class Movable
      */
     public double getHeight()
     {
-        return picStill.getRequestedHeight();    //return the height
+        return movableImageView.getFitHeight();    //return the height
     }
 
     /**
@@ -110,12 +109,15 @@ public abstract class Movable
      */
     public double getWidth()
     {
-        return picStill.getRequestedWidth();    //return the width
+        return movableImageView.getFitWidth();    //return the width
     }
 
     /**
      * Method to get the ImageView being used
      * @return ImageView the imagview of the movable
      */
-    public abstract ImageView getImageView();
+    public ImageView getImageView()
+    {
+        return movableImageView;
+    }
 }

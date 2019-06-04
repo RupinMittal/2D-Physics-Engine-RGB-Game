@@ -70,7 +70,7 @@ public class NormalWall implements Wall
         int wallY = (int)futureY - (int)futureY % tileSize;
         
         //set player to touching wall
-        interactPlayer.setYPos(wallY/* - interactPlayer.getHeight()*/);
+        interactPlayer.setYPos(wallY - interactPlayer.getHeight());
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
