@@ -67,10 +67,10 @@ public class NormalWall implements Wall
     public void interactFloor(double futureY)
     {
         //lowest multiple of tileSize less than futureY - wall top edge
-        int wallY = ((int)futureY / tileSize) * tileSize;
+        int wallY = (int)futureY - (int)futureY % tileSize;
         
         //set player to touching wall
-        interactPlayer.setYPos(wallY - interactPlayer.getHeight());
+        interactPlayer.setYPos(wallY/* - interactPlayer.getHeight()*/);
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
@@ -85,7 +85,7 @@ public class NormalWall implements Wall
     public void interactCeiling(double futureY)
     {
         //highest multiple of tileSize more than futureY - wall bottom edge
-        int wallY = ((int)futureY / tileSize + 1) * tileSize;
+        int wallY = (int)futureY - (int)futureY % tileSize + tileSize;
         
         //set player to touching wall
         interactPlayer.setYPos(wallY);

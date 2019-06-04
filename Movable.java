@@ -101,7 +101,7 @@ public abstract class Movable
      */
     public double getHeight()
     {
-        return picStill.getHeight();    //return the height
+        return picStill.getRequestedHeight();    //return the height
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class Movable
      */
     public double getWidth()
     {
-        return picStill.getWidth();    //return the width
+        return picStill.getRequestedWidth();    //return the width
     }
 
     /**
