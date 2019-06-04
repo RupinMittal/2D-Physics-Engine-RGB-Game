@@ -139,6 +139,8 @@ public class Game extends Application
                     futureY += futureYVel;
 
                     //check collisions
+                    boolean horizontalCollision = false;
+                    boolean verticalCollision = false;
                     if(currentEnvironment.isCollision(futureX, futureY))  //top left corner of player
                     {
                         colliderWall = getColliderWall(futureX, futureY);
@@ -149,8 +151,7 @@ public class Game extends Application
                             || currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 3))
                         {
                             colliderWall.interactCeiling(futureY);
-                            player.setXPos(futureX);
-                            player.setXVel(futureXVel);
+                            verticalCollision = true;
                         }
                         else //top left collision with left wall
                             if(currentEnvironment.isCollision(futureX, player.getYPos())
@@ -158,94 +159,88 @@ public class Game extends Application
                                 || currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 2))
                             {
                                 colliderWall.interactRight(futureX);
-                                player.setYPos(futureY);
-                                player.setYVel(futureYVel);
+                                horizontalCollision = true;
                             }
                     }
-                    else
-                        if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY))  //top right corner of player
+                    
+                    if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY))  //top right corner of player
+                    {
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY);
+                        
+                        //top right collision with ceiling
+                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY)
+                            && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) == 1
+                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 3))
                         {
-                            colliderWall = getColliderWall(futureX + player.getWidth(), futureY);
-                            
-                            //top right collision with ceiling
-                            if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY)
-                                && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) == 1
-                                || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 3))
-                            {
-                                colliderWall.interactCeiling(futureY);
-                                player.setXPos(futureX);
-                                player.setXVel(futureXVel);
-                            }
-                            else //top right collision with right wall
-                                if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
-                                    && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
-                                    || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
-                                {
-                                    colliderWall.interactLeft(futureX + player.getWidth());
-                                    player.setYPos(futureY);
-                                    player.setYVel(futureYVel);
-                                }
+                            colliderWall.interactCeiling(futureY);
+                            verticalCollision = true;
                         }
-                        else
-                            if(currentEnvironment.isCollision(futureX, futureY + player.getHeight()))  //bottom left corner of player
+                        else //top right collision with right wall
+                            if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
+                                && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
+                                || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
                             {
-                                colliderWall = getColliderWall(futureX, futureY + player.getHeight());
-                                
-                                //bottom left collision with floor
-                                if(currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight())
-                                    && (currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) == 1
-                                    || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 4))
-                                {
-                                    colliderWall.interactFloor(futureY + player.getHeight());
-                                    player.setXPos(futureX);
-                                    player.setXVel(futureXVel);
-                                }
-                                else //bottom left collision with left wall
-                                    if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
-                                        && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) == 1
-                                        || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) % 4 == 2))
-                                    {
-                                        colliderWall.interactRight(futureX);
-                                        player.setYPos(futureY);
-                                        player.setYVel(futureYVel);
-                                    }
+                                colliderWall.interactLeft(futureX + player.getWidth());
+                                horizontalCollision = true;
                             }
-                            else
-                                if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight()))  //bottom right corner of player
-                                {
-                                    colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
-                                    
-                                    //bottom right collision with floor
-                                    if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
-                                        && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
-                                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
-                                    {
-                                        colliderWall.interactFloor(futureY + player.getHeight());
-                                        player.setXPos(futureX);
-                                        player.setXVel(futureXVel);
-                                    }
-                                    else //bottom right collision with right wall
-                                        if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
-                                            && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
-                                            || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
-                                        {
-                                            colliderWall.interactLeft(futureX + player.getWidth());
-                                            player.setYPos(futureY);
-                                            player.setYVel(futureYVel);
-                                        }
-                                }
-                                else
-                                {
-                                    //if there are no collisions, increment the player position normally
-                                    player.setXPos(futureX);
-                                    player.setYPos(futureY);
-            
-                                    //if there are no collisions, increment the player velocities normally
-                                    player.setXVel(futureXVel);
-                                    player.setYVel(futureYVel);
-                                }
+                    }
+                    
+                    if(currentEnvironment.isCollision(futureX, futureY + player.getHeight()))  //bottom left corner of player
+                    {
+                        colliderWall = getColliderWall(futureX, futureY + player.getHeight());
+                        
+                        //bottom left collision with floor
+                        if(currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight())
+                            && (currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) == 1
+                            || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 4))
+                        {
+                            colliderWall.interactFloor(futureY + player.getHeight());
+                            verticalCollision = true;
+                        }
+                        else //bottom left collision with left wall
+                            if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
+                                && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) == 1
+                                || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) % 4 == 2))
+                            {
+                                colliderWall.interactRight(futureX);
+                                horizontalCollision = true;
+                            }
+                    }
+                    
+                    if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight()))  //bottom right corner of player
+                    {
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
+                        
+                        //bottom right collision with floor
+                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
+                            && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
+                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
+                        {
+                            colliderWall.interactFloor(futureY + player.getHeight());
+                            verticalCollision = true;
+                        }
+                        else //bottom right collision with right wall
+                            if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
+                                && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
+                                || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
+                            {
+                                colliderWall.interactLeft(futureX + player.getWidth());
+                                horizontalCollision = true;
+                            }
+                    }
+                    
+                    if(!horizontalCollision)
+                    {
+                        player.setXPos(futureX);
+                        player.setXVel(futureXVel);
+                    }
+                    if(!verticalCollision)
+                    {
+                        player.setYPos(futureY);
+                        player.setYVel(futureYVel);
+                    }
 
-                    if(player.isAlive())                        //moving only happens if player is now alive
+                    if(player.isAlive())
                     {
                         //update the animation that is being run
                         player.updateAnimation();
