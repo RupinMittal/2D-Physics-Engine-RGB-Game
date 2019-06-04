@@ -148,7 +148,7 @@ public class Game extends Application
                         //top left collision with ceiling
                         if(currentEnvironment.isCollision(player.getXPos(), futureY)
                             && (currentEnvironment.getTypeNumber(player.getXPos(), futureY) == 1
-                            || currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 3))
+                            || currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 4))
                         {
                             colliderWall.interactCeiling(futureY);
                             verticalCollision = true;
@@ -170,7 +170,7 @@ public class Game extends Application
                         //top right collision with ceiling
                         if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY)
                             && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) == 1
-                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 3))
+                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 4))
                         {
                             colliderWall.interactCeiling(futureY);
                             verticalCollision = true;
@@ -192,7 +192,7 @@ public class Game extends Application
                         //bottom left collision with floor
                         if(currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight())
                             && (currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) == 1
-                            || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 4))
+                            || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 3))
                         {
                             colliderWall.interactFloor(futureY + player.getHeight());
                             verticalCollision = true;
@@ -214,7 +214,7 @@ public class Game extends Application
                         //bottom right collision with floor
                         if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
                             && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
-                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
+                            || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 3))
                         {
                             colliderWall.interactFloor(futureY + player.getHeight());
                             verticalCollision = true;

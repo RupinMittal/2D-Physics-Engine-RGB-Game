@@ -34,7 +34,7 @@ public class NormalWall implements Wall
         int wallX = (int)futureX - (int)futureX % tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallX - interactPlayer.getWidth() - 0.05);
+        interactPlayer.setXPos(wallX - interactPlayer.getWidth() - 0.01);
         
         //stop player's horizontal movement
         interactPlayer.setXVel(0);
@@ -52,7 +52,7 @@ public class NormalWall implements Wall
         int wallX = (int)futureX - (int)futureX % tileSize + tileSize; 
         
         //set player to touching wall
-        interactPlayer.setXPos(wallX);
+        interactPlayer.setXPos(wallX + 0.01);
         
         //stop player's horizontal movement
         interactPlayer.setXVel(0);
@@ -70,7 +70,7 @@ public class NormalWall implements Wall
         int wallY = (int)futureY - (int)futureY % tileSize;
         
         //set player to touching wall
-        interactPlayer.setYPos(wallY - interactPlayer.getHeight());
+        interactPlayer.setYPos(wallY - interactPlayer.getHeight() - 0.01);
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
@@ -88,7 +88,7 @@ public class NormalWall implements Wall
         int wallY = (int)futureY - (int)futureY % tileSize + tileSize;
         
         //set player to touching wall
-        interactPlayer.setYPos(wallY);
+        interactPlayer.setYPos(wallY + 0.01);
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
