@@ -126,7 +126,7 @@ public class Game extends Application
                         player.setXVel(0);
 
                     //keypresses
-                    if(up && player.getYVel() == 0)
+                    if(up && player.getYVel() == 0) //CHANGE LATER
                         futureYVel -= JUMP_ACC;
                     if(left)
                         futureXVel -= X_ACC / 30;
@@ -146,13 +146,16 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(player.getXPos(), futureY)
                             && (currentEnvironment.getTypeNumber(player.getXPos(), futureY) == 1
                             || currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 3))
+                        {
                             colliderWall.interactCeiling(futureY);
-                        
-                        //top left collision with left wall
-                        if(currentEnvironment.isCollision(futureX, player.getYPos())
-                            && (currentEnvironment.getTypeNumber(futureX, player.getYPos()) == 1
-                            || currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 2))
-                            colliderWall.interactLeft(futureX);
+                            player.setXPos(futureX);
+                            player.setXVel(futureXVel);
+                        }
+                        else //top left collision with left wall
+                            if(currentEnvironment.isCollision(futureX, player.getYPos())
+                                && (currentEnvironment.getTypeNumber(futureX, player.getYPos()) == 1
+                                || currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 2))
+                                colliderWall.interactRight(futureX);
                     }
                     else
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY))  //top right corner of player
@@ -163,13 +166,16 @@ public class Game extends Application
                             if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY)
                                 && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) == 1
                                 || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 3))
+                            {
                                 colliderWall.interactCeiling(futureY);
-                            
-                            //top right collision with right wall
-                            if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
-                                && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
-                                || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
-                                colliderWall.interactRight(futureX + player.getWidth());
+                                player.setXPos(futureX);
+                                player.setXVel(futureXVel);
+                            }
+                            else //top right collision with right wall
+                                if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
+                                    && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
+                                    || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
+                                    colliderWall.interactLeft(futureX + player.getWidth());
                         }
                         else
                             if(currentEnvironment.isCollision(futureX, futureY + player.getHeight()))  //bottom left corner of player
@@ -180,13 +186,16 @@ public class Game extends Application
                                 if(currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight())
                                     && (currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) == 1
                                     || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 4))
+                                {
                                     colliderWall.interactFloor(futureY + player.getHeight());
-                                
-                                //bottom left collision with left wall
-                                if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
-                                    && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) == 1
-                                    || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) % 4 == 2))
-                                    colliderWall.interactLeft(futureX);
+                                    player.setXPos(futureX);
+                                    player.setXVel(futureXVel);
+                                }
+                                else //bottom left collision with left wall
+                                    if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
+                                        && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) == 1
+                                        || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) % 4 == 2))
+                                        colliderWall.interactRight(futureX);
                             }
                             else
                                 if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight()))  //bottom right corner of player
@@ -197,13 +206,16 @@ public class Game extends Application
                                     if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
+                                    {
                                         colliderWall.interactFloor(futureY + player.getHeight());
-                                    
-                                    //bottom right collision with right wall
-                                    if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
-                                        && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
-                                        || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
-                                        colliderWall.interactRight(futureX + player.getWidth());
+                                        player.setXPos(futureX);
+                                        player.setXVel(futureXVel);
+                                    }
+                                    else //bottom right collision with right wall
+                                        if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
+                                            && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
+                                            || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
+                                            colliderWall.interactLeft(futureX + player.getWidth());
                                 }
                                 else
                                 {
@@ -269,42 +281,6 @@ public class Game extends Application
         viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
         //environment.setViewport(viewport);                                          //set imageview to have the rectangle
         //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
-    }
-
-    /*
-     * Method to get the direction that the player is moving horizontally
-     * @param currentXPos double the current position
-     * @oaram nextX double the next position being moved to
-     * @return: 1 - right, 2- left
-     */
-    private int getHorizontalDirection(double currentXPos, double nextX)
-    {
-        int direction;  //the direction being travelled that will be returned
-
-        if(nextX > currentXPos)     //if player is moving to right
-            direction = 1;          //set direction to right
-        else
-            direction = 2;          ///else, set direction to left
-
-        return direction;
-    }
-
-    /*
-     * Method to get the direction that the player is moving vertically
-     * @param currentYPos double the current position
-     * @param nextY double the next position being moved to
-     * @return: 3 - up, 4- down
-     */
-    private int getVerticalDirection(double currentYPos, double nextY)
-    {
-        int direction;  //the direction being travelled that will be returned
-
-        if(nextY > currentYPos)     //if player is moving up
-            direction = 3;          //set direction to up
-        else
-            direction = 4;          ///else, set direction to down
-
-        return direction;
     }
 
     /*
