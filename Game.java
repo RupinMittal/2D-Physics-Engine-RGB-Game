@@ -121,9 +121,9 @@ public class Game extends Application
                     if(Math.abs(futureXVel) > MAX_VEL)                              //if the velocity is more than the max
                         futureXVel = MAX_VEL * Math.signum(futureXVel);             //then limit the velocity
                     //Stopping player if velocity passes 0 (friction)
-                    if(Math.signum(futureXVel) == -1 * Math.signum(player.getXVel())
+                    if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(player.getXVel())
                         && !left && !right)
-                        player.setXVel(0);
+                        futureXVel = 0;
 
                     //keypresses
                     if(up && player.getYVel() == 0) //CHANGE LATER
@@ -155,7 +155,11 @@ public class Game extends Application
                             if(currentEnvironment.isCollision(futureX, player.getYPos())
                                 && (currentEnvironment.getTypeNumber(futureX, player.getYPos()) == 1
                                 || currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 2))
+                            {
                                 colliderWall.interactRight(futureX);
+                                player.setYPos(futureY);
+                                player.setYVel(futureYVel);
+                            }
                     }
                     else
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY))  //top right corner of player
@@ -175,7 +179,11 @@ public class Game extends Application
                                 if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
                                     && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
                                     || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
+                                {
                                     colliderWall.interactLeft(futureX + player.getWidth());
+                                    player.setYPos(futureY);
+                                    player.setYVel(futureYVel);
+                                }
                         }
                         else
                             if(currentEnvironment.isCollision(futureX, futureY + player.getHeight()))  //bottom left corner of player
@@ -195,7 +203,11 @@ public class Game extends Application
                                     if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight()) % 4 == 2))
+                                    {
                                         colliderWall.interactRight(futureX);
+                                        player.setYPos(futureY);
+                                        player.setYVel(futureYVel);
+                                    }
                             }
                             else
                                 if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight()))  //bottom right corner of player
@@ -215,7 +227,11 @@ public class Game extends Application
                                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
                                             && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
                                             || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
+                                        {
                                             colliderWall.interactLeft(futureX + player.getWidth());
+                                            player.setYPos(futureY);
+                                            player.setYVel(futureYVel);
+                                        }
                                 }
                                 else
                                 {
