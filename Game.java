@@ -126,8 +126,9 @@ public class Game extends Application
                         futureXVel = 0;
 
                     //keypresses
-                    if(up && player.getYVel() == 0) //CHANGE LATER
-                        futureYVel -= JUMP_ACC;
+                    if(up && (currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight() + 1) 
+                            || currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight() + 1)))
+                        futureYVel = -1 * JUMP_ACC;
                     if(left)
                         futureXVel -= X_ACC / 30;
                     if(right)
