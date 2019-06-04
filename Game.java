@@ -44,7 +44,7 @@ public class Game extends Application
     private int vDirection;                     //the vertical direction
 
     //constants
-    private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 1, JUMP_ACC = 5, MAX_VEL = 50; //the constants for movement
+    private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 50; //the constants for movement
     private final int TILE_SIZE = 32;    //the tile size
 
     //variables for the actual display of the game
@@ -118,10 +118,12 @@ public class Game extends Application
                     //make changes to the velocity with the constants
                     futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
                     futureYVel += GRAV_ACC/30;                                      //apply gravity
-                    if(futureXVel > MAX_VEL)                //if the velocity is more than the max
-                        futureXVel = MAX_VEL;               //then limit the velocity
-                    if(futureXVel < 0)                      //if friction causes player to stop
-                        futureXVel = 0;                     //stop the player
+                    if(Math.abs(futureXVel) > MAX_VEL)                              //if the velocity is more than the max
+                        futureXVel = MAX_VEL * Math.signum(futureXVel);             //then limit the velocity
+                    //Stopping player if velocity passes 0 (friction)
+                    if(Math.signum(futureXVel) == -1 * Math.signum(player.getXVel())
+                        && !left && !right)
+                        player.setXVel(0);
 
                     //keypresses
                     if(up && player.getYVel() == 0)
@@ -167,7 +169,7 @@ public class Game extends Application
                             if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos())
                                 && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) == 1
                                 || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1))
-                                colliderWall.interactRight(futureX);
+                                colliderWall.interactRight(futureX + player.getWidth());
                         }
                         else
                             if(currentEnvironment.isCollision(futureX, futureY + player.getHeight()))  //bottom left corner of player
@@ -178,7 +180,7 @@ public class Game extends Application
                                 if(currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight())
                                     && (currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) == 1
                                     || currentEnvironment.getTypeNumber(player.getXPos(), futureY + player.getHeight()) % 4 == 4))
-                                    colliderWall.interactFloor(futureY);
+                                    colliderWall.interactFloor(futureY + player.getHeight());
                                 
                                 //bottom left collision with left wall
                                 if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight())
@@ -195,13 +197,13 @@ public class Game extends Application
                                     if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 4))
-                                        colliderWall.interactFloor(futureY);
+                                        colliderWall.interactFloor(futureY + player.getHeight());
                                     
                                     //bottom right collision with right wall
                                     if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight())
                                         && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) == 1
                                         || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight()) % 4 == 1))
-                                        colliderWall.interactRight(futureX);
+                                        colliderWall.interactRight(futureX + player.getWidth());
                                 }
                                 else
                                 {
