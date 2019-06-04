@@ -44,7 +44,7 @@ public class Game extends Application
     private int vDirection;                     //the vertical direction
 
     //constants
-    private final double Y_ACC = 10, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 50; //the constants for movement
+    private final double Y_ACC = 7, X_ACC = 7, FRICT_ACC = 5, GRAV_ACC = 1, JUMP_ACC = 5, MAX_VEL = 50; //the constants for movement
     private final int TILE_SIZE = 32;    //the tile size
 
     //variables for the actual display of the game

@@ -100,7 +100,7 @@ public abstract class Movable
      */
     public double getHeight()
     {
-        return movableImageView.getFitHeight();    //return the height
+        return movableImageView.getImage().getHeight();    //return the height
     }
 
     /**
@@ -109,7 +109,7 @@ public abstract class Movable
      */
     public double getWidth()
     {
-        return movableImageView.getFitWidth();    //return the width
+        return movableImageView.getImage().getWidth();    //return the width
     }
 
     /**
