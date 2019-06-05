@@ -161,7 +161,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX, player.getYPos()))
                         {
                             //wall mathces
-                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 2)
+                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 1)
                                 colliderWall.interactRight(futureX);
                             else //normal wall
                                 nWall.interactRight(futureX);
@@ -188,7 +188,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos()))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 1)
+                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 2)
                                 colliderWall.interactLeft(futureX + player.getWidth());
                             else //normal wall
                                 nWall.interactLeft(futureX + player.getWidth());
@@ -215,7 +215,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight() - 0.05))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() - 0.05) % 4 == 2)
+                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() - 0.05) % 4 == 1)
                                 colliderWall.interactRight(futureX);
                             else //normal wall
                                 nWall.interactRight(futureX);
@@ -241,7 +241,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05) % 4 == 1)
+                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05) % 4 == 2)
                                 colliderWall.interactLeft(futureX + player.getWidth());
                             else //normal wall
                                 nWall.interactLeft(futureX + player.getWidth());
@@ -257,7 +257,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight() / 2))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() / 2) % 4 == 2)
+                            if(currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() / 2) % 4 == 1)
                                 colliderWall.interactRight(futureX);
                             else //normal wall
                                 nWall.interactRight(futureX);
@@ -273,7 +273,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2) % 4 == 1)
+                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2) % 4 == 2)
                                 colliderWall.interactLeft(futureX + player.getWidth());
                             else //normal wall
                                 nWall.interactLeft(futureX + player.getWidth());
