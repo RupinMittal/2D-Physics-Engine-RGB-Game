@@ -184,17 +184,16 @@ public class MainMenu extends Application
     {
         //Adding the special effects of shadows on the characters
         InnerShadow innerShadow = new InnerShadow();
-        
-        //Adds an image to the button
-        Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
-        // Make button backgrounds transparent
-        startGameButton.setStyle("-fx-background-color: transparent;");
-        startGameButton.setEffect(innerShadow);
-        
         //setting the type of blur for the shadow 
         innerShadow.setBlurType(BlurType.GAUSSIAN); 
         //Setting color for the shadow 
-        innerShadow.setColor(Color.DARKGRAY); 
+        innerShadow.setColor(Color.DARKGRAY);  
+        
+        //Adds an image to the button
+        Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+        // Make button backgrounds transparent
+        startGameButton.setStyle("-fx-background-color: transparent;");
+        startGameButton.setEffect(innerShadow);
         
         //Layout for the top part of the CharacterSelect Scene
         HBox topPart = new HBox();
@@ -229,7 +228,7 @@ public class MainMenu extends Application
         // Make button backgrounds transparent
         playButton.setStyle("-fx-background-color: transparent;");
         playButton.setEffect(innerShadow);
-        bottomPart.getChildren().addAll(backToMenuButton, play);
+        bottomPart.getChildren().addAll(backToMenuButton, startGameButton);
         
         //Centers the layout of the Credit scene in the middle
         topPart.setAlignment(Pos.CENTER);
