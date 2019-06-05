@@ -186,16 +186,7 @@
          */
         private void play(ActionEvent pClick)
         {
-            //Layout for Credit Scene
-            VBox creditLayout = new VBox(20);
             
-            //Centers the layout of the Credit scene in the middle
-            creditLayout.setAlignment(Pos.CENTER);
-            creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-            
-            //This class will handle the button event when user hits Back To Menu
-            playScene = new Scene(creditLayout, 900, 600);
-            window.setScene(creditScene);
         }
         
         /**
