@@ -122,7 +122,7 @@ public class MainMenu extends Application
         howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         plotButton.setOnAction(this::plot);
-        
+
         //Layout for the Main scene - children are laid out in a veritcal column
         VBox main = new VBox(20);
         
@@ -184,6 +184,13 @@ public class MainMenu extends Application
     {
         //Adding the special effects of shadows on the characters
         InnerShadow innerShadow = new InnerShadow();
+        
+        //Adds an image to the button
+        Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
+        // Make button backgrounds transparent
+        startGameButton.setStyle("-fx-background-color: transparent;");
+        startGameButton.setEffect(innerShadow);
+        
         //setting the type of blur for the shadow 
         innerShadow.setBlurType(BlurType.GAUSSIAN); 
         //Setting color for the shadow 
@@ -207,7 +214,7 @@ public class MainMenu extends Application
         //Layout for the middle part of the CharacterSelect Scene
         HBox middlePart = new HBox(80);
         Button firstCharacter = new Button("Yellow");
-        
+    
         
         Button secondCharacter = new Button("Orange");
         
@@ -238,7 +245,7 @@ public class MainMenu extends Application
         
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
-        playButton.setOnAction(this::play);
+        startGameButton.setOnAction(this::play);
         characterScene = new Scene(characterLayout, 900, 600);
         
         //Display the scene to the user so that he/she can interact with it
