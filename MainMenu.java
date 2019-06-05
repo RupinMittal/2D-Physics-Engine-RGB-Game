@@ -42,7 +42,7 @@ public class MainMenu extends Application
     private Stage window;
     
     //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
-    private Scene mainScene, creditScene, playScene, plotScene; 
+    private Scene mainScene, creditScene, playScene, plotScene, characterScene; 
    
     // /**
      // * This the constructor for MainMenu that will construct all the buttons
@@ -213,12 +213,11 @@ public class MainMenu extends Application
         
         //Layout for the middle part of the CharacterSelect Scene
         HBox bottomPart = new HBox(20);
-        Button backToMenu = new Button("Back to Menu");
         Button play = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
         // Make button backgrounds transparent
         playButton.setStyle("-fx-background-color: transparent;");
         playButton.setEffect(innerShadow);
-        bottomPart.getChildren().addAll(backToMenu, play);
+        bottomPart.getChildren().addAll(backToMenuButton, play);
         
         //Centers the layout of the Credit scene in the middle
         topPart.setAlignment(Pos.CENTER);
@@ -235,10 +234,10 @@ public class MainMenu extends Application
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
         playButton.setOnAction(this::play);
-        playScene = new Scene(characterLayout, 900, 600);
+        characterScene = new Scene(characterLayout, 900, 600);
         
         //Display the scene to the user so that he/she can interact with it
-        window.setScene(playScene);
+        window.setScene(characterScene);
     }
     
     /**
