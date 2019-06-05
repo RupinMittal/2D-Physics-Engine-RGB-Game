@@ -191,12 +191,22 @@ public class MainMenu extends Application
         
         //Layout for the top part of the CharacterSelect Scene
         HBox topPart = new HBox();
-        Label title = new Label("Character Select");
-        topPart.getChildren().addAll(title);
+        // Declaration and Instantiation of the Credit Texts
+        Text characterSelect = new Text();
+       
+        //Setting the font to Baskerville
+        characterSelect.setFont(Font.font("Baskerville", 20));
+        
+        String characterString = "Character Select";
+
+        //Setting the value of the creditText to the string creditString
+        characterSelect.setText(characterString);
+        characterSelect.setFill(Color.WHITE);
+        topPart.getChildren().addAll(characterSelect);
         
         //Layout for the middle part of the CharacterSelect Scene
-        HBox middlePart = new HBox(20);
-        Button firstCharacter = new Button("Yello");
+        HBox middlePart = new HBox(80);
+        Button firstCharacter = new Button("Yellow");
         Button secondCharacter = new Button("Orange");
         Button thirdCharacter = new Button("Purple");
         middlePart.getChildren().addAll(firstCharacter, secondCharacter, thirdCharacter);
@@ -211,7 +221,9 @@ public class MainMenu extends Application
         bottomPart.getChildren().addAll(backToMenu, play);
         
         //Centers the layout of the Credit scene in the middle
+        topPart.setAlignment(Pos.CENTER);
         middlePart.setAlignment(Pos.CENTER);
+        bottomPart.setAlignment(Pos.CENTER);
         
         //Layout for the bottom part of the CharacterSelect Scene
         BorderPane characterLayout = new BorderPane();
