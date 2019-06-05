@@ -95,7 +95,11 @@ public class MainMenu extends Application
         creditsButton.setStyle("-fx-background-color: transparent;");
         creditsButton.setEffect(innerShadow);
         
-        backToMenuButton = new Button("Back To Menu");
+        //Adds an image to the button
+        backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Back To Menu Pic.PNG"), 150, 150, true, false)));
+        // Make button backgrounds transparent
+        backToMenuButton.setStyle("-fx-background-color: transparent;");
+        backToMenuButton.setEffect(innerShadow);
         
         //Adds an image to the button
         howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
@@ -104,16 +108,16 @@ public class MainMenu extends Application
         howToButton.setEffect(innerShadow);
         
         //Adds an image to the button
+        characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 270, 270, true, false)));
+        //Make button backgrounds transparent
+        characterSelectButton.setStyle("-fx-background-color: transparent;");
+        characterSelectButton.setEffect(innerShadow);
+        
+        //Adds an image to the button
         plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
         // Make button backgrounds transparent
         plotButton.setStyle("-fx-background-color: transparent;");
         plotButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 250, 250, true, false)));
-        //Make button backgrounds transparent
-        characterSelectButton.setStyle("-fx-background-color: transparent;");
-        characterSelectButton.setEffect(innerShadow);
         
         //Sets the width of the button to a set size
         playButton.setMaxWidth(70);
@@ -199,6 +203,8 @@ public class MainMenu extends Application
         //Setting color for the shadow 
         innerShadow.setColor(Color.DARKGRAY);  
         
+       
+        
         //Adds an image to the button
         Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
         // Make button backgrounds transparent
@@ -207,18 +213,13 @@ public class MainMenu extends Application
         
         //Layout for the top part of the CharacterSelect Scene
         HBox topPart = new HBox();
-        // Declaration and Instantiation of the Credit Texts
-        Text characterSelect = new Text();
-       
-        //Setting the font to Baskerville
-        characterSelect.setFont(Font.font("Baskerville", 20));
         
-        String characterString = "Character Select";
-
-        //Setting the value of the creditText to the string creditString
-        characterSelect.setText(characterString);
-        characterSelect.setFill(Color.WHITE);
-        topPart.getChildren().addAll(characterSelect);
+        //Declaration and instantiation of a label
+        Label characterTitle = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 300, 300, true, false))); 
+        characterTitle.setStyle("-fx-background-color: transparent;");
+        characterTitle.setEffect(innerShadow);
+        
+        topPart.getChildren().addAll(characterTitle);
         
         //Layout for the middle part of the CharacterSelect Scene
         HBox middlePart = new HBox(80);
