@@ -182,9 +182,6 @@ public class MainMenu extends Application
      */
     private void characterSelect(ActionEvent characterSelectClick)
     {
-        //Layout for Credit Scene
-        VBox creditLayout = new VBox(20);
-        
         //Adding the special effects of shadows on the characters
         InnerShadow innerShadow = new InnerShadow();
         //setting the type of blur for the shadow 
@@ -192,24 +189,41 @@ public class MainMenu extends Application
         //Setting color for the shadow 
         innerShadow.setColor(Color.DARKGRAY); 
         
-        //Centers the layout of the Credit scene in the middle
-        creditLayout.setAlignment(Pos.CENTER);
-        creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        //Layout for the top part of the CharacterSelect Scene
+        HBox topPart = new HBox();
+        Label title = new Label("Character Select");
+        topPart.getChildren().addAll(title);
         
-        //Adds an image to the button
-        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+        //Layout for the middle part of the CharacterSelect Scene
+        HBox middlePart = new HBox(20);
+        Button firstCharacter = new Button("Yello");
+        Button secondCharacter = new Button("Orange");
+        Button thirdCharacter = new Button("Purple");
+        middlePart.getChildren().addAll(firstCharacter, secondCharacter, thirdCharacter);
+        
+        //Layout for the middle part of the CharacterSelect Scene
+        HBox bottomPart = new HBox(20);
+        Button backToMenu = new Button("Back to Menu");
+        Button play = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
         // Make button backgrounds transparent
         playButton.setStyle("-fx-background-color: transparent;");
         playButton.setEffect(innerShadow);
+        bottomPart.getChildren().addAll(backToMenu, play);
         
+        //Centers the layout of the Credit scene in the middle
+        middlePart.setAlignment(Pos.CENTER);
         
-        
-        //Adding nodes to the layout
-        creditLayout.getChildren().add(backToMenuButton);
+        //Layout for the bottom part of the CharacterSelect Scene
+        BorderPane characterLayout = new BorderPane();
+        characterLayout.setTop(topPart);
+        characterLayout.setCenter(middlePart);
+        characterLayout.setBottom(bottomPart);
+        characterLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         
         //This class will handle the button event when user hits Back To Menu
         backToMenuButton.setOnAction(e -> window.setScene(mainScene));
-        playScene = new Scene(creditLayout, 900, 600);
+        playButton.setOnAction(this::play);
+        playScene = new Scene(characterLayout, 900, 600);
         
         //Display the scene to the user so that he/she can interact with it
         window.setScene(creditScene);
