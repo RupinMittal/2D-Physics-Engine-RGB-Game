@@ -1,268 +1,265 @@
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import javafx.scene.text.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.Group;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
-import javafx.scene.effect.BlurType;
-import javafx.scene.shape.Shape;
-import javafx.geometry.Insets;
-import javafx.scene.effect.InnerShadow;
-
-/**
- * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
- * credits, and also read what the plot of the game is 
- *
- * @author Jonathan Lee & Daniel Herrick
- * @version MainMenu JavaFx class - RGB
- */
-public class MainMenu extends Application
-{
-    //Declaration of buttons that will be used in the main menu
-    //Button that starts the game
-    private Button playButton; 
-    //Button that allows the user to go back to the MainMenu
-    private Button backToMenuButton; 
-    //Button that brings the user to a credit page
-    private Button creditsButton; 
-    //Button that brings the user to a set of instruction
-    private Button howToButton;
-    //Button that brings the user to the plot of the game
-    private Button plotButton; 
-    //Button that allows the user to select a character
-    private Button characterSelectButton;
-    
-    //A top-level container that hosts a Scene
-    private Stage window;
-    
-    //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
-    private Scene mainScene, creditScene, playScene, plotScene, characterScene; 
-   
-    // /**
-     // * This the constructor for MainMenu that will construct all the buttons
-     // * and run the main menu via runMenu() 
-     // */
-    // public MainMenu()
-    // {
-        
-    // }
-    
-     //*The main() method is ignored in correctly deployed JavaFX application.
-     /**
-     * Main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support]
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    public void start(Stage stage) throws Exception {
-        //Instatiation of the Stage window
-        window = stage;
-        
-        //Have the music to play automatically as soon as the user opens the menu
-        Music.loop("ollie.mp3");
-        //Declaration and Instantiaion of color
-        Color c = Color.BLACK;
-        
-        //Adding the special effects of shadows on the characters
-        InnerShadow innerShadow = new InnerShadow();
-        //setting the type of blur for the shadow 
-        innerShadow.setBlurType(BlurType.GAUSSIAN); 
-        //Setting color for the shadow 
-        innerShadow.setColor(Color.DARKGRAY); 
-        
-        //Adds an image to the button
-        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
-        // Make button backgrounds transparent
-        playButton.setStyle("-fx-background-color: transparent;");
-        playButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 150, 150, true, false)));
-        // Make button backgrounds transparent
-        creditsButton.setStyle("-fx-background-color: transparent;");
-        creditsButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Back To Menu Pic.PNG"), 150, 150, true, false)));
-        // Make button backgrounds transparent
-        backToMenuButton.setStyle("-fx-background-color: transparent;");
-        backToMenuButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
-        //Makes the background of the button transparent
-        howToButton.setStyle("-fx-background-color: transparent;");
-        howToButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 270, 270, true, false)));
-        //Make button backgrounds transparent
-        characterSelectButton.setStyle("-fx-background-color: transparent;");
-        characterSelectButton.setEffect(innerShadow);
-        
-        //Adds an image to the button
-        plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
-        // Make button backgrounds transparent
-        plotButton.setStyle("-fx-background-color: transparent;");
-        plotButton.setEffect(innerShadow);
-        
-        //Sets the width of the button to a set size
-        playButton.setMaxWidth(70);
-        playButton.setMaxHeight(70);
-        howToButton.setMaxWidth(70);
-        howToButton.setMaxHeight(70);
-        creditsButton.setMaxWidth(70);
-        creditsButton.setMaxHeight(70);
-        plotButton.setMaxWidth(70);
-        plotButton.setMaxHeight(70);
-        characterSelectButton.setMaxWidth(70);
-        characterSelectButton.setMaxHeight(70);
-        
-        //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
-        characterSelectButton.setOnAction(this::characterSelect);
-        howToButton.setOnAction(this::howTo);
-        creditsButton.setOnAction(this::credits);
-        plotButton.setOnAction(this::plot);
-
-        //Layout for the Main scene - children are laid out in a veritcal column
-        VBox main = new VBox(20);
-        
-        //Centers the layout in the middle of the scene
-        main.setAlignment(Pos.CENTER);
-        
-        //Declaration and instantiation of a label
-        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 300, 300, true, false))); 
-        title.setStyle("-fx-background-color: transparent;");
-        title.setEffect(innerShadow);
-        
-        //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(title, characterSelectButton, plotButton, howToButton, creditsButton);
-        
-       //Instantiation of the scene in MainMenu
-        mainScene = new Scene(main, 900, 600, c);
-        
-        //Set the color of the background to Gainsboro
-        main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        //User can not resize the form
-        window.setResizable(false);
-        
-        //Sets the title of the window
-        window.setTitle("RGB GANG");
-        window.setScene(mainScene);
-        
-        //Stage will now appear so that the user can interact with it
-        window.show();
-    }
+    import javafx.application.Application;
+    import javafx.event.ActionEvent;
+    import javafx.geometry.Pos;
+    import javafx.scene.Scene;
+    import javafx.scene.control.Button;
+    import javafx.scene.control.Label;
+    import javafx.scene.layout.*;
+    import javafx.stage.Stage;
+    import javafx.scene.text.*;
+    import javafx.scene.image.Image;
+    import javafx.scene.image.ImageView;
+    import javafx.scene.Group;
+    import javafx.scene.layout.Background;
+    import javafx.scene.paint.Color;
+    import javafx.scene.effect.BlurType;
+    import javafx.scene.shape.Shape;
+    import javafx.geometry.Insets;
+    import javafx.scene.effect.InnerShadow;
     
     /**
-     * This method will be called when the user clicks the play button in the Character Select scene. It
-     * will switch screens to the actual game
-     * 
-     * @param pClick - an event representing the user clicking the play button
+     * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
+     * credits, and also read what the plot of the game is 
+     *
+     * @author Jonathan Lee & Daniel Herrick
+     * @version MainMenu JavaFx class - RGB
      */
-    private void play(ActionEvent pClick)
+    public class MainMenu extends Application
     {
-        //Layout for Credit Scene
-        VBox creditLayout = new VBox(20);
+        //Declaration of buttons that will be used in the main menu
+        //Button that starts the game
+        private Button playButton; 
+        //Button that allows the user to go back to the MainMenu
+        private Button backToMenuButton; 
+        //Button that brings the user to a credit page
+        private Button creditsButton; 
+        //Button that brings the user to a set of instruction
+        private Button howToButton;
+        //Button that brings the user to the plot of the game
+        private Button plotButton; 
+        //Button that allows the user to select a character
+        private Button characterSelectButton;
         
-        //Centers the layout of the Credit scene in the middle
-        creditLayout.setAlignment(Pos.CENTER);
-        creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        //A top-level container that hosts a Scene
+        private Stage window;
         
-        //This class will handle the button event when user hits Back To Menu
-        playScene = new Scene(creditLayout, 900, 600);
-        window.setScene(creditScene);
-    }
+        //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
+        private Scene mainScene, creditScene, playScene, plotScene, characterScene; 
+       
+        // /**
+         // * This the constructor for MainMenu that will construct all the buttons
+         // * and run the main menu via runMenu() 
+         // */
+        // public MainMenu()
+        // {
+            
+        // }
+        
+         //*The main() method is ignored in correctly deployed JavaFX application.
+         /**
+         * Main() serves only as fallback in case the application can not be
+         * launched through deployment artifacts, e.g., in IDEs with limited FX
+         * support]
+         * 
+         * @param args the command line arguments
+         */
+        public static void main(String[] args) {
+            launch(args);
+        }
+        
+        public void start(Stage stage) throws Exception {
+            //Instatiation of the Stage window
+            window = stage;
+            
+            //Have the music to play automatically as soon as the user opens the menu
+            Music.loop("ollie.mp3");
+            //Declaration and Instantiaion of color
+            Color c = Color.BLACK;
+            
+            //Adding the special effects of shadows on the characters
+            InnerShadow innerShadow = new InnerShadow();
+            //setting the type of blur for the shadow 
+            innerShadow.setBlurType(BlurType.GAUSSIAN); 
+            //Setting color for the shadow 
+            innerShadow.setColor(Color.DARKGRAY); 
+            
+            //Adds an image to the button
+            playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+            // Make button backgrounds transparent
+            playButton.setStyle("-fx-background-color: transparent;");
+            playButton.setEffect(innerShadow);
+            
+            //Adds an image to the button
+            creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 150, 150, true, false)));
+            // Make button backgrounds transparent
+            creditsButton.setStyle("-fx-background-color: transparent;");
+            creditsButton.setEffect(innerShadow);
+            
+            //Adds an image to the button
+            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Back To Menu Pic.PNG"), 150, 150, true, false)));
+            // Make button backgrounds transparent
+            backToMenuButton.setStyle("-fx-background-color: transparent;");
+            backToMenuButton.setEffect(innerShadow);
+            
+            //Adds an image to the button
+            howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
+            //Makes the background of the button transparent
+            howToButton.setStyle("-fx-background-color: transparent;");
+            howToButton.setEffect(innerShadow);
+            
+            //Adds an image to the button
+            characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 270, 270, true, false)));
+            //Make button backgrounds transparent
+            characterSelectButton.setStyle("-fx-background-color: transparent;");
+            characterSelectButton.setEffect(innerShadow);
+            
+            //Adds an image to the button
+            plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
+            // Make button backgrounds transparent
+            plotButton.setStyle("-fx-background-color: transparent;");
+            plotButton.setEffect(innerShadow);
+            
+            //Sets the width of the button to a set size
+            playButton.setMaxWidth(70);
+            playButton.setMaxHeight(70);
+            howToButton.setMaxWidth(70);
+            howToButton.setMaxHeight(70);
+            creditsButton.setMaxWidth(70);
+            creditsButton.setMaxHeight(70);
+            plotButton.setMaxWidth(70);
+            plotButton.setMaxHeight(70);
+            characterSelectButton.setMaxWidth(70);
+            characterSelectButton.setMaxHeight(70);
+            
+            //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
+            characterSelectButton.setOnAction(this::characterSelect);
+            howToButton.setOnAction(this::howTo);
+            creditsButton.setOnAction(this::credits);
+            plotButton.setOnAction(this::plot);
     
-    /**
-     * This method will be called when the user clicks the play button in the Main Menu scene. It
-     * will switch screens to a scene where the user can select a character
-     * 
-     * @param characterSelectClick - an event representing the user clicking the play button
-     */
-    private void characterSelect(ActionEvent characterSelectClick)
-    {
-        //Adding the special effects of shadows on the characters
-        InnerShadow innerShadow = new InnerShadow();
-        //setting the type of blur for the shadow 
-        innerShadow.setBlurType(BlurType.GAUSSIAN); 
-        //Setting color for the shadow 
-        innerShadow.setColor(Color.DARKGRAY);  
-        
-        //Adds an image to the button
-        Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
-        // Make button backgrounds transparent
-        startGameButton.setStyle("-fx-background-color: transparent;");
-        startGameButton.setEffect(innerShadow);
-        
-        //Layout for the top part of the CharacterSelect Scene
-        HBox topPart = new HBox();
-        
-        //Declaration and instantiation of a label
-        Label characterTitle = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 300, 300, true, false))); 
-        characterTitle.setStyle("-fx-background-color: transparent;");
-        characterTitle.setEffect(innerShadow);
-        
-        topPart.getChildren().addAll(characterTitle);
-        
-        //Layout for the middle part of the CharacterSelect Scene
-        HBox middlePart = new HBox(80);
-        
-        Button yellowCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Yellow Dude.PNG"), 250, 250, true, false)));
-        // Make button backgrounds transparent
-        plotButton.setStyle("-fx-background-color: transparent;");
-        plotButton.setEffect(innerShadow);
+            //Layout for the Main scene - children are laid out in a veritcal column
+            VBox main = new VBox(20);
+            
+            //Centers the layout in the middle of the scene
+            main.setAlignment(Pos.CENTER);
+            
+            //Declaration and instantiation of a label
+            Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 300, 300, true, false))); 
+            title.setStyle("-fx-background-color: transparent;");
+            title.setEffect(innerShadow);
+            
+            //Adds the buttons and label onto the layout of the scene
+            main.getChildren().addAll(title, characterSelectButton, plotButton, howToButton, creditsButton);
+            
+           //Instantiation of the scene in MainMenu
+            mainScene = new Scene(main, 900, 600, c);
+            
+            //Set the color of the background to Gainsboro
+            main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
     
-        Button blueCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Blue Dude.PNG"), 250, 250, true, false)));
-        // Make button backgrounds transparent
-        plotButton.setStyle("-fx-background-color: transparent;");
-        plotButton.setEffect(innerShadow);
+            //User can not resize the form
+            window.setResizable(false);
+            
+            //Sets the title of the window
+            window.setTitle("RGB GANG");
+            window.setScene(mainScene);
+            
+            //Stage will now appear so that the user can interact with it
+            window.show();
+        }
         
-        Button purpleCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Purple Dude.PNG"), 250, 250, true, false)));
-        // Make button backgrounds transparent
-        plotButton.setStyle("-fx-background-color: transparent;");
-        plotButton.setEffect(innerShadow);
+        /**
+         * This method will be called when the user clicks the play button in the Character Select scene. It
+         * will switch screens to the actual game
+         * 
+         * @param pClick - an event representing the user clicking the play button
+         */
+        private void play(ActionEvent pClick)
+        {
+            //Layout for Credit Scene
+            VBox creditLayout = new VBox(20);
+            
+            //Centers the layout of the Credit scene in the middle
+            creditLayout.setAlignment(Pos.CENTER);
+            creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+            
+            //This class will handle the button event when user hits Back To Menu
+            playScene = new Scene(creditLayout, 900, 600);
+            window.setScene(creditScene);
+        }
         
-        middlePart.getChildren().addAll(yellowCharacter, blueCharacter, purpleCharacter);
+        /**
+         * This method will be called when the user clicks the play button in the Main Menu scene. It
+         * will switch screens to a scene where the user can select a character
+         * 
+         * @param characterSelectClick - an event representing the user clicking the play button
+         */
+        private void characterSelect(ActionEvent characterSelectClick)
+        {
+            //Adding the special effects of shadows on the characters
+            InnerShadow innerShadow = new InnerShadow();
+            //setting the type of blur for the shadow 
+            innerShadow.setBlurType(BlurType.GAUSSIAN); 
+            //Setting color for the shadow 
+            innerShadow.setColor(Color.DARKGRAY);  
+            
+            //Adds an image to the button
+            Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+            // Make button backgrounds transparent
+            startGameButton.setStyle("-fx-background-color: transparent;");
+            startGameButton.setEffect(innerShadow);
+            
+            //Layout for the top part of the CharacterSelect Scene
+            HBox topPart = new HBox();
+            
+            //Declaration and instantiation of a label
+            Label characterTitle = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 300, 300, true, false))); 
+            characterTitle.setStyle("-fx-background-color: transparent;");
+            characterTitle.setEffect(innerShadow);
+            
+            topPart.getChildren().addAll(characterTitle);
+            
+            //Layout for the middle part of the CharacterSelect Scene
+            HBox middlePart = new HBox(80);
+            
+            Button yellowCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Yellow Dude.PNG"), 250, 250, true, false)));
+            // Make button backgrounds transparent
         
-        //Layout for the middle part of the CharacterSelect Scene
-        HBox bottomPart = new HBox(20);
-        Button play = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
-        // Make button backgrounds transparent
-        playButton.setStyle("-fx-background-color: transparent;");
-        playButton.setEffect(innerShadow);
-        bottomPart.getChildren().addAll(backToMenuButton, startGameButton);
-        
-        //Centers the layout of the Credit scene in the middle
-        topPart.setAlignment(Pos.CENTER);
-        middlePart.setAlignment(Pos.CENTER);
-        bottomPart.setAlignment(Pos.CENTER);
-        
-        //Layout for the bottom part of the CharacterSelect Scene
-        BorderPane characterLayout = new BorderPane();
-        characterLayout.setTop(topPart);
-        characterLayout.setCenter(middlePart);
-        characterLayout.setBottom(bottomPart);
-        characterLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-        
-        //This class will handle the button event when user hits Back To Menu
-        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
-        startGameButton.setOnAction(this::play);
-        characterScene = new Scene(characterLayout, 900, 600);
+            Button blueCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Blue Dude.PNG"), 250, 250, true, false)));
+            // Make button backgrounds transparent
+            
+            Button purpleCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Purple Dude.PNG"), 250, 250, true, false)));
+            // Make button backgrounds transparent
+            
+            middlePart.getChildren().addAll(yellowCharacter, blueCharacter, purpleCharacter);
+            
+            //Layout for the middle part of the CharacterSelect Scene
+            HBox bottomPart = new HBox(20);
+            Button play = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
+            // Make button backgrounds transparent
+            playButton.setStyle("-fx-background-color: transparent;");
+            playButton.setEffect(innerShadow);
+            bottomPart.getChildren().addAll(backToMenuButton, startGameButton);
+            
+            //Centers the layout of the Credit scene in the middle
+            topPart.setAlignment(Pos.CENTER);
+            middlePart.setAlignment(Pos.CENTER);
+            bottomPart.setAlignment(Pos.CENTER);
+            
+            //Layout for the bottom part of the CharacterSelect Scene
+            BorderPane characterLayout = new BorderPane();
+            characterLayout.setTop(topPart);
+            characterLayout.setCenter(middlePart);
+            characterLayout.setBottom(bottomPart);
+            characterLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+            
+            //This class will handle the button event when user hits Back To Menu
+            backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+            startGameButton.setOnAction(this::play);
+            characterScene = new Scene(characterLayout, 900, 600);
+            yellowCharacter.setOnAction(this::yellow);
+            blueCharacter.setOnAction(this::blue);
+            purpleCharacter.setOnAction(this::purple);            
         
         //Display the scene to the user so that he/she can interact with it
         window.setScene(characterScene);
@@ -275,6 +272,7 @@ public class MainMenu extends Application
      */
     private void yellow(ActionEvent characterSelectClick)
     {
+        String yellow = "Yellow Dude.PNG";
     }
     
     /**
@@ -282,8 +280,9 @@ public class MainMenu extends Application
      * 
      * @param characterSelectClick - an event representing the user clicking the play button
      */
-    private void orange(ActionEvent characterSelectClick)
+    private void blue(ActionEvent characterSelectClick)
     {
+        String blue = "Blue Dude.PNG";
     }
     
     /**
@@ -293,6 +292,7 @@ public class MainMenu extends Application
      */
     private void purple(ActionEvent characterSelectClick)
     {
+        String purple = "Purple Dude.PNG";
     }
     
     /**
