@@ -207,8 +207,13 @@ public class MainMenu extends Application
         //Layout for the middle part of the CharacterSelect Scene
         HBox middlePart = new HBox(80);
         Button firstCharacter = new Button("Yellow");
+        
+        
         Button secondCharacter = new Button("Orange");
+        
+        
         Button thirdCharacter = new Button("Purple");
+        
         middlePart.getChildren().addAll(firstCharacter, secondCharacter, thirdCharacter);
         
         //Layout for the middle part of the CharacterSelect Scene
@@ -238,6 +243,33 @@ public class MainMenu extends Application
         
         //Display the scene to the user so that he/she can interact with it
         window.setScene(characterScene);
+    }
+    
+    /**
+     * 
+     * 
+     * @param characterSelectClick - an event representing the user clicking the play button
+     */
+    private void yellow(ActionEvent characterSelectClick)
+    {
+    }
+    
+    /**
+     * 
+     * 
+     * @param characterSelectClick - an event representing the user clicking the play button
+     */
+    private void orange(ActionEvent characterSelectClick)
+    {
+    }
+    
+    /**
+     * 
+     * 
+     * @param characterSelectClick - an event representing the user clicking the play button
+     */
+    private void purple(ActionEvent characterSelectClick)
+    {
     }
     
     /**
