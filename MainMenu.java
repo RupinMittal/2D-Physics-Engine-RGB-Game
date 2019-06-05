@@ -227,13 +227,17 @@ public class MainMenu extends Application
         plotButton.setStyle("-fx-background-color: transparent;");
         plotButton.setEffect(innerShadow);
     
+        Button blueCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Blue Dude.PNG"), 250, 250, true, false)));
+        // Make button backgrounds transparent
+        plotButton.setStyle("-fx-background-color: transparent;");
+        plotButton.setEffect(innerShadow);
         
-        Button secondCharacter = new Button("Orange");
+        Button purpleCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Purple Dude.PNG"), 250, 250, true, false)));
+        // Make button backgrounds transparent
+        plotButton.setStyle("-fx-background-color: transparent;");
+        plotButton.setEffect(innerShadow);
         
-        
-        Button thirdCharacter = new Button("Purple");
-        
-        middlePart.getChildren().addAll(yellowCharacter, secondCharacter, thirdCharacter);
+        middlePart.getChildren().addAll(yellowCharacter, blueCharacter, purpleCharacter);
         
         //Layout for the middle part of the CharacterSelect Scene
         HBox bottomPart = new HBox(20);
