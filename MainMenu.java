@@ -37,6 +37,8 @@ public class MainMenu extends Application
     private Button howToButton;
     //Button that brings the user to the plot of the game
     private Button plotButton; 
+    //Button that allows the user to select a character
+    private Button characterSelectButton;
     
     //A top-level container that hosts a Scene
     private Stage window;
@@ -107,6 +109,12 @@ public class MainMenu extends Application
         plotButton.setStyle("-fx-background-color: transparent;");
         plotButton.setEffect(innerShadow);
         
+        //Adds an image to the button
+        characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 250, 250, true, false)));
+        //Make button backgrounds transparent
+        characterSelectButton.setStyle("-fx-background-color: transparent;");
+        characterSelectButton.setEffect(innerShadow);
+        
         //Sets the width of the button to a set size
         playButton.setMaxWidth(70);
         playButton.setMaxHeight(70);
@@ -116,9 +124,11 @@ public class MainMenu extends Application
         creditsButton.setMaxHeight(70);
         plotButton.setMaxWidth(70);
         plotButton.setMaxHeight(70);
+        characterSelectButton.setMaxWidth(70);
+        characterSelectButton.setMaxHeight(70);
         
         //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
-        playButton.setOnAction(this::characterSelect);
+        characterSelectButton.setOnAction(this::characterSelect);
         howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         plotButton.setOnAction(this::plot);
@@ -135,7 +145,7 @@ public class MainMenu extends Application
         title.setEffect(innerShadow);
         
         //Adds the buttons and label onto the layout of the scene
-        main.getChildren().addAll(title, playButton, plotButton, howToButton, creditsButton);
+        main.getChildren().addAll(title, characterSelectButton, plotButton, howToButton, creditsButton);
         
        //Instantiation of the scene in MainMenu
         mainScene = new Scene(main, 900, 600, c);
