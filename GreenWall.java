@@ -31,7 +31,7 @@ public class GreenWall implements Wall
     public void interactLeft(double futureX)
     {
         //highest multiple of tileSize less than futureX - wall left edge
-        int wallX = ((int)futureX / tileSize) * tileSize; 
+        int wallX = (int)futureX - (int)futureX % tileSize; 
         
         //set player to touching wall
         interactPlayer.setXPos(wallX - interactPlayer.getWidth());
@@ -52,7 +52,7 @@ public class GreenWall implements Wall
     public void interactRight(double futureX)
     {
         //lowest multiple of tileSize more than futureX - wall right edge
-        int wallX = ((int)futureX / tileSize + 1) * tileSize; 
+        int wallX = (int)futureX - (int)futureX % tileSize + tileSize; 
         
         //set player to touching wall
         interactPlayer.setXPos(wallX);
@@ -73,7 +73,7 @@ public class GreenWall implements Wall
     public void interactFloor(double futureY)
     {
         //lowest multiple of tileSize less than futureY - wall top edge
-        int wallY = ((int)futureY / tileSize) * tileSize; 
+        int wallY = (int)futureY - (int)futureY % tileSize;
         
         //set player to touching wall
         interactPlayer.setYPos(wallY - interactPlayer.getHeight());
@@ -94,7 +94,7 @@ public class GreenWall implements Wall
     public void interactCeiling(double futureY)
     {
         //highest multiple of tileSize more than futureY - wall bottom edge
-        int wallY = ((int)futureY / tileSize + 1) * tileSize; 
+        int wallY = (int)futureY - (int)futureY % tileSize + tileSize;
         
         //set player to touching wall
         interactPlayer.setYPos(wallY);
