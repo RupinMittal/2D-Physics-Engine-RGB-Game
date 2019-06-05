@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainMenu
-comment0.text=\n\ MainMenu\ allows\ the\ user\ to\ start\ the\ game,\ open\ up\ a\ "How\ To"\ play\ the\ game,\ look\ at\ the\n\ credits,\ and\ also\ read\ what\ the\ plot\ of\ the\ game\ is\ \n\n\ @author\ Jonathan\ Lee\ &\ Daniel\ Herrick\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\n
+comment0.text=\n\ MainMenu\ allows\ the\ user\ to\ start\ the\ game,\ open\ up\ a\ "How\ To"\ play\ the\ game,\ look\ at\ the\n\ credits,\ and\ also\ read\ what\ the\ plot\ of\ the\ game\ is\ \n\ \n\ *\ Got\ styling\ effects\ from\ David\ Varga\ -\ https\://github.com/davidvarga\ *\n\n\ @author\ Jonathan\ Lee\ &\ Daniel\ Herrick\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment1.text=\n\ Main()\ serves\ only\ as\ fallback\ in\ case\ the\ application\ can\ not\ be\n\ launched\ through\ deployment\ artifacts,\ e.g.,\ in\ IDEs\ with\ limited\ FX\n\ support]\n\ \n\ @param\ args\ the\ command\ line\ arguments\n

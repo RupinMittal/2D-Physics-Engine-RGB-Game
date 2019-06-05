@@ -20,6 +20,8 @@
     /**
      * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
      * credits, and also read what the plot of the game is 
+     * 
+     * * Got styling effects from David Varga - https://github.com/davidvarga *
      *
      * @author Jonathan Lee & Daniel Herrick
      * @version MainMenu JavaFx class - RGB
@@ -236,7 +238,7 @@
             Button yellowCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Yellow Dude.PNG"), 250, 250, true, false)));
             // Make button backgrounds grey
             yellowCharacter.setStyle("-fx-background-color: grey;");
-            yellowCharacter.setStyle("-fx-border-color:yellow;");
+            yellowCharacter.setStyle("-fx-border-color: yellow;");
            
             Button blueCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Blue Dude.PNG"), 250, 250, true, false)));
             // Make button backgrounds grey
