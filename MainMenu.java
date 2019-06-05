@@ -118,7 +118,7 @@ public class MainMenu extends Application
         plotButton.setMaxHeight(70);
         
         //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
-        playButton.setOnAction(this::play);
+        playButton.setOnAction(this::characterSelect);
         howToButton.setOnAction(this::howTo);
         creditsButton.setOnAction(this::credits);
         plotButton.setOnAction(this::plot);
@@ -155,7 +155,7 @@ public class MainMenu extends Application
     }
     
     /**
-     * This method will be called when the user clicks the play button. It
+     * This method will be called when the user clicks the play button in the Character Select scene. It
      * will switch screens to the actual game
      * 
      * @param pClick - an event representing the user clicking the play button
@@ -171,6 +171,47 @@ public class MainMenu extends Application
         
         //This class will handle the button event when user hits Back To Menu
         playScene = new Scene(creditLayout, 900, 600);
+        window.setScene(creditScene);
+    }
+    
+    /**
+     * This method will be called when the user clicks the play button in the Main Menu scene. It
+     * will switch screens to a scene where the user can select a character
+     * 
+     * @param characterSelectClick - an event representing the user clicking the play button
+     */
+    private void characterSelect(ActionEvent characterSelectClick)
+    {
+        //Layout for Credit Scene
+        VBox creditLayout = new VBox(20);
+        
+        //Adding the special effects of shadows on the characters
+        InnerShadow innerShadow = new InnerShadow();
+        //setting the type of blur for the shadow 
+        innerShadow.setBlurType(BlurType.GAUSSIAN); 
+        //Setting color for the shadow 
+        innerShadow.setColor(Color.DARKGRAY); 
+        
+        //Centers the layout of the Credit scene in the middle
+        creditLayout.setAlignment(Pos.CENTER);
+        creditLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        //Adds an image to the button
+        playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+        // Make button backgrounds transparent
+        playButton.setStyle("-fx-background-color: transparent;");
+        playButton.setEffect(innerShadow);
+        
+        
+        
+        //Adding nodes to the layout
+        creditLayout.getChildren().add(backToMenuButton);
+        
+        //This class will handle the button event when user hits Back To Menu
+        backToMenuButton.setOnAction(e -> window.setScene(mainScene));
+        playScene = new Scene(creditLayout, 900, 600);
+        
+        //Display the scene to the user so that he/she can interact with it
         window.setScene(creditScene);
     }
     
