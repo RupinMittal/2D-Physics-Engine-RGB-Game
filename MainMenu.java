@@ -226,7 +226,7 @@ public class MainMenu extends Application
         playScene = new Scene(characterLayout, 900, 600);
         
         //Display the scene to the user so that he/she can interact with it
-        window.setScene(creditScene);
+        window.setScene(playScene);
     }
     
     /**
