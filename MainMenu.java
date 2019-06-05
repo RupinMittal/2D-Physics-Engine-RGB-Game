@@ -203,8 +203,6 @@ public class MainMenu extends Application
         //Setting color for the shadow 
         innerShadow.setColor(Color.DARKGRAY);  
         
-       
-        
         //Adds an image to the button
         Button startGameButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
         // Make button backgrounds transparent
@@ -223,7 +221,11 @@ public class MainMenu extends Application
         
         //Layout for the middle part of the CharacterSelect Scene
         HBox middlePart = new HBox(80);
-        Button firstCharacter = new Button("Yellow");
+        
+        Button yellowCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Yellow Dude.PNG"), 250, 250, true, false)));
+        // Make button backgrounds transparent
+        plotButton.setStyle("-fx-background-color: transparent;");
+        plotButton.setEffect(innerShadow);
     
         
         Button secondCharacter = new Button("Orange");
@@ -231,7 +233,7 @@ public class MainMenu extends Application
         
         Button thirdCharacter = new Button("Purple");
         
-        middlePart.getChildren().addAll(firstCharacter, secondCharacter, thirdCharacter);
+        middlePart.getChildren().addAll(yellowCharacter, secondCharacter, thirdCharacter);
         
         //Layout for the middle part of the CharacterSelect Scene
         HBox bottomPart = new HBox(20);
