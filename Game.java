@@ -1,6 +1,6 @@
 /**
  * Class to actually run the game
- * @author Rupin Mittal
+ * @author Rupin Mittal and Brandon Wang
  * @version May 29, 2019
  */
 
@@ -223,6 +223,34 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05)
                             && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05) == 1
                             || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05) % 4 == 1))
+                        {
+                            colliderWall.interactLeft(futureX + player.getWidth());
+                            horizontalCollision = true;
+                        }
+                    }
+                    
+                    if(currentEnvironment.isCollision(futureX, futureY + player.getHeight() / 2.0))  //left edge of player
+                    {
+                        colliderWall = getColliderWall(futureX, futureY + player.getHeight() / 2.0);
+                        
+                        //left collision with left wall
+                        if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight() / 2.0)
+                            && (currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() / 2.0) == 1
+                            || currentEnvironment.getTypeNumber(futureX, player.getYPos() + player.getHeight() / 2.0) % 4 == 1))
+                        {
+                            colliderWall.interactLeft(futureX + player.getWidth());
+                            horizontalCollision = true;
+                        }
+                    }
+                    
+                    if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight() / 2.0))  //right edge of player
+                    {
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
+                        
+                        //right collision with right wall
+                        if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2.0)
+                            && (currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2.0) == 1
+                            || currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2.0) % 4 == 1))
                         {
                             colliderWall.interactLeft(futureX + player.getWidth());
                             horizontalCollision = true;
