@@ -119,6 +119,12 @@
             plotButton.setStyle("-fx-background-color: transparent;");
             plotButton.setEffect(innerShadow);
             
+            //Adds an image to the button
+            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("backToMenu.PNG"), 150, 150, true, false)));
+            // Make button backgrounds transparent
+            backToMenuButton.setStyle("-fx-background-color: transparent;");
+            backToMenuButton.setEffect(innerShadow);
+            
             //Sets the width of the button to a set size
             playButton.setMaxWidth(70);
             playButton.setMaxHeight(70);
@@ -130,6 +136,8 @@
             plotButton.setMaxHeight(70);
             characterSelectButton.setMaxWidth(70);
             characterSelectButton.setMaxHeight(70);
+            backToMenuButton.setMaxWidth(90);
+            backToMenuButton.setMaxHeight(90);
             
             //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
             characterSelectButton.setOnAction(this::characterSelect);
@@ -209,6 +217,9 @@
             startGameButton.setStyle("-fx-background-color: transparent;");
             startGameButton.setEffect(innerShadow);
             
+            startGameButton.setMaxHeight(50);
+            startGameButton.setMaxWidth(50);
+            
             //Layout for the top part of the CharacterSelect Scene
             HBox topPart = new HBox();
             
@@ -223,22 +234,25 @@
             HBox middlePart = new HBox(80);
             
             Button yellowCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Yellow Dude.PNG"), 250, 250, true, false)));
-            // Make button backgrounds transparent
-        
+            // Make button backgrounds grey
+            yellowCharacter.setStyle("-fx-background-color: grey;");
+            yellowCharacter.setStyle("-fx-border-color:yellow;");
+           
             Button blueCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Blue Dude.PNG"), 250, 250, true, false)));
-            // Make button backgrounds transparent
+            // Make button backgrounds grey
+            blueCharacter.setStyle("-fx-background-color: grey;");
+            blueCharacter.setStyle("-fx-border-color: blue;");
             
             Button purpleCharacter = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Purple Dude.PNG"), 250, 250, true, false)));
-            // Make button backgrounds transparent
+            // Make button backgrounds grey
+            purpleCharacter.setStyle("-fx-background-color: grey;");
+            purpleCharacter.setStyle("-fx-border-color: purple;");
             
             middlePart.getChildren().addAll(yellowCharacter, blueCharacter, purpleCharacter);
             
             //Layout for the middle part of the CharacterSelect Scene
             HBox bottomPart = new HBox(20);
-            Button play = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 50, 50, true, false)));
-            // Make button backgrounds transparent
-            playButton.setStyle("-fx-background-color: transparent;");
-            playButton.setEffect(innerShadow);
+            
             bottomPart.getChildren().addAll(backToMenuButton, startGameButton);
             
             //Centers the layout of the Credit scene in the middle
