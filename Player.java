@@ -11,8 +11,7 @@ public class Player extends Movable
 {
     //variables
     //image variables
-    private Image picRunning1;               //the first image of character running
-    private Image picRunning2;               //the second image of character running
+    private Image[] runningAnimation;        //array containing the frames of the character running
     private Image picJump;                   //the image of character jumping
     //private Image picStill is written in superclass Movable
 
@@ -23,28 +22,34 @@ public class Player extends Movable
 
     //variables for updatingAnimation
     private int runTimer;                       //variable counter for how long to wait before switching the running image
+    private int runState;                       //keeps track of what state the runner is in
     private boolean useRunPic1;                 //used to alternate between the two running pictures for running effect
 
     //constructor
     /**
      * Constructor for Player objects
-     * @param pStill Image of still player
-     * @param pRun1  First Image of running PLayer
-     * @param pRun2  Second Image of running Player
-     * @param pJump  Image of jumping Player
+     * @param pStill filepath of image of still player
+     * @param running  filepath prefix of Image of running player
+     * @param pJump  filepath of image of jumping player
      */
-    public Player(Image pStill, Image pRun1, Image pRun2, Image pJump)
+    public Player(String pStill, String running, String pJump)
     {
-        defaultImage = pStill;              //initialize variables in initial state
-        picRunning1 = pRun1;
-        picRunning2 = pRun2;
-        picJump = pJump;
+        //initialize variables in initial state
+        defaultImage = new Image(pStill, 0, 50, true, false);
+        runningAnimation = new Image[12];
+        picJump = new Image(pJump, 0, 50, true, false);
+        
+        //initialize running images
+        for(int frameNum = 1; frameNum <= 12; frameNum++)
+            runningAnimation[frameNum] = new Image(running + frameNum + ".png", 0, 50, true, false);
+        
         movableImageView = new ImageView(defaultImage);
+        
         isAlive = true;
         isOnGreenHorizontal = false;
         isOnGreenVertical = false;
         runTimer = 0;
-        useRunPic1 = true;
+        runState = 0;
     }
 
     //methods
@@ -111,6 +116,7 @@ public class Player extends Movable
         {
             movableImageView.setImage(defaultImage);
             runTimer = 0;
+            runState = 0;
         }
         else
         {
@@ -122,16 +128,16 @@ public class Player extends Movable
                 else                                          //if character moves left
                     movableImageView.setScaleX(-1);         //character faces left
 
-            if(runTimer == 0)                                //if it is time to alternate sprites
+            if(runTimer == 0)                                //if it is time to change animation
             {
-                if(useRunPic1)                                //if picRunning1 is to be used
-                    movableImageView.setImage(picRunning1);
-                else                                          //if picRunning2 is to be used
-                    movableImageView.setImage(picRunning2);
-                useRunPic1 = !useRunPic1;                     //alternate usage
+                movableImageView.setImage(runningAnimation[runState]); //set the imageview to the frame
+                runState++; //increment animation frame number
+                
+                if(runState == 12) //reset animation
+                    runState = 0;
             }
             runTimer++;
-            if(runTimer == 15)
+            if(runTimer == 2)
                 runTimer = 0;                                 //reset timer
         }
     }
