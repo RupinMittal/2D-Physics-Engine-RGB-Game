@@ -16,6 +16,9 @@
     import javafx.scene.shape.Shape;
     import javafx.geometry.Insets;
     import javafx.scene.effect.InnerShadow;
+    import javafx.scene.control.ToggleButton;
+    import javafx.scene.media.Media;
+    import javafx.scene.media.MediaPlayer;
     
     /**
      * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
@@ -41,12 +44,17 @@
         private Button plotButton; 
         //Button that allows the user to select a character
         private Button characterSelectButton;
+        //Button that allows the user to turn on and off the music
+        private ToggleButton volumeButton;
         
         //A top-level container that hosts a Scene
         private Stage window;
         
         //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
         private Scene mainScene, creditScene, playScene, plotScene, characterScene; 
+        
+        //Boolean value that indicates if the volume is on or off
+        private boolean volumeOn;
        
         // /**
          // * This the constructor for MainMenu that will construct all the buttons
@@ -73,10 +81,10 @@
             //Instatiation of the Stage window
             window = stage;
             
-            //Have the music to play automatically as soon as the user opens the menu
-            Music.loop("ollie.mp3");
             //Declaration and Instantiaion of color
             Color c = Color.BLACK;
+            //Instantiation of the boolean variable volumeOn;
+            volumeOn = true;
             
             //Adding the special effects of shadows on the characters
             InnerShadow innerShadow = new InnerShadow();
@@ -86,46 +94,67 @@
             innerShadow.setColor(Color.DARKGRAY); 
             
             //Adds an image to the button
-            playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 100, 100, true, false)));
+            playButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Play.PNG"), 90, 90, true, false)));
             // Make button backgrounds transparent
             playButton.setStyle("-fx-background-color: transparent;");
             playButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 150, 150, true, false)));
+            creditsButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Credits.PNG"), 140, 140, true, false)));
             // Make button backgrounds transparent
             creditsButton.setStyle("-fx-background-color: transparent;");
             creditsButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Back To Menu Pic.PNG"), 150, 150, true, false)));
+            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Back To Menu Pic.PNG"), 140, 140, true, false)));
             // Make button backgrounds transparent
             backToMenuButton.setStyle("-fx-background-color: transparent;");
             backToMenuButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 250, 250, true, false)));
+            howToButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Howto.PNG"), 240, 240, true, false)));
             //Makes the background of the button transparent
             howToButton.setStyle("-fx-background-color: transparent;");
             howToButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 270, 270, true, false)));
+            characterSelectButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Character Select.PNG"), 260, 260, true, false)));
             //Make button backgrounds transparent
             characterSelectButton.setStyle("-fx-background-color: transparent;");
             characterSelectButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 250, 250, true, false)));
+            plotButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Gameplot.PNG"), 240, 240, true, false)));
             // Make button backgrounds transparent
             plotButton.setStyle("-fx-background-color: transparent;");
             plotButton.setEffect(innerShadow);
             
             //Adds an image to the button
-            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("backToMenu.PNG"), 150, 150, true, false)));
+            backToMenuButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("backToMenu.PNG"), 140, 140, true, false)));
             // Make button backgrounds transparent
             backToMenuButton.setStyle("-fx-background-color: transparent;");
             backToMenuButton.setEffect(innerShadow);
+            
+            //Creating a toggle button for music
+            Image imageOn = new Image(getClass().getResourceAsStream("Volume.png"), 40, 40, true, false);
+            volumeButton = new ToggleButton("", new ImageView(imageOn));
+            volumeButton.setStyle("-fx-background-color: white;");
+            Music music = new Music("ollie.mp3");
+            MediaPlayer menuPlayer = music.getMediaPlayer();
+            menuPlayer.setCycleCount(99999);
+            volumeButton.setOnAction(event -> 
+            {
+                if (volumeButton.isSelected()) 
+                {
+                    music.getMediaPlayer().play();
+                    volumeButton.setStyle("-fx-background-color: gold;");
+                }
+                else 
+                {
+                    music.getMediaPlayer().pause();
+                    volumeButton.setStyle("-fx-background-color: grey;");
+                }
+            });
             
             //Sets the width of the button to a set size
             playButton.setMaxWidth(70);
@@ -140,6 +169,8 @@
             characterSelectButton.setMaxHeight(70);
             backToMenuButton.setMaxWidth(90);
             backToMenuButton.setMaxHeight(90);
+            volumeButton.setMaxWidth(40);
+            volumeButton.setMaxHeight(40);
             
             //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
             characterSelectButton.setOnAction(this::characterSelect);
@@ -148,7 +179,7 @@
             plotButton.setOnAction(this::plot);
     
             //Layout for the Main scene - children are laid out in a veritcal column
-            VBox main = new VBox(20);
+            VBox main = new VBox(15);
             
             //Centers the layout in the middle of the scene
             main.setAlignment(Pos.CENTER);
@@ -159,10 +190,10 @@
             title.setEffect(innerShadow);
             
             //Adds the buttons and label onto the layout of the scene
-            main.getChildren().addAll(title, characterSelectButton, plotButton, howToButton, creditsButton);
+            main.getChildren().addAll(title, characterSelectButton, plotButton, howToButton, creditsButton, volumeButton);
             
            //Instantiation of the scene in MainMenu
-            mainScene = new Scene(main, 900, 600, c);
+            mainScene = new Scene(main, 850, 625, c);
             
             //Set the color of the background to Gainsboro
             main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -187,6 +218,30 @@
         private void play(ActionEvent pClick)
         {
             
+        }
+        
+        /**
+         * This method will be called when the user clicks the play button in the Character Select scene. It
+         * will switch screens to the actual game
+         * 
+         * @param pClick - an event representing the user clicking the play button
+         */
+        private void volumeChange(ActionEvent pClick)
+        {
+            if(volumeOn == true)
+            {
+                
+                // volumeOn = false;
+                // Music.loop("ollie.mp3", 0.0);
+                // volumeButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Volume Off.PNG"), 150, 150, true, false)));
+            }
+            
+            else
+            {
+                // volumeOn = true;
+                // Music.loop("ollie.mp3", 1.0);
+                // volumeButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Volume On.PNG"), 150, 150, true, false)));
+            }
         }
         
         /**

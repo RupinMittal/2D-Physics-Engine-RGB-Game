@@ -24,6 +24,11 @@ public class Music
         player = new MediaPlayer(media);
     }
     
+    public MediaPlayer getMediaPlayer()
+    {
+        return player;
+    }
+    
     /**
      * The method will take a file and continuously play it back in a loop
      * The volume of the music for this method is at its max volume
