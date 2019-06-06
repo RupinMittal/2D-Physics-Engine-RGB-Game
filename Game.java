@@ -338,8 +338,8 @@ public class Game extends Application
                         //if player and enemy's position is the same, kill the player
 
                         //do offset
-                        //if(character.getX() > cameraOffset)     //if character is out of offsetrange
-                            //environment.setViewport(new Rectangle2D(character.getX() - character.getFitWidth(), 0, 200, 200));  //scroll screen
+                        //if((player.getImageView()).getX() > cameraOffset)     //if character is out of offsetrange
+                           // environment.setViewport(new Rectangle2D((player.getImageView()).getX() - (player.getImageView()).getFitWidth(), 0, 200, 200));  //scroll screen
                     }
                     //else
                         //show game over screen
@@ -373,9 +373,9 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
-        //viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
+        //viewport = new Rectangle2D(0, 0, 1000, 1000);       //the rectangle to have offset in the game
         //environment.setViewport(viewport);                                          //set imageview to have the rectangle
-        //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
+        //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - (player.getImageView()).getFitWidth())/2);   //the amount to offset camera by for scrolling
     }
 
     /*
