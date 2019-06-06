@@ -23,26 +23,24 @@ public class Player extends Movable
     //variables for updatingAnimation
     private int runTimer;                       //variable counter for how long to wait before switching the running image
     private int runState;                       //keeps track of what state the runner is in
-    private boolean useRunPic1;                 //used to alternate between the two running pictures for running effect
 
     //constructor
     /**
      * Constructor for Player objects
      * @param pStill filepath of image of still player
-     * @param running  filepath prefix of Image of running player
      * @param pJump  filepath of image of jumping player
      */
-    public Player(String pStill, String running, String pJump)
+    public Player(String pStill, String pJump)
     {
         //initialize variables in initial state
         defaultImage = new Image(pStill, 0, 50, true, false);
         runningAnimation = new Image[12];
         picJump = new Image(pJump, 0, 50, true, false);
-        
+
         //initialize running images
         for(int frameNum = 1; frameNum <= 12; frameNum++)
-            runningAnimation[frameNum - 1] = new Image(running + frameNum + ".png", 0, 50, true, false);
-        
+            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 0, 50, true, false);
+
         movableImageView = new ImageView(defaultImage);
         
         isAlive = true;
