@@ -23,6 +23,9 @@ public class Player extends Movable
     //variables for updatingAnimation
     private int runTimer;                       //variable counter for how long to wait before switching the running image
     private int runState;                       //keeps track of what state the runner is in
+    
+    //constant for player height
+    private final int PLAYER_HEIGHT = 75;
 
     //constructor
     /**
@@ -33,13 +36,13 @@ public class Player extends Movable
     public Player(String pStill, String pJump)
     {
         //initialize variables in initial state
-        defaultImage = new Image(pStill, 0, 50, true, false);
+        defaultImage = new Image(pStill, 0, PLAYER_HEIGHT, true, false);
         runningAnimation = new Image[12];
-        picJump = new Image(pJump, 0, 50, true, false);
+        picJump = new Image(pJump, 0, PLAYER_HEIGHT, true, false);
 
         //initialize running images
         for(int frameNum = 1; frameNum <= 12; frameNum++)
-            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 0, 50, true, false);
+            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 0, PLAYER_HEIGHT, true, false);
 
         movableImageView = new ImageView(defaultImage);
         

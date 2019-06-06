@@ -44,8 +44,8 @@ public class Game extends Application
     private int vDirection;                     //the vertical direction
 
     //constants
-    private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 5, JUMP_ACC = 5, MAX_VEL = 5; //the constants for movement
-    private final int TILE_SIZE = 32;    //the tile size
+    private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 6.9, MAX_VEL = 5; //the constants for movement
+    private final int TILE_SIZE = 50;    //the tile size
 
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
@@ -68,6 +68,8 @@ public class Game extends Application
         player.setXPos(100);
         player.setYPos(448 - player.getHeight());
         primaryStage.setTitle("RGB");
+        primaryStage.setHeight(800);
+        primaryStage.setWidth(1200);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -327,7 +329,36 @@ public class Game extends Application
                     {
                         //update the animation that is being run
                         player.updateAnimation();
-
+                        
+                        //if camera need to scroll
+                        if(player.getXPos() - cameraOffset > 1000)
+                        {
+                            cameraOffset = player.getXPos() - 1000;
+                            environment.setTranslateX(-1 * cameraOffset);
+                            player.getImageView().setTranslateX(-1 * cameraOffset);
+                        }
+                        else
+                            if(player.getXPos() - cameraOffset < 200)
+                            {
+                                cameraOffset = player.getXPos() - 200;
+                                environment.setTranslateX(-1 * cameraOffset);
+                                player.getImageView().setTranslateX(-1 * cameraOffset);
+                            }
+                        //limit camera scrolling
+                        //left edge of screen
+                        if(cameraOffset < 0)
+                        {
+                            cameraOffset = 0;
+                            environment.setTranslateX(-1 * cameraOffset);
+                            player.getImageView().setTranslateX(-1 * cameraOffset);
+                        }
+                        //right edge
+                        /*if(cameraOffset > environment.getFitWidth() - primaryStage.getWidth())
+                        {
+                            cameraOffset = environment.getFitWidth() - primaryStage.getWidth();
+                            environment.setTranslateX(-1 * cameraOffset);
+                            player.getImageView().setTranslateX(-1 * cameraOffset);
+                        }*/
                         //check out of bounds movement
                         //if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
                             //player.setAliveStatus(false);                                  //kill the player
