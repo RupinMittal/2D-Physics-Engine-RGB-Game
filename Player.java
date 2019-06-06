@@ -122,8 +122,9 @@ public class Player extends Movable
         {
             if (xVel > 0)                                 //if player is moving right
                 movableImageView.setScaleX(1);          //character faces right
-            else                                          //if character moves left
-                movableImageView.setScaleX(-1);         //character faces left
+            else
+                if(xVel < 0)                            //if character moves left
+                    movableImageView.setScaleX(-1);     //character faces left
             
             if(yVel != 0)
                 movableImageView.setImage(picJump);
