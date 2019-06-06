@@ -341,9 +341,8 @@ public class Game extends Application
                         //if((player.getImageView()).getX() > cameraOffset)     //if character is out of offsetrange
                            // environment.setViewport(new Rectangle2D((player.getImageView()).getX() - (player.getImageView()).getFitWidth(), 0, 200, 200));  //scroll screen
                     }
-                    //else
-                        //show game over screen
-                        //reset to sector 1
+                    else
+                        resetToSectorStart();
                 }
                 //else
                     //show game over screen
@@ -407,8 +406,8 @@ public class Game extends Application
      */
     private void resetToSectorStart()
     {
-        player.setAliveStatus(true);  //revive player
-        //reset players position to start of sector 1
-        //display everything
+        player.setAliveStatus(true);                //revive player
+        player.setXPos(100);                        //reset to sector 1 right now
+        player.setYPos(448 - player.getHeight());   //reset to sector beginning
     }
 }
