@@ -170,28 +170,28 @@ public class Game extends Application
                     }
                     
                     //top right corner of player
-                    if(currentEnvironment.isCollision(futureX + player.getWidth() - 0.1, futureY))
+                    if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY))
                     {
-                        colliderWall = getColliderWall(futureX + player.getWidth() - 0.1, futureY);
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY);
                         
                         //top right collision with ceiling
-                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth() - 0.1, futureY))
+                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() - 0.1, futureY) % 4 == 4)
+                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 4)
                                 colliderWall.interactCeiling(futureY);
                             else //normal wall
                                 nWall.interactCeiling(futureY);
                             verticalCollision = true;
                         }
                         //top right collision with right wall
-                        if(currentEnvironment.isCollision(futureX + player.getWidth() - 0.1, player.getYPos()))
+                        if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos()))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth() - 0.1, player.getYPos()) % 4 == 2)
-                                colliderWall.interactLeft(futureX + player.getWidth() - 0.1);
+                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos()) % 4 == 2)
+                                colliderWall.interactLeft(futureX + player.getWidth());
                             else //normal wall
-                                nWall.interactLeft(futureX + player.getWidth() - 0.1);
+                                nWall.interactLeft(futureX + player.getWidth());
                             horizontalCollision = true;
                         }
                     }
@@ -224,28 +224,28 @@ public class Game extends Application
                     }
 
                     //bottom right corner of player
-                    if(currentEnvironment.isCollision(futureX + player.getWidth() - 0.1, futureY + player.getHeight()))
+                    if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight()))
                     {
-                        colliderWall = getColliderWall(futureX + player.getWidth() - 0.1, futureY + player.getHeight());
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
                         
                         //bottom right collision with floor
-                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth() - 0.1, futureY + player.getHeight()))
+                        if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight()))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() - 0.1, futureY + player.getHeight()) % 4 == 3)
+                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY + player.getHeight()) % 4 == 3)
                                 colliderWall.interactFloor(futureY + player.getHeight());
                             else //normal wall
                                 nWall.interactFloor(futureY + player.getHeight());
                             verticalCollision = true;
                         }
                         //bottom right collision with right wall
-                        if(currentEnvironment.isCollision(futureX + player.getWidth() - 0.1, player.getYPos() + player.getHeight() - 0.05))
+                        if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth() - 0.1, player.getYPos() + player.getHeight() - 0.05) % 4 == 2)
+                            if(currentEnvironment.getTypeNumber(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05) % 4 == 2)
                                 colliderWall.interactLeft(futureX + player.getWidth());
                             else //normal wall
-                                nWall.interactLeft(futureX + player.getWidth() - 0.05);
+                                nWall.interactLeft(futureX + player.getWidth());
                             horizontalCollision = true;
                         }
                     }
@@ -373,7 +373,7 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
-        viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
+        //viewport = new Rectangle2D(0, 0, 200, 200);       //the rectangle to have offset in the game
         //environment.setViewport(viewport);                                          //set imageview to have the rectangle
         //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - character.getFitWidth())/2);   //the amount to offset camera by for scrolling
     }
