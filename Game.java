@@ -331,10 +331,10 @@ public class Game extends Application
         //initialize main menu
         //initialize pause menu
         gameEnvironment = new Environment("test.txt", "Test.png");   //create first game environment
-        //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntoBackground.png");    //create intro environment
+        //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntroBackground.png");    //create intro environment
         currentEnvironment = gameEnvironment;
         //player = mainMenu.getPlayer;              //initialize player
-        player = new Player("player.png", "\\walkAnimation\\walk", "player.png");
+        player = new Player("player.png", "file:walkAnimation/walk", "player.png");
         nWall = new NormalWall(player, TILE_SIZE);  //initialize the wall variables
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);

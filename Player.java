@@ -41,7 +41,7 @@ public class Player extends Movable
         
         //initialize running images
         for(int frameNum = 1; frameNum <= 12; frameNum++)
-            runningAnimation[frameNum] = new Image(running + frameNum + ".png", 0, 50, true, false);
+            runningAnimation[frameNum - 1] = new Image(running + frameNum + ".png", 0, 50, true, false);
         
         movableImageView = new ImageView(defaultImage);
         
@@ -120,22 +120,23 @@ public class Player extends Movable
         }
         else
         {
-            if ((yVel != 0))                                  //if character is moving vertically
+            if (xVel > 0)                                 //if player is moving right
+                movableImageView.setScaleX(1);          //character faces right
+            else                                          //if character moves left
+                movableImageView.setScaleX(-1);         //character faces left
+            
+            if(yVel != 0)
                 movableImageView.setImage(picJump);
             else
-                if (xVel > 0)                                 //if player is moving right
-                    movableImageView.setScaleX(1);          //character faces right
-                else                                          //if character moves left
-                    movableImageView.setScaleX(-1);         //character faces left
-
-            if(runTimer == 0)                                //if it is time to change animation
-            {
-                movableImageView.setImage(runningAnimation[runState]); //set the imageview to the frame
-                runState++; //increment animation frame number
+                if(runTimer == 0)                                //if it is time to change animation
+                {
+                    movableImageView.setImage(runningAnimation[runState]); //set the imageview to the frame
+                    runState++; //increment animation frame number
+                    
+                    if(runState == 12) //reset animation
+                        runState = 0;
+                }
                 
-                if(runState == 12) //reset animation
-                    runState = 0;
-            }
             runTimer++;
             if(runTimer == 2)
                 runTimer = 0;                                 //reset timer
