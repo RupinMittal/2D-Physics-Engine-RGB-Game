@@ -122,7 +122,7 @@ public class Game extends Application
                         futureXVel = MAX_VEL * Math.signum(futureXVel);             //then limit the velocity
                     //Stopping player if velocity passes 0 (friction)
                     if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(player.getXVel())
-                        && !left && !right)
+                        && ((!left && !right) || (left && right)))
                         futureXVel = 0;
 
                     //keypresses
