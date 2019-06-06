@@ -17,6 +17,8 @@
     import javafx.geometry.Insets;
     import javafx.scene.effect.InnerShadow;
     import javafx.scene.control.ToggleButton;
+    import javafx.scene.media.Media;
+    import javafx.scene.media.MediaPlayer;
     
     /**
      * MainMenu allows the user to start the game, open up a "How To" play the game, look at the
@@ -133,8 +135,12 @@
             backToMenuButton.setStyle("-fx-background-color: transparent;");
             backToMenuButton.setEffect(innerShadow);
             
-            volumeButton = new ToggleButton("Music On/Off");
+            //Creating a toggle button for music
+            Image imageOn = new Image(getClass().getResourceAsStream("Volume On.png"), 40, 40, true, false);
+            volumeButton = new ToggleButton("", new ImageView(imageOn));
             Music music = new Music("ollie.mp3");
+            MediaPlayer menuPlayer = music.getMediaPlayer();
+            menuPlayer.setCycleCount(99999);
             volumeButton.setOnAction(event -> 
             {
                 if (volumeButton.isSelected()) 
@@ -160,8 +166,8 @@
             characterSelectButton.setMaxHeight(70);
             backToMenuButton.setMaxWidth(90);
             backToMenuButton.setMaxHeight(90);
-            volumeButton.setMaxWidth(90);
-            volumeButton.setMaxHeight(90);
+            volumeButton.setMaxWidth(40);
+            volumeButton.setMaxHeight(40);
             
             //This class will handle the button event when user hits Play, How To, Game Plot, and Credits (changes the scene)
             characterSelectButton.setOnAction(this::characterSelect);
