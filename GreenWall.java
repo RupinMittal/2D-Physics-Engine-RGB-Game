@@ -100,7 +100,7 @@ public class GreenWall implements Wall
         interactPlayer.setYPos(wallY);
         
         //stop player's vertical movement
-        interactPlayer.setYVel(0);
+        interactPlayer.setYVel(-2);
         
         //toggle player's green status
         interactPlayer.setGreenVerticalStatus(true);
