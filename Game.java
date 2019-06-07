@@ -275,7 +275,7 @@ public class Game extends Application
                     //right edge of player
                     if(currentEnvironment.isCollision(futureX + player.getWidth(), futureY + player.getHeight() / 2))
                     {
-                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight());
+                        colliderWall = getColliderWall(futureX + player.getWidth(), futureY + player.getHeight() / 2);
                         
                         //right collision with right wall
                         if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2))
