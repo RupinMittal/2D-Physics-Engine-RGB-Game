@@ -38,8 +38,6 @@ public class Game extends Application
     private double futureYVel;                  //the future vertical velocity
     private double futureX;                     //future horizontal position
     private double futureY;                     //future vertical position
-    private int hDirection;                     //the horizontal direction
-    private int vDirection;                     //the vertical direction
 
     //constants
     private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 6.9, MAX_VEL = 5; //the constants for movement
@@ -63,12 +61,14 @@ public class Game extends Application
         //initialize the display
         root.getChildren().add(environment);
         root.getChildren().add(player.getImageView());
-        player.setXPos(100);
-        player.setYPos(448 - player.getHeight());
         primaryStage.setTitle("RGB");
         primaryStage.setHeight(800);
         primaryStage.setWidth(1200);
         primaryStage.setScene(scene);
+        
+        //player initial position
+        player.setXPos(TILE_SIZE / 2);
+        player.setYPos(660);
         primaryStage.show();
 
         //run controls
@@ -335,8 +335,8 @@ public class Game extends Application
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
                             }
                         //check out of bounds movement
-                        if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
-                            player.setAliveStatus(false);                                  //kill the player
+                        /*if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
+                            player.setAliveStatus(false);*/                                  //kill the player
                         //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
                         //move to next sector
 
@@ -348,7 +348,7 @@ public class Game extends Application
                         resetToSectorStart();
                 }
                 //else
-                    resetToSectorStart();
+                    //resetToSectorStart();
             }
         };
         timer.start();
@@ -405,7 +405,7 @@ public class Game extends Application
     private void resetToSectorStart()
     {
         player.setAliveStatus(true);                //revive player
-        player.setXPos(100);                        //reset to sector 1 right now
-        player.setYPos(448 - player.getHeight());   //reset to sector beginning
+        player.setXPos(0);                          //reset to sector 1 right now
+        player.setYPos(660);   //reset to sector beginning
     }
 }
