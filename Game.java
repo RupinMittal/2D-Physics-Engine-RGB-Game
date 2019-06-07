@@ -156,10 +156,10 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(player.getXPos(), futureY))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 4)
+                            if(currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 0)
                                 colliderWall.interactCeiling(futureY);
                             else //normal wall
-                                nWall.interactCeiling(futureY);
+                                bWall.interactCeiling(futureY);
                             verticalCollision = true;
                         }
                         //top left collision with left wall
@@ -169,7 +169,7 @@ public class Game extends Application
                             if(currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 1)
                                 colliderWall.interactRight(futureX);
                             else //normal wall
-                                nWall.interactRight(futureX);
+                                bWall.interactRight(futureX);
                             horizontalCollision = true;
                         }
                     }
@@ -183,7 +183,7 @@ public class Game extends Application
                         if(currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY))
                         {
                             //wall matches
-                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 4)
+                            if(currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), futureY) % 4 == 0)
                                 colliderWall.interactCeiling(futureY);
                             else //normal wall
                                 nWall.interactCeiling(futureY);
