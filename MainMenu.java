@@ -58,15 +58,15 @@
         
         public Scene getScene()
         {
-            instantiate(new Stage());
+            instantiate(/*new Stage()*/);
             return mainScene;
         }
         
         //instantiates variables
-        private void instantiate(Stage stage) 
+        private void instantiate(/*Stage stage*/)
         {
             //Instatiation of the Stage window
-            window = stage;
+            //window = stage;
             
             //Declaration and Instantiaion of color
             Color c = Color.BLACK;
@@ -186,7 +186,7 @@
             main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
     
             //User can not resize the form
-            window.setResizable(false);
+            //window.setResizable(false);
             
             //Sets the title of the window
             /*window.setTitle("RGB GANG");
@@ -297,7 +297,7 @@
      */
     private void yellow(ActionEvent characterSelectClick)
     {
-        //Player player = new Player("file:characters/Yellow.png", "file:walkAnimation/y1.png");
+        Player player = new Player("file:characters/Yellow.png", "file:walkAnimation/y1.png");
     }
     
     /**
@@ -307,7 +307,7 @@
      */
     private void blue(ActionEvent characterSelectClick)
     {
-        //Player player = new Player("file:characters/Cyan.png", "file:walkAnimation/c1.png");
+        Player player = new Player("file:characters/Cyan.png", "file:walkAnimation/c1.png");
     }
     
     /**
@@ -317,7 +317,7 @@
      */
     private void purple(ActionEvent characterSelectClick)
     {
-        //String Player player = new Player("file:characters/Purple.png", "file:walkAnimation/p1.png");
+        Player player = new Player("file:characters/Purple.png", "file:walkAnimation/p1.png");
     }
     
     /**
@@ -325,7 +325,7 @@
      * When clicked, it will switch screens and show instructions on how to
      * play.
      * 
-     * @param howToClick - an event representing the user clicking the how to
+     * @param howtoClick - an event representing the user clicking the how to
      * play button
      */
     public void howTo(ActionEvent howtoClick)
@@ -425,7 +425,7 @@
      * will switch screens to a Game Plot scene that displays the plot of the game
      * 
      * 
-     * @param howToClick - an event representing the user clicking the how to
+     * @param howtoClick - an event representing the user clicking the how to
      * play button
      */
     public void plot(ActionEvent howtoClick)

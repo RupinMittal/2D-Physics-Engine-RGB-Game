@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class Game extends Application
 {
     //object variables
-    //MainMenu mainMenu;                        //the mainmenu object
+    MainMenu mainMenu;                          //the mainmenu object
     private Environment currentEnvironment;     //the current environment being used
     private Environment gameEnvironment;        //the game environment
     private IntroEnvironment introEnvironment;  //the intro environment
@@ -49,7 +49,7 @@ public class Game extends Application
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
     private Group root;                      //the Group
-    private Scene scene;                     //the scene
+    private Scene scene, menuScene;          //the scene
 
     //methods to run class
     public static void main(String[] args)
@@ -67,7 +67,7 @@ public class Game extends Application
         primaryStage.setTitle("RGB");
         primaryStage.setHeight(780);
         primaryStage.setWidth(1200);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(menuScene);
         
         //player initial position
         player.setXPos(0);
@@ -100,9 +100,6 @@ public class Game extends Application
                 }
             }
         });
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
 
         //AnimationTimer to run game
         AnimationTimer timer = new AnimationTimer()
@@ -443,6 +440,9 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView(); //get environment imageview
         root = new Group();                              //the Group
         scene = new Scene(root);                         //the scene
+        mainMenu = new MainMenu();
+        menuScene = mainMenu.getScene();
+
         sectorNum = 1; //sector num the player is on
         }
 
