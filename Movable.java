@@ -100,7 +100,7 @@ public abstract class Movable
      */
     public double getHeight()
     {
-        return movableImageView.getImage().getHeight();    //return the height
+        return defaultImage.getHeight();    //return the height
     }
 
     /**

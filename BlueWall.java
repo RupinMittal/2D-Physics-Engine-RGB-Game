@@ -9,7 +9,7 @@ public class BlueWall implements Wall
 {
     private Player interactPlayer; //the Player the wall interacts with
     private int tileSize; //the tile size in pixels
-    private static final int HORI_BOUNCE = 10;
+    private static final int HORI_BOUNCE = 100;
     private static final int VERT_BOUNCE = 10;
     
     /**

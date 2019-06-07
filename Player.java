@@ -38,11 +38,11 @@ public class Player extends Movable
         //initialize variables in initial state
         defaultImage = new Image(pStill, 0, PLAYER_HEIGHT, true, false);
         runningAnimation = new Image[12];
-        picJump = new Image(pJump, 0, PLAYER_HEIGHT, true, false);
+        picJump = new Image(pJump, 35, PLAYER_HEIGHT, false, false);
 
         //initialize running images
         for(int frameNum = 1; frameNum <= 12; frameNum++)
-            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 0, PLAYER_HEIGHT, true, false);
+            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 35, PLAYER_HEIGHT, false, false);
 
         movableImageView = new ImageView(defaultImage);
         
