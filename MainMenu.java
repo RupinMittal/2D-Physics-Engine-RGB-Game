@@ -215,6 +215,8 @@
          */
         public void characterSelect(ActionEvent characterSelectClick)
         {
+            Player player = null;   //the player to be returned
+
             //Adding the special effects of shadows on the characters
             InnerShadow innerShadow = new InnerShadow();
             //setting the type of blur for the shadow 
