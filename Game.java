@@ -351,17 +351,19 @@ public class Game extends Application
                         //left edge of screen
                         if(cameraOffset < 0)
                         {
+                            //set offset to left edge
                             cameraOffset = 0;
                             environment.setTranslateX(-1 * cameraOffset);
                             player.getImageView().setTranslateX(-1 * cameraOffset);
                         }
-                        /*else //right edge
-                            if(cameraOffset > environment.getFitWidth() - primaryStage.getWidth())
+                        else //right edge
+                            if(cameraOffset > environment.getImage().getWidth() - primaryStage.getWidth())
                             {
-                                cameraOffset = environment.getFitWidth() - primaryStage.getWidth();
+                                //set offset to right edge
+                                cameraOffset = environment.getImage().getWidth() - primaryStage.getWidth();
                                 environment.setTranslateX(-1 * cameraOffset);
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
-                            }*/
+                            }
                         //check out of bounds movement
                         //if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
                             //player.setAliveStatus(false);                                  //kill the player
