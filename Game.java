@@ -43,8 +43,8 @@ public class Game extends Application
     private int sectorNum;                      //the sector number that we are on
 
     //constants
-    private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 6.9, MAX_VEL = 5; //the constants for movement
-    private final int TILE_SIZE = 50;    //the tile size
+    private final double X_ACC = 8, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 5.5, MAX_VEL = 4; //the constants for movement
+    private final int TILE_SIZE = 30;    //the tile size
 
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
@@ -65,13 +65,13 @@ public class Game extends Application
         root.getChildren().add(environment);
         root.getChildren().add(player.getImageView());
         primaryStage.setTitle("RGB");
-        primaryStage.setHeight(800);
+        primaryStage.setHeight(780);
         primaryStage.setWidth(1200);
         primaryStage.setScene(scene);
         
         //player initial position
-        player.setXPos(TILE_SIZE / 2);
-        player.setYPos(100);
+        player.setXPos(0);
+        player.setYPos(120);
         primaryStage.show();
 
         //run controls
@@ -473,7 +473,7 @@ public class Game extends Application
     {
         player.setAliveStatus(true);                //revive player
         player.setXPos(0);                          //reset to sector 1 right now
-        player.setYPos(660);   //reset to sector beginning
+        player.setYPos(120);   //reset to sector beginning
     }
 
     /*

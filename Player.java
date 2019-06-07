@@ -23,7 +23,7 @@ public class Player extends Movable
     private int runState;                       //keeps track of what state the runner is in
     
     //constant for player height
-    private final int PLAYER_HEIGHT = 75;
+    private final int PLAYER_HEIGHT = 45;
 
     //constructor
     /**
@@ -36,11 +36,11 @@ public class Player extends Movable
         //initialize variables in initial state
         defaultImage = new Image(pStill, 0, PLAYER_HEIGHT, true, false);
         runningAnimation = new Image[12];
-        picJump = new Image(pJump, 35, PLAYER_HEIGHT, false, false);
+        picJump = new Image(pJump, 21, PLAYER_HEIGHT, false, false);
 
         //initialize running images
         for(int frameNum = 1; frameNum <= 12; frameNum++)
-            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 35, PLAYER_HEIGHT, false, false);
+            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 21, PLAYER_HEIGHT, false, false);
 
         movableImageView = new ImageView(defaultImage);
         
