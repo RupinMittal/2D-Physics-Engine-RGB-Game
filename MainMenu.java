@@ -56,14 +56,14 @@
         //Boolean value that indicates if the volume is on or off
         private boolean volumeOn;
        
-        // /**
-         // * This the constructor for MainMenu that will construct all the buttons
-         // * and run the main menu via runMenu() 
-         // */
-        // public MainMenu()
-        // {
+        /**
+         * This the constructor for MainMenu that will construct all the buttons
+         * and run the main menu via runMenu() 
+        */
+        public MainMenu()
+        {
             
-        // }
+        }
         
          //*The main() method is ignored in correctly deployed JavaFX application.
          /**
