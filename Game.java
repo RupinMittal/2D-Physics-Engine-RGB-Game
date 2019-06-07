@@ -71,7 +71,7 @@ public class Game extends Application
         
         //player initial position
         player.setXPos(TILE_SIZE / 2);
-        player.setYPos(660);
+        player.setYPos(100);
         primaryStage.show();
 
         //run controls
@@ -427,7 +427,7 @@ public class Game extends Application
     private void initializeVariables()
     {
         //initialize main menu
-        gameEnvironment = new Environment("file:sectors/Sector1.txt", "file:sectors/Sector1.png");   //create first game environment
+        gameEnvironment = new Environment("sectors/Sector1.txt", "sectors/Sector1.png");   //create first game environment
         //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntroBackground.png");    //create intro environment
         currentEnvironment = gameEnvironment;
         //player = mainMenu.getPlayer;              //initialize player
@@ -486,7 +486,7 @@ public class Game extends Application
         if(sectorNum != 3)
         {
             sectorNum++;    //move to next sectorNum
-            gameEnvironment = new Environment("file:SectorFiles/Sector" + sectorNum + ".txt", "file:SectorFiles/Sector" + sectorNum + ".png");   //create first game environment
+            gameEnvironment = new Environment("sectors/Sector" + sectorNum + ".txt", "sectorsFiles/Sector" + sectorNum + ".png");   //create first game environment
             currentEnvironment = gameEnvironment;
             environment = gameEnvironment.getMapImageView();                            //get environment imageview
         }
