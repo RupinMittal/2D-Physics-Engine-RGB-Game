@@ -329,29 +329,39 @@ public class Game extends Application
                     {
                         //update the animation that is being run
                         player.updateAnimation();
+
+                        if(((player.getImageView()).getX() > 100) && ((player.getImageView()).getX() < 4200))   //if player is in a posiition where scrolling is needed
+                        {
+                            cameraOffset = (viewport.getWidth() / 2) + (player.getWidth() /2);  //get the camera offset
+                            if(player.getXPos() > cameraOffset);                    //if scrolling actually needs to be done
+                            {
+                                viewport = new Rectangle2D(viewport.getMinX() + (player.getImageView()).getX() - 600 - viewport.getMinX(), 0, 1200, 1000);
+                            }
+                        }
+
                         
                         //if camera need to scroll
-                        if(player.getXPos() - cameraOffset > 1000)
-                        {
-                            cameraOffset = player.getXPos() - 1000;
-                            environment.setTranslateX(-1 * cameraOffset);
-                            player.getImageView().setTranslateX(-1 * cameraOffset);
-                        }
-                        else
-                            if(player.getXPos() - cameraOffset < 200)
-                            {
-                                cameraOffset = player.getXPos() - 200;
-                                environment.setTranslateX(-1 * cameraOffset);
-                                player.getImageView().setTranslateX(-1 * cameraOffset);
-                            }
+                        //if(player.getXPos() - cameraOffset > 1000)
+                        //{
+                            //cameraOffset = player.getXPos() - 1000;
+                            //environment.setTranslateX(-1 * cameraOffset);
+                            //player.getImageView().setTranslateX(-1 * cameraOffset);
+                        //}
+                        //else
+                            //if(player.getXPos() - cameraOffset < 200)
+                            //{
+                                //cameraOffset = player.getXPos() - 200;
+                                //environment.setTranslateX(-1 * cameraOffset);
+                                //player.getImageView().setTranslateX(-1 * cameraOffset);
+                            //}
                         //limit camera scrolling
                         //left edge of screen
-                        if(cameraOffset < 0)
-                        {
-                            cameraOffset = 0;
-                            environment.setTranslateX(-1 * cameraOffset);
-                            player.getImageView().setTranslateX(-1 * cameraOffset);
-                        }
+                        //if(cameraOffset < 0)
+                        //{
+                            //cameraOffset = 0;
+                            //environment.setTranslateX(-1 * cameraOffset);
+                            //player.getImageView().setTranslateX(-1 * cameraOffset);
+                        //}
                         //right edge
                         /*if(cameraOffset > environment.getFitWidth() - primaryStage.getWidth())
                         {
@@ -403,9 +413,9 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
-        //viewport = new Rectangle2D(0, 0, 1000, 1000);       //the rectangle to have offset in the game
-        //environment.setViewport(viewport);                                          //set imageview to have the rectangle
-        //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - (player.getImageView()).getFitWidth())/2);   //the amount to offset camera by for scrolling
+        viewport = new Rectangle2D(0, 0, 1200, 1000);       //the rectangle to have offset in the game
+        environment.setViewport(viewport);                                          //set imageview to have the rectangle
+        cameraOffset = (viewport.getWidth() / 2) + (player.getWidth() /2);           //the amount to offset camera by for scrolling
     }
 
     /*
