@@ -113,19 +113,19 @@ public class Game extends Application
                 {
                     //handling green stuff
                     //checks 4 corners and 2 edges for green walls
-                    isOnGreenVertical = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos()) == 10
-                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight() / 2) == 10
-                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight()) == 10
-                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos()) == 9
-                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos() + player.getHeight() / 2) == 9
-                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos() + player.getHeight()) == 9;
+                    isOnGreenVertical = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 1, player.getYPos()) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 1, player.getYPos() + player.getHeight() / 2) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 1, player.getYPos() + player.getHeight() - 1) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 1, player.getYPos()) == 9
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 1, player.getYPos() + player.getHeight() / 2) == 9
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 1, player.getYPos() + player.getHeight() - 1) == 9;
                         //true if character is on green floor or ceiling, else false
                     
                     //checks 4 corners for green floors and ceilings
-                    isOnGreenVertical = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), player.getYPos() - 0.01) == 12
-                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight() + 0.01) == 11
-                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() - 0.01) == 12
-                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() + player.getHeight() + 0.01) == 11;
+                    isOnGreenHorizontal = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), player.getYPos() - 1) == 12
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), player.getYPos() + player.getHeight() + 1) == 11
+                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() - 1) == 12
+                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() + player.getHeight() + 1) == 11;
                         //true if character is on green wall, else false
                     
                     //initialize instance variables
@@ -136,7 +136,6 @@ public class Game extends Application
 
                     //make changes to the velocity with the constants
                     futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
-                    futureYVel += GRAV_ACC/30;                                      //apply gravity
                     
                     //Stopping player if velocity passes 0 (friction)
                     if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(player.getXVel())
@@ -146,6 +145,51 @@ public class Game extends Application
                     //keypresses different depending if on green or not
                     if(isOnGreenHorizontal || isOnGreenVertical)
                     {
+                        if(isOnGreenHorizontal) //green floor or ceiling
+                        {
+                            //delete y velocity lmao
+                            futureYVel = 0;
+                            
+                            //Stopping player if velocity passes 0 due to friction
+                            if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(player.getXVel())
+                                && ((!left && !right) || (left && right)))
+                                futureXVel = 0;
+                            //keypresses
+                            if(left) //left and on floor/ceiling
+                                futureXVel += -1 * X_ACC / 30;
+                            if(right) //right and on floor/ceiling
+                                futureXVel += X_ACC / 30;
+                            
+                            //capping velocity
+                            if(Math.abs(futureXVel) > MAX_VEL / 2)//if player passes max velocity
+                                futureXVel = MAX_VEL * Math.signum(futureXVel) / 2; //then limit the velocity
+                        }
+                        if(isOnGreenVertical) //green wall
+                        {
+                            //apply friction
+                            futureXVel = 0;
+                            futureYVel -= Math.signum(player.getYVel()) * FRICT_ACC/30;
+                            
+                            //Stopping player if velocity passes 0 due to friction
+                            if((int)Math.signum(futureYVel) == -1 * (int)Math.signum(player.getYVel())
+                                && ((!up && !down) || (up && down)))
+                                futureYVel = 0;
+                            //keypresses
+                            if(up) //up and on wall
+                                futureYVel += -1 * X_ACC / 30;
+                            if(down) //down and on wall
+                                futureYVel += X_ACC / 30;
+                                
+                            //capping velocity
+                            if(Math.abs(futureYVel) > MAX_VEL / 2) //if player passes max velocity
+                                futureYVel = MAX_VEL * Math.signum(futureYVel) / 2; //then limit the velocity
+                        }
+                    }
+                    else
+                    {
+                        //apply gravity
+                        futureYVel += GRAV_ACC/30;                                      //apply gravity
+                        
                         //up and touching ground
                         if(up && (currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight() + 1) 
                               || currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight() + 1)))
@@ -154,15 +198,11 @@ public class Game extends Application
                             futureXVel -= X_ACC / 30;
                         if(right && player.getXVel() < MAX_VEL) //right acceleration under max velocity
                             futureXVel += X_ACC / 30;
-                    }
-                    else
-                    {
                         
+                        //capping velocity
+                        if(Math.abs(futureXVel) > MAX_VEL && Math.abs(player.getXVel()) <= MAX_VEL)//if player passes max velocity
+                            futureXVel = MAX_VEL * Math.signum(futureXVel); //then limit the velocity
                     }
-                    
-                    //capping velocity
-                    if(Math.abs(futureXVel) > MAX_VEL && Math.abs(player.getXVel()) <= MAX_VEL)//if player passes max velocity
-                        futureXVel = MAX_VEL * Math.signum(futureXVel); //then limit the velocity
 
                     //update the player's future position
                     futureX += futureXVel;

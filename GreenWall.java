@@ -91,6 +91,6 @@ public class GreenWall implements Wall
         interactPlayer.setYPos(wallY);
         
         //stop player's vertical movement
-        interactPlayer.setYVel(-2);
+        interactPlayer.setYVel(0);
     }
 }
