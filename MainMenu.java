@@ -406,7 +406,8 @@
         
         String creditString = "THANK YOU to those who helped made RGB possible \n\n" 
                               + "Creators - Daniel Herrick, Jonathan Lee, Rupin Mittal, and Brandon Wang \n"
-                              + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"                      
+                              + "Graphics by Maria Dhilla and Music by Cole Clarkson (IG: @cudi_cole)\n"
+                              + "Special thanks to Andrew Wang for Git support\n"
                               + "Thank you Mr. Lantsberger for everything you've taught us. \n" 
                               + "It has been our pleasure being your students!";
 
