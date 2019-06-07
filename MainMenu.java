@@ -56,25 +56,18 @@
         //Boolean value that indicates if the volume is on or off
         private boolean volumeOn;
        
-        // /**
-         // * This the constructor for MainMenu that will construct all the buttons
-         // * and run the main menu via runMenu() 
-         // */
-        // public MainMenu()
-        // {
-            
-        // }
-        
-         //*The main() method is ignored in correctly deployed JavaFX application.
-         /**
-         * Main() serves only as fallback in case the application can not be
-         * launched through deployment artifacts, e.g., in IDEs with limited FX
-         * support]
-         * 
-         * @param args the command line arguments
+        /**
+         * This the constructor for MainMenu that will construct all the buttons
+         * and run the main menu via runMenu() 
          */
-        public static void main(String[] args) {
-            launch(args);
+        public MainMenu()
+        {
+            //Empty constructor
+        }
+        
+        public Scene getScene()
+        {
+            return mainScene;
         }
         
         public void start(Stage stage) throws Exception {
@@ -218,30 +211,6 @@
         private void play(ActionEvent pClick)
         {
             
-        }
-        
-        /**
-         * This method will be called when the user clicks the play button in the Character Select scene. It
-         * will switch screens to the actual game
-         * 
-         * @param pClick - an event representing the user clicking the play button
-         */
-        private void volumeChange(ActionEvent pClick)
-        {
-            if(volumeOn == true)
-            {
-                
-                // volumeOn = false;
-                // Music.loop("ollie.mp3", 0.0);
-                // volumeButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Volume Off.PNG"), 150, 150, true, false)));
-            }
-            
-            else
-            {
-                // volumeOn = true;
-                // Music.loop("ollie.mp3", 1.0);
-                // volumeButton = new Button("", new ImageView(new Image(getClass().getResourceAsStream("Volume On.PNG"), 150, 150, true, false)));
-            }
         }
         
         /**
@@ -508,5 +477,38 @@
         
         //Display the scene to the user so that he/she can interact with it
         window.setScene(plotScene);
+    }
+    
+    /**
+     * This method will be called when the user wins the game. It
+     * will switch screens to a victory scene "You Win" message
+     * 
+     * 
+     * @param howToClick - an event representing the user clicking the how to
+     * play button
+     */
+    public void victory(ActionEvent howtoClick)
+    {
+        //Adding the special effects of shadows on the characters
+        InnerShadow innerShadow = new InnerShadow();
+        //setting the type of blur for the shadow 
+        innerShadow.setBlurType(BlurType.GAUSSIAN); 
+        //Setting color for the shadow 
+        innerShadow.setColor(Color.DARKGRAY); 
+        
+        //Layout for victory Scene
+        VBox victoryLayout = new VBox();
+        
+        //Set the color of the background to Gainsboro
+        victoryLayout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        //Centers the layout of the Credit scene in the middle
+        victoryLayout.setAlignment(Pos.CENTER);
+        
+        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 300, 300, true, false))); 
+        title.setStyle("-fx-background-color: transparent;");
+        title.setEffect(innerShadow);
+        
+        victoryLayout.getChildren().addAll(title);
     }
 }
