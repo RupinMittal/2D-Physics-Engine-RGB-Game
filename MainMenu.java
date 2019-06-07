@@ -323,8 +323,8 @@
             blueCharacter.setOnAction(this::blue);
             purpleCharacter.setOnAction(this::purple);            
         
-        //Display the scene to the user so that he/she can interact with it
-        window.setScene(characterScene);
+           //Display the scene to the user so that he/she can interact with it
+           window.setScene(characterScene);
     }
     
     /**
@@ -334,7 +334,7 @@
      */
     private void yellow(ActionEvent characterSelectClick)
     {
-        String yellow = "Yellow Dude.PNG";
+        //Player player = new Player("file:characters/Yellow.png", "file:walkAnimation/y1.png");
     }
     
     /**
@@ -344,7 +344,7 @@
      */
     private void blue(ActionEvent characterSelectClick)
     {
-        String blue = "Blue Dude.PNG";
+        //Player player = new Player("file:characters/Cyan.png", "file:walkAnimation/c1.png");
     }
     
     /**
@@ -354,7 +354,7 @@
      */
     private void purple(ActionEvent characterSelectClick)
     {
-        String purple = "Purple Dude.PNG";
+        //String Player player = new Player("file:characters/Purple.png", "file:walkAnimation/p1.png");
     }
     
     /**
