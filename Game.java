@@ -19,7 +19,6 @@ public class Game extends Application
 {
     //object variables
     //MainMenu mainMenu;                        //the mainmenu object
-    //PauseMenu pauseMenu;                      //the pause menu
     private Environment currentEnvironment;     //the current environment being used
     private Environment gameEnvironment;        //the game environment
     private IntroEnvironment introEnvironment;  //the intro environment
@@ -30,7 +29,6 @@ public class Game extends Application
     private GreenWall gWall;                    //the green wall
     private AnimationTimer animationTimer;      //the animation timer to run everything
     private Wall colliderWall;                  //the wall that the user is colliding into in collisions
-    private Rectangle2D viewport;               //the rectangle to have offset in the game
 
     //variables for movement
     private boolean up, down, right, left;      //the variables for the players movement
@@ -337,24 +335,20 @@ public class Game extends Application
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
                             }
                         //check out of bounds movement
-                        //if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
-                            //player.setAliveStatus(false);                                  //kill the player
+                        if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
+                            player.setAliveStatus(false);                                  //kill the player
                         //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
                         //move to next sector
 
                         //check if interacting with enemies
                         //if player and enemy's position is the same, kill the player
 
-                        //do offset
-                        //if((player.getImageView()).getX() > cameraOffset)     //if character is out of offsetrange
-                           // environment.setViewport(new Rectangle2D((player.getImageView()).getX() - (player.getImageView()).getFitWidth(), 0, 200, 200));  //scroll screen
                     }
                     else
                         resetToSectorStart();
                 }
                 //else
-                    //show game over screen
-                    //reset to sector 1
+                    resetToSectorStart();
             }
         };
         timer.start();
@@ -367,7 +361,6 @@ public class Game extends Application
     private void initializeVariables()
     {
         //initialize main menu
-        //initialize pause menu
         gameEnvironment = new Environment("test.txt", "Test.png");   //create first game environment
         //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntroBackground.png");    //create intro environment
         currentEnvironment = gameEnvironment;
@@ -380,10 +373,7 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
-        //viewport = new Rectangle2D(0, 0, 1000, 1000);       //the rectangle to have offset in the game
-        //environment.setViewport(viewport);                                          //set imageview to have the rectangle
-        //cameraOffset = viewport.getWidth() - ((viewport.getWidth() - (player.getImageView()).getFitWidth())/2);   //the amount to offset camera by for scrolling
-    }
+        }
 
     /*
      * Method to get the object of the type of wall by color
