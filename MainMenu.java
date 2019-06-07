@@ -51,35 +51,10 @@
         private Stage window;
         
         //The scenes represent the physical contents of a JavaFX application in the mainMenu, creditMenu, playMenu, and plotScene
-        private Scene mainScene, creditScene, playScene, plotScene, characterScene; 
+        private Scene mainScene, creditScene, playScene, plotScene, characterScene, victoryScene; 
         
         //Boolean value that indicates if the volume is on or off
         private boolean volumeOn;
-       
-        /**
-         * This the constructor for MainMenu that will construct all the buttons
-         * and run the main menu via runMenu() 
-<<<<<<< HEAD
-=======
-        */
-        public MainMenu()
-        {
-            
-        }
-        
-         //*The main() method is ignored in correctly deployed JavaFX application.
-         /**
-         * Main() serves only as fallback in case the application can not be
-         * launched through deployment artifacts, e.g., in IDEs with limited FX
-         * support]
-         * 
-         * @param args the command line arguments
->>>>>>> 5411574ad9037dd529582adc5096d070d4273de0
-         */
-        public MainMenu()
-        {
-            //Empty constructor
-        }
         
         public Scene getScene()
         {
@@ -526,5 +501,10 @@
         title.setEffect(innerShadow);
         
         victoryLayout.getChildren().addAll(title);
+        
+        victoryScene = new Scene(victoryLayout, 900, 600);
+        
+        //Display the scene to the user so that he/she can interact with it
+        window.setScene(victoryScene);
     }
 }
