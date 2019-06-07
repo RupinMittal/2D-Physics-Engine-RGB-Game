@@ -71,7 +71,7 @@ public class Game extends Application
         
         //player initial position
         player.setXPos(0);
-        player.setYPos(120);
+        player.setYPos(135);
         primaryStage.show();
 
         //run controls
@@ -403,8 +403,12 @@ public class Game extends Application
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
                             }
 
-                         if((player.getImageView().getX() > 4190))
+                        if(player.getXPos() > environment.getImage().getWidth() - TILE_SIZE)
                             moveToNextSector();
+                        
+                        //kill player if outside map
+                        if(player.getXPos() < 0 || player.getYPos() < 0 || player.getYPos() > primaryStage.getHeight())
+                            resetToSectorStart();
 
                         //check if interacting with enemies
                         //if player and enemy's position is the same, kill the player
@@ -436,10 +440,10 @@ public class Game extends Application
         bWall = new BlueWall(player, TILE_SIZE);
         gWall = new GreenWall(player, TILE_SIZE);
         rWall = new RedWall(player);
-        environment = gameEnvironment.getMapImageView();                            //get environment imageview
-        root = new Group();                                                         //the Group
-        scene = new Scene(root);                                                    //the scene
-        sectorNum = 1;
+        environment = gameEnvironment.getMapImageView(); //get environment imageview
+        root = new Group();                              //the Group
+        scene = new Scene(root);                         //the scene
+        sectorNum = 1; //sector num the player is on
         }
 
     /*
@@ -471,9 +475,11 @@ public class Game extends Application
      */
     private void resetToSectorStart()
     {
-        player.setAliveStatus(true);                //revive player
-        player.setXPos(0);                          //reset to sector 1 right now
-        player.setYPos(120);   //reset to sector beginning
+        player.setAliveStatus(true);           //revive player
+        player.setXPos(0);                     //reset to sector beginning
+        player.setYPos(135);
+        player.setXVel(0);                     //reset player velocity
+        player.setYVel(0);
     }
 
     /*
@@ -481,14 +487,23 @@ public class Game extends Application
      */
     private void moveToNextSector()
     {
+        sectorNum++;    //move to next sector
         //if(sectorNum == 3)
             //show win
-        if(sectorNum != 3)
+        if(sectorNum <= 3)
         {
-            sectorNum++;    //move to next sectorNum
-            gameEnvironment = new Environment("sectors/Sector" + sectorNum + ".txt", "sectorsFiles/Sector" + sectorNum + ".png");   //create first game environment
+            //remove environment from scene
+            root.getChildren().remove(environment);
+            root.getChildren().remove(player.getImageView()); //player removed to resolve overlay issues
+            
+            gameEnvironment = new Environment("sectors/Sector" + sectorNum + ".txt", "sectors/Sector" + sectorNum + ".png");   //create first game environment
             currentEnvironment = gameEnvironment;
-            environment = gameEnvironment.getMapImageView();                            //get environment imageview
+            environment = currentEnvironment.getMapImageView(); //get environment imageview
+            
+            //add elements back to scene
+            root.getChildren().add(environment);
+            root.getChildren().add(player.getImageView());
         }
+        resetToSectorStart();
     }
 }
