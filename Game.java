@@ -38,6 +38,8 @@ public class Game extends Application
     private double futureYVel;                  //the future vertical velocity
     private double futureX;                     //future horizontal position
     private double futureY;                     //future vertical position
+    private boolean isOnGreenHorizontal;        //true if character is on green floor or ceiling, else false
+    private boolean isOnGreenVertical;          //true if character is on green wall, else false
 
     //constants
     private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 6.9, MAX_VEL = 5; //the constants for movement
@@ -109,6 +111,23 @@ public class Game extends Application
             {
                 if(player.isAlive())
                 {
+                    //handling green stuff
+                    //checks 4 corners and 2 edges for green walls
+                    isOnGreenVertical = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos()) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight() / 2) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight()) == 10
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos()) == 9
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos() + player.getHeight() / 2) == 9
+                        || currentEnvironment.getTypeNumber(player.getXPos() - 0.01, player.getYPos() + player.getHeight()) == 9;
+                        //true if character is on green floor or ceiling, else false
+                    
+                    //checks 4 corners for green floors and ceilings
+                    isOnGreenVertical = currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth(), player.getYPos() - 0.01) == 12
+                        || currentEnvironment.getTypeNumber(player.getXPos() + player.getWidth() + 0.01, player.getYPos() + player.getHeight() + 0.01) == 11
+                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() - 0.01) == 12
+                        || currentEnvironment.getTypeNumber(player.getXPos(), player.getYPos() + player.getHeight() + 0.01) == 11;
+                        //true if character is on green wall, else false
+                    
                     //initialize instance variables
                     futureXVel = player.getXVel();              //get the future horizontal velocity
                     futureYVel = player.getYVel();              //get the future vertical velocity
@@ -124,14 +143,22 @@ public class Game extends Application
                         && ((!left && !right) || (left && right)))
                         futureXVel = 0;
 
-                    //keypresses
-                    if(up && (currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight() + 1) 
-                            || currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight() + 1)))
-                        futureYVel = -1 * JUMP_ACC;
-                    if(left && player.getXVel() > -1 * MAX_VEL)
-                        futureXVel -= X_ACC / 30;
-                    if(right && player.getXVel() < MAX_VEL)
-                        futureXVel += X_ACC / 30;
+                    //keypresses different depending if on green or not
+                    if(isOnGreenHorizontal || isOnGreenVertical)
+                    {
+                        //up and touching ground
+                        if(up && (currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight() + 1) 
+                              || currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight() + 1)))
+                            futureYVel = -1 * JUMP_ACC;
+                        if(left && player.getXVel() > -1 * MAX_VEL) //left acceleration under max velocity
+                            futureXVel -= X_ACC / 30;
+                        if(right && player.getXVel() < MAX_VEL) //right acceleration under max velocity
+                            futureXVel += X_ACC / 30;
+                    }
+                    else
+                    {
+                        
+                    }
                     
                     //capping velocity
                     if(Math.abs(futureXVel) > MAX_VEL && Math.abs(player.getXVel()) <= MAX_VEL)//if player passes max velocity

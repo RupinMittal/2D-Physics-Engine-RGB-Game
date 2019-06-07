@@ -17,8 +17,6 @@ public class Player extends Movable
 
     //state variables
     private boolean isAlive;                //true if character is alive, false if dead
-    private boolean isOnGreenHorizontal;    //true if character is on green floor or ceiling, else false
-    private boolean isOnGreenVertical;      //true if character is on green wall, else false
 
     //variables for updatingAnimation
     private int runTimer;                       //variable counter for how long to wait before switching the running image
@@ -47,8 +45,6 @@ public class Player extends Movable
         movableImageView = new ImageView(defaultImage);
         
         isAlive = true;
-        isOnGreenHorizontal = false;
-        isOnGreenVertical = false;
         runTimer = 0;
         runState = 0;
     }
@@ -71,41 +67,41 @@ public class Player extends Movable
         isAlive = life;    //change the player's alive status
     }
 
-    /**
+    /*
      * Method to get the onGreenHorizontal status of Player
      * @return boolean true if player is on green ceiling or floor, false if not
-     */
+     *
     public boolean isOnGreenHorizontal()
     {
         return isOnGreenHorizontal; //return onGreenHorizontal status
-    }
+    }*/
 
-    /**
+    /*
      * Method to set the onGreenHorizontal status of Player
      * @param onGHorizontal boolean true if player is on green ceiling or floor, false if not
-     */
+     *
     public void setGreenHorizontalStatus(boolean onGHorizontal)
     {
         isOnGreenHorizontal = onGHorizontal;    //set new status status of isOnGreenHorizontal
-    }
+    }*/
 
-    /**
+    /*
      * Method to get the onGreenVertical status of Player
      * @return boolean true if player is on green wall, false if not
-     */
+     *
     public boolean isOnGreenHVertical()
     {
         return isOnGreenVertical; //return onGreenVertical status
-    }
+    }*/
 
-    /**
+    /*
      * Method to set the onGreenVertical status of Player
      * @param onGVertical boolean true if player is on green wall, false if not
-     */
+     *
     public void setGreenVerticalStatus(boolean onGVertical)
     {
         isOnGreenVertical = onGVertical;    //set new status status of isOnGreenVertical
-    }
+    }*/
 
     /**
      * Method to update the animation of a player, like running, still, or jump

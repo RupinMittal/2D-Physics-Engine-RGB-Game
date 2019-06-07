@@ -38,9 +38,6 @@ public class GreenWall implements Wall
         
         //stop player's horizontal movement
         interactPlayer.setXVel(0);
-        
-        //toggle player's green status
-        interactPlayer.setGreenHorizontalStatus(true);
     }
     
     /**
@@ -59,9 +56,6 @@ public class GreenWall implements Wall
         
         //stop player's horizontal movement
         interactPlayer.setXVel(0);
-        
-        //toggle player's green status
-        interactPlayer.setGreenHorizontalStatus(true);
     }
     
     /**
@@ -80,9 +74,6 @@ public class GreenWall implements Wall
         
         //stop player's vertical movement
         interactPlayer.setYVel(0);
-        
-        //toggle player's green status
-        interactPlayer.setGreenVerticalStatus(true);
     }
     
     /**
@@ -101,8 +92,5 @@ public class GreenWall implements Wall
         
         //stop player's vertical movement
         interactPlayer.setYVel(-2);
-        
-        //toggle player's green status
-        interactPlayer.setGreenVerticalStatus(true);
     }
 }
