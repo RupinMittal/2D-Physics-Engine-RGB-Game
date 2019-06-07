@@ -521,7 +521,7 @@
         //Centers the layout of the Credit scene in the middle
         victoryLayout.setAlignment(Pos.CENTER);
         
-        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Title.PNG"), 300, 300, true, false))); 
+        Label title = new Label("", new ImageView(new Image(getClass().getResourceAsStream("Victory.PNG"), 300, 300, true, false))); 
         title.setStyle("-fx-background-color: transparent;");
         title.setEffect(innerShadow);
         
