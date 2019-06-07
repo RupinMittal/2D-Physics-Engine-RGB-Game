@@ -120,8 +120,7 @@ public class Game extends Application
                     //make changes to the velocity with the constants
                     futureXVel -= Math.signum(player.getXVel()) * FRICT_ACC/30;     //apply friction
                     futureYVel += GRAV_ACC/30;                                      //apply gravity
-                    if(Math.abs(futureXVel) > MAX_VEL)                              //if the velocity is more than the max
-                        futureXVel = MAX_VEL * Math.signum(futureXVel);             //then limit the velocity
+                    
                     //Stopping player if velocity passes 0 (friction)
                     if((int)Math.signum(futureXVel) == -1 * (int)Math.signum(player.getXVel())
                         && ((!left && !right) || (left && right)))
@@ -131,10 +130,14 @@ public class Game extends Application
                     if(up && (currentEnvironment.isCollision(player.getXPos(), futureY + player.getHeight() + 1) 
                             || currentEnvironment.isCollision(player.getXPos() + player.getWidth(), futureY + player.getHeight() + 1)))
                         futureYVel = -1 * JUMP_ACC;
-                    if(left)
+                    if(left && player.getXVel() > -1 * MAX_VEL)
                         futureXVel -= X_ACC / 30;
-                    if(right)
+                    if(right && player.getXVel() < MAX_VEL)
                         futureXVel += X_ACC / 30;
+                    
+                    //capping velocity
+                    if(Math.abs(futureXVel) > MAX_VEL && Math.abs(player.getXVel()) <= MAX_VEL)//if player passes max velocity
+                        futureXVel = MAX_VEL * Math.signum(futureXVel); //then limit the velocity
 
                     //update the player's future position
                     futureX += futureXVel;
