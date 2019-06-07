@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Enemy
+comment1.params=pic
+comment1.target=Enemy(javafx.scene.image.Image)
+comment1.text=\n\ Constructor\ for\ Enemy\ Objects\n\ @param\ pic\ Image\ of\ still\ enemy\n
+comment2.params=
+comment2.target=void\ updateAnimation()
+comment2.text=\n\ Method\ to\ update\ the\ animation\ of\ enemy,\ like\ rotate\ it.\n
+comment3.params=
+comment3.target=javafx.scene.image.ImageView\ getImageView()
+comment3.text=\n\ Method\ to\ return\ the\ ImageView\ of\ the\ enemy\n\ @return\ ImageView\ of\ the\ enemy\n
+numComments=4
