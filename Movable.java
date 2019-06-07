@@ -109,7 +109,7 @@ public abstract class Movable
      */
     public double getWidth()
     {
-        return movableImageView.getImage().getWidth();    //return the width
+        return defaultImage.getWidth();    //return the width
     }
 
     /**

@@ -331,16 +331,16 @@ public class Game extends Application
                         player.updateAnimation();
                         
                         //if camera need to scroll
-                        if(player.getXPos() - cameraOffset > 1000)
+                        if(player.getXPos() - cameraOffset > 700)
                         {
-                            cameraOffset = player.getXPos() - 1000;
+                            cameraOffset = player.getXPos() - 700;
                             environment.setTranslateX(-1 * cameraOffset);
                             player.getImageView().setTranslateX(-1 * cameraOffset);
                         }
                         else
-                            if(player.getXPos() - cameraOffset < 200)
+                            if(player.getXPos() - player.getWidth() - cameraOffset < 500)
                             {
-                                cameraOffset = player.getXPos() - 200;
+                                cameraOffset = player.getXPos() - player.getWidth() - 500;
                                 environment.setTranslateX(-1 * cameraOffset);
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
                             }
@@ -352,13 +352,13 @@ public class Game extends Application
                             environment.setTranslateX(-1 * cameraOffset);
                             player.getImageView().setTranslateX(-1 * cameraOffset);
                         }
-                        //right edge
-                        /*if(cameraOffset > environment.getFitWidth() - primaryStage.getWidth())
-                        {
-                            cameraOffset = environment.getFitWidth() - primaryStage.getWidth();
-                            environment.setTranslateX(-1 * cameraOffset);
-                            player.getImageView().setTranslateX(-1 * cameraOffset);
-                        }*/
+                        /*else //right edge
+                            if(cameraOffset > environment.getFitWidth() - primaryStage.getWidth())
+                            {
+                                cameraOffset = environment.getFitWidth() - primaryStage.getWidth();
+                                environment.setTranslateX(-1 * cameraOffset);
+                                player.getImageView().setTranslateX(-1 * cameraOffset);
+                            }*/
                         //check out of bounds movement
                         //if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
                             //player.setAliveStatus(false);                                  //kill the player
