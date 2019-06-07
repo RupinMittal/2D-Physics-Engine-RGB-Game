@@ -49,7 +49,7 @@ public class Game extends Application
     //variables for the actual display of the game
     private ImageView environment;           //the environment being displayed
     private Group root;                      //the Group
-    private Scene scene, menuScene;          //the scene
+    private Scene scene;          //the scene
 
     //methods to run class
     public static void main(String[] args)
@@ -67,7 +67,7 @@ public class Game extends Application
         primaryStage.setTitle("RGB");
         primaryStage.setHeight(780);
         primaryStage.setWidth(1200);
-        primaryStage.setScene(menuScene);
+        primaryStage.setScene(scene);
         
         //player initial position
         player.setXPos(0);
@@ -440,8 +440,6 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView(); //get environment imageview
         root = new Group();                              //the Group
         scene = new Scene(root);                         //the scene
-        mainMenu = new MainMenu();
-        menuScene = mainMenu.getScene();
 
         sectorNum = 1; //sector num the player is on
         }

@@ -62,6 +62,11 @@
             return mainScene;
         }
         
+        public void handle(ActionEvent event)
+        {
+            
+        }
+        
         //instantiates variables
         private void instantiate(/*Stage stage*/)
         {
@@ -213,7 +218,7 @@
          * 
          * @param characterSelectClick - an event representing the user clicking the play button
          */
-        private void characterSelect(ActionEvent characterSelectClick)
+        public void characterSelect(ActionEvent characterSelectClick)
         {
             //Adding the special effects of shadows on the characters
             InnerShadow innerShadow = new InnerShadow();
