@@ -29,7 +29,7 @@
      * @author Jonathan Lee & Daniel Herrick
      * @version MainMenu JavaFx class - RGB
      */
-    public class MainMenu extends Application
+    public class MainMenu 
     {
         //Declaration of buttons that will be used in the main menu
         //Button that starts the game
@@ -58,10 +58,13 @@
         
         public Scene getScene()
         {
+            instantiate(new Stage());
             return mainScene;
         }
         
-        public void start(Stage stage) throws Exception {
+        //instantiates variables
+        private void instantiate(Stage stage) 
+        {
             //Instatiation of the Stage window
             window = stage;
             
@@ -186,11 +189,11 @@
             window.setResizable(false);
             
             //Sets the title of the window
-            window.setTitle("RGB GANG");
+            /*window.setTitle("RGB GANG");
             window.setScene(mainScene);
             
             //Stage will now appear so that the user can interact with it
-            window.show();
+            window.show();*/
         }
         
         /**
