@@ -159,7 +159,7 @@ public class Game extends Application
                             if(currentEnvironment.getTypeNumber(player.getXPos(), futureY) % 4 == 0)
                                 colliderWall.interactCeiling(futureY);
                             else //normal wall
-                                bWall.interactCeiling(futureY);
+                                nWall.interactCeiling(futureY);
                             verticalCollision = true;
                         }
                         //top left collision with left wall
@@ -169,7 +169,7 @@ public class Game extends Application
                             if(currentEnvironment.getTypeNumber(futureX, player.getYPos()) % 4 == 1)
                                 colliderWall.interactRight(futureX);
                             else //normal wall
-                                bWall.interactRight(futureX);
+                                nWall.interactRight(futureX);
                             horizontalCollision = true;
                         }
                     }
