@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=IntroEnvironment
+comment1.params=mapCollisionsDatafile\ mapImage\ foregroundImage\ backgroundImage
+comment1.target=IntroEnvironment(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\n\ Constructor\ for\ IntroEnvironment\ class\n\ @param\ mapCollisionsDatafile\ String\ that\ is\ txt\ file\ name\ that\ comes\ from\ .json\ file\ with\ tile\ data\n\ @param\ mapImage\ String\ that\ is\ png\ file\ name\ that\ comes\ from\ .json\ file\ for\ the\ map\n\ @param\ foregroundImage\ String\ that\ is\ png\ file\ name\ that\ comes\ from\ .json\ file\ for\ the\ foreground\n\ @param\ backgroundImage\ String\ that\ is\ png\ file\ name\ that\ comes\ from\ .json\ file\ for\ the\ background\n
+comment2.params=
+comment2.target=javafx.scene.image.ImageView\ getForegroundImageView()
+comment2.text=\n\ Method\ to\ get\ the\ foreground\ ImageView\n\ @return\ ImageView\ foreground\n
+comment3.params=
+comment3.target=javafx.scene.image.ImageView\ getBackgroungroundImageView()
+comment3.text=\n\ Method\ to\ get\ the\ background\ ImageView\n\ @return\ ImageView\ background\n
+numComments=4
