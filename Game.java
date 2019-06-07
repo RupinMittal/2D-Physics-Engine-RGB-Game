@@ -505,6 +505,12 @@ public class Game extends Application
             root.getChildren().add(environment);
             root.getChildren().add(player.getImageView());
         }
+        else
+            if(sectorNum == 4)
+            {
+                root.getChildren().add(new ImageView(new Image("Victory.PNG", 0, 800, true, false)));
+            }
+
         resetToSectorStart();
     }
 }
