@@ -55,6 +55,9 @@
         
         //Boolean value that indicates if the volume is on or off
         private boolean volumeOn;
+
+        //the player
+        Player player = null;
         
         public static void main(String[] args)
         {
@@ -203,7 +206,7 @@
          */
         private void play(ActionEvent pClick)
         {
-            Game game = new Game();
+            Game game = new Game(player);
             game.start(window);
         }
         
@@ -215,8 +218,6 @@
          */
         public void characterSelect(ActionEvent characterSelectClick)
         {
-            Player player = null;   //the player to be returned
-
             //Adding the special effects of shadows on the characters
             InnerShadow innerShadow = new InnerShadow();
             //setting the type of blur for the shadow 
@@ -285,41 +286,47 @@
             startGameButton.setOnAction(this::play);
             characterScene = new Scene(characterLayout, 900, 600);
             yellowCharacter.setOnAction(this::yellow);
-            blueCharacter.setOnAction(this::blue);
-            purpleCharacter.setOnAction(this::purple);            
+            blueCharacter.setOnAction(this::cyan);
+            purpleCharacter.setOnAction(this::purple);
         
            //Display the scene to the user so that he/she can interact with it
             window.setScene(characterScene);
     }
-    
+
     /**
-     * 
-     * 
+     * Method to get the player to be used
+     * @return the player object
+     */
+    public Player getCharacter()
+    {
+        return player;
+    }
+
+    /**
+     * Method to get the yellow player
      * @param characterSelectClick - an event representing the user clicking the play button
      */
     private void yellow(ActionEvent characterSelectClick)
     {
-        Player player = new Player("file:characters/Yellow.png", "file:walkAnimation/y1.png");
+        player = new Player("file:characters/Yellow.png", "file:walkAnimation/y1.png");
     }
     
     /**
-     * 
-     * 
+     * Method to get cyan player
      * @param characterSelectClick - an event representing the user clicking the play button
      */
-    private void blue(ActionEvent characterSelectClick)
+    private void cyan(ActionEvent characterSelectClick)
     {
-        Player player = new Player("file:characters/Cyan.png", "file:walkAnimation/c1.png");
+        player = new Player("file:characters/Cyan.png", "file:walkAnimation/c1.png");
     }
     
     /**
-     * 
-     * 
+     * Method to get he purple player
      * @param characterSelectClick - an event representing the user clicking the play button
      */
     private void purple(ActionEvent characterSelectClick)
     {
-        Player player = new Player("file:characters/Purple.png", "file:walkAnimation/p1.png");
+        player = new Player("file:characters/Purple.png", "file:walkAnimation/p1.png");
     }
     
     /**
@@ -480,7 +487,7 @@
      * will switch screens to a victory scene "You Win" message
      * 
      * 
-     * @param howToClick - an event representing the user clicking the how to
+     * @param howtoClick - an event representing the user clicking the how to
      * play button
      */
     public void victory(ActionEvent howtoClick)
