@@ -40,6 +40,7 @@ public class Game extends Application
     private double futureY;                     //future vertical position
     private boolean isOnGreenHorizontal;        //true if character is on green floor or ceiling, else false
     private boolean isOnGreenVertical;          //true if character is on green wall, else false
+    private int sectorNum;                      //the sector number that we are on
 
     //constants
     private final double Y_ACC = 7, X_ACC = 10, FRICT_ACC = 5, GRAV_ACC = 6.9, JUMP_ACC = 6.9, MAX_VEL = 5; //the constants for movement
@@ -401,11 +402,9 @@ public class Game extends Application
                                 environment.setTranslateX(-1 * cameraOffset);
                                 player.getImageView().setTranslateX(-1 * cameraOffset);
                             }
-                        //check out of bounds movement
-                        /*if(player.getYPos() > environment.getFitHeight())   //if player is out of screen vertically
-                            player.setAliveStatus(false);*/                                  //kill the player
-                        //if(player.getXPos() > environment.getFitWidth())    //if player is to left of sector
-                        //move to next sector
+
+                         if((player.getImageView().getX() > 4190))
+                            moveToNextSector();
 
                         //check if interacting with enemies
                         //if player and enemy's position is the same, kill the player
@@ -428,7 +427,7 @@ public class Game extends Application
     private void initializeVariables()
     {
         //initialize main menu
-        gameEnvironment = new Environment("test.txt", "Test.png");   //create first game environment
+        gameEnvironment = new Environment("file:sectors/Sector1.txt", "file:sectors/Sector1.png");   //create first game environment
         //introEnvironment = new IntroEnvironment("IntroCollisionsData.txt", "IntroMap.png", "IntroForeground.png", "IntroBackground.png");    //create intro environment
         currentEnvironment = gameEnvironment;
         //player = mainMenu.getPlayer;              //initialize player
@@ -440,6 +439,7 @@ public class Game extends Application
         environment = gameEnvironment.getMapImageView();                            //get environment imageview
         root = new Group();                                                         //the Group
         scene = new Scene(root);                                                    //the scene
+        sectorNum = 1;
         }
 
     /*
@@ -474,5 +474,21 @@ public class Game extends Application
         player.setAliveStatus(true);                //revive player
         player.setXPos(0);                          //reset to sector 1 right now
         player.setYPos(660);   //reset to sector beginning
+    }
+
+    /*
+     * Method to move to the next sector
+     */
+    private void moveToNextSector()
+    {
+        //if(sectorNum == 3)
+            //show win
+        if(sectorNum != 3)
+        {
+            sectorNum++;    //move to next sectorNum
+            gameEnvironment = new Environment("file:SectorFiles/Sector" + sectorNum + ".txt", "file:SectorFiles/Sector" + sectorNum + ".png");   //create first game environment
+            currentEnvironment = gameEnvironment;
+            environment = gameEnvironment.getMapImageView();                            //get environment imageview
+        }
     }
 }
