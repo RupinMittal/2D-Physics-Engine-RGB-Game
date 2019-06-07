@@ -20,8 +20,8 @@ public class Enemy extends Movable
      */
     public Enemy(Image pic)
     {
-        picStill = pic;                                //set the image for the enemy
-        enemyImageView = new ImageView(picStill);      //create the imageview
+        defaultImage = pic;                            //set the image for the enemy
+        enemyImageView = new ImageView(defaultImage);  //create the imageview
         enemyImageView.setRotate(0);                   //set initial rotation value
     }
 
@@ -33,5 +33,15 @@ public class Enemy extends Movable
     public void updateAnimation()
     {
         enemyImageView.setRotate(enemyImageView.getRotate() + 10);  //increment the rotation
+    }
+
+    /**
+     * Method to return the ImageView of the enemy
+     * @return ImageView of the enemy
+     */
+    @Override
+    public ImageView getImageView()
+    {
+        return enemyImageView;
     }
 }

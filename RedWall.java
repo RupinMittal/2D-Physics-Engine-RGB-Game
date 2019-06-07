@@ -28,11 +28,11 @@ public class RedWall implements Wall
     public void interactLeft(double futureX)
     {
         //stop player's movement
-        interactPlayer.setXVelocity(0);
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setXVel(0);
+        interactPlayer.setYVel(0);
         
         //kill player
-        interactPlayer.setAlive(false);
+        interactPlayer.setAliveStatus(false);
     }
     
     /**
@@ -44,11 +44,11 @@ public class RedWall implements Wall
     public void interactRight(double futureX)
     {
         //stop player's movement
-        interactPlayer.setXVelocity(0);
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setXVel(0);
+        interactPlayer.setYVel(0);
         
         //kill player
-        interactPlayer.setAlive(false);
+        interactPlayer.setAliveStatus(false);
     }
     
     /**
@@ -60,11 +60,11 @@ public class RedWall implements Wall
     public void interactFloor(double futureY)
     {
         //stop player's movement
-        interactPlayer.setXVelocity(0);
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setXVel(0);
+        interactPlayer.setYVel(0);
         
         //kill player
-        interactPlayer.setAlive(false);
+        interactPlayer.setAliveStatus(false);
     }
     
     /**
@@ -76,10 +76,10 @@ public class RedWall implements Wall
     public void interactCeiling(double futureY)
     {
         //stop player's movement
-        interactPlayer.setXVelocity(0);
-        interactPlayer.setYVelocity(0);
+        interactPlayer.setXVel(0);
+        interactPlayer.setYVel(0);
         
         //kill player
-        interactPlayer.setAlive(false);
+        interactPlayer.setAliveStatus(false);
     }
 }

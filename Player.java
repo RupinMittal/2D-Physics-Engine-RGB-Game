@@ -11,42 +11,42 @@ public class Player extends Movable
 {
     //variables
     //image variables
-    private ImageView characterImageView;    //the imageview for the player and the current image being used
-    private Image picRunning1;               //the first image of character running
-    private Image picRunning2;               //the second image of character running
+    private Image[] runningAnimation;        //array containing the frames of the character running
     private Image picJump;                   //the image of character jumping
     //private Image picStill is written in superclass Movable
 
     //state variables
     private boolean isAlive;                //true if character is alive, false if dead
-    private boolean isOnGreenHorizontal;    //true if character is on green floor or ceiling, else false
-    private boolean isOnGreenVertical;      //true if character is on green wall, else false
 
     //variables for updatingAnimation
     private int runTimer;                       //variable counter for how long to wait before switching the running image
-    private boolean useRunPic1;                 //used to alternate between the two running pictures for running effect
+    private int runState;                       //keeps track of what state the runner is in
+    
+    //constant for player height
+    private final int PLAYER_HEIGHT = 45;
 
     //constructor
-
     /**
      * Constructor for Player objects
-     * @param pStill Image of still player
-     * @param pRun1  First Image of running PLayer
-     * @param pRun2  Second Image of running Player
-     * @param pJump  Image of jumping Player
+     * @param pStill filepath of image of still player
+     * @param pJump  filepath of image of jumping player
      */
-    public Player(Image pStill, Image pRun1, Image pRun2, Image pJump)
+    public Player(String pStill, String pJump)
     {
-        picStill = pStill;              //initialize variables in initial state
-        picRunning1 = pRun1;
-        picRunning2 = pRun2;
-        picJump = pJump;
-        characterImageView = new ImageView(picStill);
+        //initialize variables in initial state
+        defaultImage = new Image(pStill, 0, PLAYER_HEIGHT, true, false);
+        runningAnimation = new Image[12];
+        picJump = new Image(pJump, 21, PLAYER_HEIGHT, false, false);
+
+        //initialize running images
+        for(int frameNum = 1; frameNum <= 12; frameNum++)
+            runningAnimation[frameNum - 1] = new Image(pJump.substring(0, 20) + frameNum + ".png", 21, PLAYER_HEIGHT, false, false);
+
+        movableImageView = new ImageView(defaultImage);
+        
         isAlive = true;
-        isOnGreenHorizontal = false;
-        isOnGreenVertical = false;
         runTimer = 0;
-        useRunPic1 = true;
+        runState = 0;
     }
 
     //methods
@@ -60,48 +60,48 @@ public class Player extends Movable
     }
 
     /**
-     * Method to kill the Player
+     * Method to kill or revive the Player
      */
-    public void kill()
+    public void setAliveStatus(boolean life)
     {
-        isAlive = false;    //kill the player
+        isAlive = life;    //change the player's alive status
     }
 
-    /**
+    /*
      * Method to get the onGreenHorizontal status of Player
      * @return boolean true if player is on green ceiling or floor, false if not
-     */
+     *
     public boolean isOnGreenHorizontal()
     {
         return isOnGreenHorizontal; //return onGreenHorizontal status
-    }
+    }*/
 
-    /**
+    /*
      * Method to set the onGreenHorizontal status of Player
      * @param onGHorizontal boolean true if player is on green ceiling or floor, false if not
-     */
+     *
     public void setGreenHorizontalStatus(boolean onGHorizontal)
     {
         isOnGreenHorizontal = onGHorizontal;    //set new status status of isOnGreenHorizontal
-    }
+    }*/
 
-    /**
+    /*
      * Method to get the onGreenVertical status of Player
      * @return boolean true if player is on green wall, false if not
-     */
+     *
     public boolean isOnGreenHVertical()
     {
         return isOnGreenVertical; //return onGreenVertical status
-    }
+    }*/
 
-    /**
+    /*
      * Method to set the onGreenVertical status of Player
      * @param onGVertical boolean true if player is on green wall, false if not
-     */
-    public void setVerticalStatus(boolean onGVertical)
+     *
+    public void setGreenVerticalStatus(boolean onGVertical)
     {
         isOnGreenVertical = onGVertical;    //set new status status of isOnGreenVertical
-    }
+    }*/
 
     /**
      * Method to update the animation of a player, like running, still, or jump
@@ -111,29 +111,32 @@ public class Player extends Movable
     {
         if((xVel == 0) && (yVel == 0))                        //if character is completely still
         {
-            characterImageView.setImage(picStill);
+            movableImageView.setImage(defaultImage);
             runTimer = 0;
+            runState = 0;
         }
         else
         {
-            if ((yVel != 0))                                  //if character is moving vertically
-                characterImageView.setImage(picJump);
+            if (xVel > 0)                                 //if player is moving right
+                movableImageView.setScaleX(1);          //character faces right
             else
-                if (xVel > 0)                                 //if player is moving right
-                    characterImageView.setScaleX(1);          //character faces right
-                else                                          //if character moves left
-                    characterImageView.setScaleX(-1);         //character faces left
-
-            if(runTimer == 0)                                //if it is time to alternate sprites
-            {
-                if(useRunPic1)                                //if picRunning1 is to be used
-                    characterImageView.setImage(picRunning1);
-                else                                          //if picRunning2 is to be used
-                    characterImageView.setImage(picRunning2);
-                useRunPic1 = !useRunPic1;                     //alternate usage
-            }
+                if(xVel < 0)                            //if character moves left
+                    movableImageView.setScaleX(-1);     //character faces left
+            
+            if(yVel != 0)
+                movableImageView.setImage(picJump);
+            else
+                if(runTimer == 0)                                //if it is time to change animation
+                {
+                    movableImageView.setImage(runningAnimation[runState]); //set the imageview to the frame
+                    runState++; //increment animation frame number
+                    
+                    if(runState == 12) //reset animation
+                        runState = 0;
+                }
+                
             runTimer++;
-            if(runTimer == 15)
+            if(runTimer == 2)
                 runTimer = 0;                                 //reset timer
         }
     }
