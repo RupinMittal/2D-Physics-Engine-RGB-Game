@@ -59,6 +59,22 @@
         /**
          * This the constructor for MainMenu that will construct all the buttons
          * and run the main menu via runMenu() 
+<<<<<<< HEAD
+=======
+        */
+        public MainMenu()
+        {
+            
+        }
+        
+         //*The main() method is ignored in correctly deployed JavaFX application.
+         /**
+         * Main() serves only as fallback in case the application can not be
+         * launched through deployment artifacts, e.g., in IDEs with limited FX
+         * support]
+         * 
+         * @param args the command line arguments
+>>>>>>> 5411574ad9037dd529582adc5096d070d4273de0
          */
         public MainMenu()
         {

@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=MainMenu
 comment0.text=\n\ MainMenu\ allows\ the\ user\ to\ start\ the\ game,\ open\ up\ a\ "How\ To"\ play\ the\ game,\ look\ at\ the\n\ credits,\ and\ also\ read\ what\ the\ plot\ of\ the\ game\ is\ \n\ \n\ *\ Got\ styling\ effects\ from\ David\ Varga\ -\ https\://github.com/davidvarga\ *\n\n\ @author\ Jonathan\ Lee\ &\ Daniel\ Herrick\n\ @version\ MainMenu\ JavaFx\ class\ -\ RGB\n
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment1.text=\n\ Main()\ serves\ only\ as\ fallback\ in\ case\ the\ application\ can\ not\ be\n\ launched\ through\ deployment\ artifacts,\ e.g.,\ in\ IDEs\ with\ limited\ FX\n\ support]\n\ \n\ @param\ args\ the\ command\ line\ arguments\n
+comment1.params=
+comment1.target=MainMenu()
+comment1.text=\n\ This\ the\ constructor\ for\ MainMenu\ that\ will\ construct\ all\ the\ buttons\n\ and\ run\ the\ main\ menu\ via\ runMenu()\ \n
 comment10.params=cClick
 comment10.target=void\ credits(javafx.event.ActionEvent)
 comment10.text=\n\ This\ method\ will\ be\ called\ when\ the\ user\ clicks\ the\ credits\ button.\ It\n\ will\ switch\ screens\ to\ a\ credits\ screen\ that\ displays\ all\ necessary\ \n\ credits\ of\ the\ game\ \n\ \n\ @param\ cClick\ -\ an\ event\ representing\ the\ user\ clicking\ the\ credits\ \n\ button\ \n
