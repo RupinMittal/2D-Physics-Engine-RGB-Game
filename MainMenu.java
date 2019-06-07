@@ -29,7 +29,7 @@
      * @author Jonathan Lee & Daniel Herrick
      * @version MainMenu JavaFx class - RGB
      */
-    public class MainMenu 
+    public class MainMenu extends Application
     {
         //Declaration of buttons that will be used in the main menu
         //Button that starts the game
@@ -56,22 +56,16 @@
         //Boolean value that indicates if the volume is on or off
         private boolean volumeOn;
         
-        public Scene getScene()
+        public static void main(String[] args)
         {
-            instantiate(/*new Stage()*/);
-            return mainScene;
-        }
-        
-        public void handle(ActionEvent event)
-        {
-            
+            launch(args);
         }
         
         //instantiates variables
-        private void instantiate(/*Stage stage*/)
+        public void start(Stage stage) throws Exception
         {
             //Instatiation of the Stage window
-            //window = stage;
+            window = stage;
             
             //Declaration and Instantiaion of color
             Color c = Color.BLACK;
@@ -191,14 +185,14 @@
             main.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
     
             //User can not resize the form
-            //window.setResizable(false);
+            window.setResizable(false);
             
             //Sets the title of the window
-            /*window.setTitle("RGB GANG");
+            window.setTitle("RGB GANG");
             window.setScene(mainScene);
             
             //Stage will now appear so that the user can interact with it
-            window.show();*/
+            window.show();
         }
         
         /**
@@ -209,7 +203,8 @@
          */
         private void play(ActionEvent pClick)
         {
-            
+            Game game = new Game();
+            game.start(window);
         }
         
         /**
@@ -292,7 +287,7 @@
             purpleCharacter.setOnAction(this::purple);            
         
            //Display the scene to the user so that he/she can interact with it
-           window.setScene(characterScene);
+            window.setScene(characterScene);
     }
     
     /**
