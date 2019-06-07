@@ -288,34 +288,6 @@ public class Game extends Application
                             horizontalCollision = true;
                         }
                     }
-
-                    //if(currentEnvironment.isCollision(futureX, player.getYPos() + player.getHeight() / 2) && currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2))
-                    //{
-                        //horizontalCollision =true;  //horizontal collision is occurring
-                        //verticalCollision = true;   //vertical collision is occurring
-
-                        //interact with both walls at the same time
-                        //colliderWall = getColliderWall(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05);
-                        //colliderWall.interactLeft(futureX + player.getWidth());
-
-                        //colliderWall = getColliderWall(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2);
-                        //colliderWall.interactFloor(futureY + player.getHeight());
-                    //}
-
-                    //this code fixes part of the right corner interaction but instroduces a new bug
-                    //for right side bug check both the right corner and right side at the same time (when side collides with right wall and corner collides with bottom block
-                    //if(currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight()) && currentEnvironment.isCollision(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2))
-                    //{
-                        //horizontalCollision =true;  //horizontal collision is occurring
-                        //verticalCollision = true;   //vertical collision is occurring
-
-                        //interact with both walls at the same time
-                        //colliderWall = getColliderWall(futureX + player.getWidth(), player.getYPos() + player.getHeight() - 0.05);
-                        //colliderWall.interactLeft(futureX + player.getWidth());
-
-                        //colliderWall = getColliderWall(futureX + player.getWidth(), player.getYPos() + player.getHeight() / 2);
-                        //colliderWall.interactFloor(futureY + player.getHeight());
-                    //}
                     
                     if(!horizontalCollision)
                     {
