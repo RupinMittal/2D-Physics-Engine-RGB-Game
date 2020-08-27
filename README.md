@@ -2,7 +2,7 @@
 
 ### Description
 
-This was a group project in Java for my AP Computer Science class. It is platform game with a physics engine build from scratch, menu and player GUI, and graphics and music integration. 
+This was a group project in Java for my AP Computer Science class. It is platform game with a physics engine built from scratch, menu and player GUI, and graphics and music integration. 
 
 The following concepts were implemented:
 
