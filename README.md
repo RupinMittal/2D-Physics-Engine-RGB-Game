@@ -83,5 +83,25 @@ the these actions.
 
 ### Structure of the Project
 
+More specific guidelines and can be found in the UML Pseudocode file.
+
+*Wall (interface)* - This interface declares the method that the walls in the program will use, like interacting with the left, right, floor and ceiling
+
+*NormalWall, RedWall, BlueWall, GreenWall* - These classes all implement the Wall interface. The implement the methods about interacting with the four sides.
+Normal wall is normal, red kills, blue is a trampoline, and green is sticky.
+
+*Movable (interface)* - This interface defines the properties of any player or enemy that can move. It declares variables like position, velocity, the methods to 
+change these and update the animation of the image
+
+*Player* - This implements the Movable interface and also holds the image for the specific character image that the player chooses.
+
+*Environment* - This class is for the actual level/sector/environment the player is on and is displayed on the screen. It holds the image, the collisionsArray for 
+that image and has the methods for determining if being at a certain position would be a collision and what type
+
+*Game* - This is the overarching class in the program. It creates objects of all the classes listed above (initializes variables). It creates the JavaFX application for displaying the game with the sectors and the player. It handles the user's arrow key presses to move the player and determines if movements are collisions, gets type, and animates the collision. It handles the physics engine with the gravity and friction implementations along with the running and jumping animations. It also moves the screen appropriately, changes the sector when one is done and shows the victory screen if the end is reached. 
+
+*MainMenu* - This has the initial menu. This is where the program starts and where the game is began. It provides the option of seeing credits, how to play, music slider, and allows player to select their character and start the actual game. It has submenus included in it. 
+
+*Music* - This class is used by MainMenu to run the custom music created for the game.
 
 ### The Program in Action
