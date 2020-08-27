@@ -34,9 +34,15 @@ through all the levels.
 3. Make sure you have Java and JavaFX installed
 4. Compile and run the code. The main (start) method is the MainMenu.java file.
 
-### A GIF of the Game in play (the end of the README has still images)
+### The Program in Action
 
-//put GIF 
+This is the player moving in the game:
+
+![GamePlay GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-GamePlay.gif)
+
+This is the Main Menu:
+
+![Main Menu GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-Menu.gif)
 
 ### How it works
 
@@ -104,4 +110,9 @@ that image and has the methods for determining if being at a certain position wo
 
 *Music* - This class is used by MainMenu to run the custom music created for the game.
 
-### The Program in Action
+### The Game Plot
+
+Year 2050, humanity suffers from a catasrophic nuclear apocalypse. As the last survivor on Earth, you search for a way to go 
+back in time to prevent the destruction of humanity. As you are wandering through a dingy wasteland, you encounter a Time Machine 
+Laboratory in the mountains. You enter the lab and discover that if you pass a series of tests known as the RGB sectors, you will be able to back in 
+time and stop the nuclear apocalypse from occurring. Go and save our world if you can little hero!
