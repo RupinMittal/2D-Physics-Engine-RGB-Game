@@ -1,5 +1,15 @@
 # RGB-FinalProject
 
+### The Program in Action
+
+This is the player moving in the game:
+
+![GamePlay GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-GamePlay.gif)
+
+This is the Main Menu:
+
+![Main Menu GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-Menu.gif)
+
 ### Description
 
 This was a group project in Java for my AP Computer Science class. It is platform game with a physics engine built from scratch, menu and player GUI, and graphics and music integration. 
@@ -33,16 +43,6 @@ through all the levels.
 2. Clone the project: ```% git clone https://github.com/RupinMittal/RGB-FinalProject.git```
 3. Make sure you have Java and JavaFX installed
 4. Compile and run the code. The main (start) method is the MainMenu.java file.
-
-### The Program in Action
-
-This is the player moving in the game:
-
-![GamePlay GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-GamePlay.gif)
-
-This is the Main Menu:
-
-![Main Menu GIF](https://github.com/RupinMittal/RGB-FinalProject/blob/master/RGB-Menu.gif)
 
 ### How it works
 
