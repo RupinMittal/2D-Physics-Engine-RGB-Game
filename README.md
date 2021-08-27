@@ -1,4 +1,4 @@
-# RGB-FinalProject
+# 2D Physics Engine - RGB-FinalProject
 
 ### The Program in Action
 
